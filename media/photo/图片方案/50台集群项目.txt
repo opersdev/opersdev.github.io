@@ -1,0 +1,55 @@
+1、项目规划：搭建50-100台规模的集群实战设计
+
+2、开启7-8台虚拟机（kickstart无人值守装机）
+
+3、管理机（yum,rpm,ntp,pptp,jumpserver,ssh key,ansible,saltstack）
+
+4、搭建backup(rsync 全网备份项目)
+
+5、共享存储nfs01(nfs服务、实时同步（sersync+rsync|drbd）)
+
+6、独立的MySQL数据库服务
+
+7、LNMP web服务（nginx+php,用户文件挂到存储，文本数据放到DB，优化）
+
+8、LAMP web服务（Apache+php,用户文件挂到存储，文本数据放到DB，优化）
+
+9、NGINX 反向代理负载均衡（nginx）+keepalived
+
+强调：12个拓展项目见另外内容：
+
+1、搭建yum仓库、定制rpm包、搜集架构所需软件。
+
+2、配置ntp时间服务。
+
+3、配置zabbix或Nagios监控全网服务。
+
+4、解决Nginx负载均衡的单点（keepalived）。
+
+5、部署pptp ***远程连接及管理服务器。
+
+6、实现MySQL主从复制及主故障自动切换到备服务。
+
+7、解决NFS单点故障自动切换（keepalived）。
+
+8、实现所有无外部IP的内网服务器可以上外网。
+
+9、利用shell脚本及saltstack一键自动化安装整个集群。
+
+10、无人值守批量安装linux（kickstart/cobbler）
+
+11、解决web集群会话保持问题(Memcached)。
+
+12、搭建跳板机（用shell跳板机或jumpserver或CrazyEye）
+
+====================================================
+
+期望毕业薪水超过8K的同学至少自己要额外完成拓展项五项。
+
+期望毕业薪水超过10K的同学至少自己要额外完成拓展项六项。
+
+期望毕业薪水超过12K的同学自己要额外完成拓展项七项。
+
+期望毕业薪水超过13K的同学自己要额外完成拓展项八项。
+
+一键自动化完成加分！

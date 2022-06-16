@@ -1,0 +1,2423 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="思科华为命令, 运维博客,网络安全,devops,技术博客,Linux运维,k8s,docker,虚拟化,云计算,运维社区,技术支持,自动化运维,微服务架构,数据库DBA,seo">
+    <meta name="description" content="思科、华为、H3C这些网络设备的命令还是挺多的，不过我们一般用的路由交换机设备都是最简单的了，先学基本命令，再学其他功能命令。路由命令是最基本的命令了。 思科、华为、H3C常用命令对比大全
+
+
+
+CISCO
+H3C
+HUAWEI
+描述
+
+
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>思科华为命令 | 小诺运维</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小诺运维</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>QQ群</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/linux">
+          
+          <span>linux</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/windows">
+          
+          <span>windows</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/python">
+          
+          <span>python</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">
+          
+          <span>数据库</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%9B%91%E6%8E%A7">
+          
+          <span>监控</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4">
+          
+          <span>自动化运维</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C">
+          
+          <span>网络</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E5%8A%B1%E5%BF%97">
+          
+          <span>励志</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/sample-page/about">
+          
+          <span>关于本站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index">
+          
+          <span>小诺导航</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud">
+          
+          <span>个人网站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/ji-shu-zhi-chi">
+          
+          <span>技术支持</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/juan-zeng-bo-zhu">
+          
+          <span>捐赠博主</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/wzdh">
+          
+          <span>链接收藏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小诺运维</div>
+        <div class="logo-desc">
+            
+            主要是关注互联网以及分享IT运维工作经验的个人博客,主要涵盖了系统运维、开源工具实战，架构优化，提升业务，致力于实现自动化运维，Devops实践者，总结真实工作经验，帮助各位脱坑的实战经验。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			QQ群
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			分类
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories/linux " style="margin-left:75px">
+				  
+		          <span>linux</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/windows " style="margin-left:75px">
+				  
+		          <span>windows</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/python " style="margin-left:75px">
+				  
+		          <span>python</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 " style="margin-left:75px">
+				  
+		          <span>数据库</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%9B%91%E6%8E%A7 " style="margin-left:75px">
+				  
+		          <span>监控</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4 " style="margin-left:75px">
+				  
+		          <span>自动化运维</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%BD%91%E7%BB%9C " style="margin-left:75px">
+				  
+		          <span>网络</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E5%8A%B1%E5%BF%97 " style="margin-left:75px">
+				  
+		          <span>励志</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/sample-page/about " style="margin-left:75px">
+				  
+		          <span>关于本站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index " style="margin-left:75px">
+				  
+		          <span>小诺导航</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud " style="margin-left:75px">
+				  
+		          <span>个人网站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/ji-shu-zhi-chi " style="margin-left:75px">
+				  
+		          <span>技术支持</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/juan-zeng-bo-zhu " style="margin-left:75px">
+				  
+		          <span>捐赠博主</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/wzdh " style="margin-left:75px">
+				  
+		          <span>链接收藏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/gujian/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">思科华为命令</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
+                                网络
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-08
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.7k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>思科、华为、H3C这些网络设备的命令还是挺多的，不过我们一般用的路由交换机设备都是最简单的了，先学基本命令，再学其他功能命令。路由命令是最基本的命令了。 思科、华为、H3C常用命令对比大全</p>
+<table>
+<thead>
+<tr>
+<th>CISCO</th>
+<th>H3C</th>
+<th>HUAWEI</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no</td>
+<td>undo</td>
+<td>undo</td>
+<td>取消、关闭当前设置</td>
+</tr>
+<tr>
+<td>show</td>
+<td>display</td>
+<td>display</td>
+<td>显示查看</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>quit</td>
+<td>quit</td>
+<td>退回上级</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>sysname</td>
+<td>sysname</td>
+<td>设置主机名</td>
+</tr>
+<tr>
+<td>en, config terminal</td>
+<td>system-view</td>
+<td>system-view</td>
+<td>进入全局模式</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>delete</td>
+<td>delete</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>reboot</td>
+<td>reboot</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>write</td>
+<td>save</td>
+<td>save</td>
+<td>保存当前配置</td>
+</tr>
+<tr>
+<td>username</td>
+<td>local-user</td>
+<td>local-user</td>
+<td>创建用户</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>shutdown</td>
+<td>shutdown</td>
+<td>禁止、关闭 端口</td>
+</tr>
+<tr>
+<td>show version</td>
+<td>display version</td>
+<td>display version</td>
+<td>显示当前系统版本</td>
+</tr>
+<tr>
+<td>show startup-config</td>
+<td>display  saved-configuration</td>
+<td>display  saved-configuration</td>
+<td>查看已保存过的配置</td>
+</tr>
+<tr>
+<td>show running-config</td>
+<td>display  current-configuration</td>
+<td>display  current-configuration</td>
+<td>显示当前配置</td>
+</tr>
+<tr>
+<td>no debug all</td>
+<td>ctrl+d</td>
+<td>ctrl+d</td>
+<td>取消所有debug命令</td>
+</tr>
+<tr>
+<td>erase startup-config</td>
+<td>reset saved-configuration</td>
+<td>reset saved-configuration</td>
+<td>删除配置</td>
+</tr>
+<tr>
+<td>end</td>
+<td>return</td>
+<td>return</td>
+<td>退到用户视图</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>logout</td>
+<td>logout</td>
+<td>登出</td>
+</tr>
+<tr>
+<td>logging</td>
+<td>info-center</td>
+<td>info-center</td>
+<td>指定信息中心配置信息</td>
+</tr>
+<tr>
+<td>line</td>
+<td>user-interface</td>
+<td>user-interface</td>
+<td>进入线路配置（用户接口）模式</td>
+</tr>
+<tr>
+<td>start-config</td>
+<td>saved-configuration</td>
+<td>saved-configuration</td>
+<td>启动配置</td>
+</tr>
+<tr>
+<td>running-config</td>
+<td>current-configuration</td>
+<td>current-configuration</td>
+<td>当前配置</td>
+</tr>
+<tr>
+<td>host</td>
+<td>ip host</td>
+<td>ip host</td>
+<td>host名字和ip地址对应</td>
+</tr>
+<tr>
+<td>交换部分</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enable password</td>
+<td>set authentication  password simple</td>
+<td>set authentication  password simple</td>
+<td>配置明文密码</td>
+</tr>
+<tr>
+<td>interface type/number</td>
+<td>interface type/number</td>
+<td>interface type/number</td>
+<td>进入接口</td>
+</tr>
+<tr>
+<td>interface vlan 1</td>
+<td>interface vlan 1</td>
+<td>interface vlan 1</td>
+<td>进入vlan配置vlan管理地址</td>
+</tr>
+<tr>
+<td>interface rang</td>
+<td>interface ethID to ID</td>
+<td>interface ethID to ID</td>
+<td>定议多个端口的组</td>
+</tr>
+<tr>
+<td>enabl esecret</td>
+<td>super password</td>
+<td>super password</td>
+<td>设置特权口令</td>
+</tr>
+<tr>
+<td>duplex (half|full|auto)</td>
+<td>duplex (half|full|auto)</td>
+<td>duplex (half|full|auto)</td>
+<td>配置接口状态</td>
+</tr>
+<tr>
+<td>speed (10/100/1000)</td>
+<td>speed (10/100/1000)</td>
+<td>speed (10/100/1000)</td>
+<td>配置端口速率</td>
+</tr>
+<tr>
+<td>switchport mode trunk</td>
+<td>port link-type trunk</td>
+<td>port link-type trunk</td>
+<td>配置trunk</td>
+</tr>
+<tr>
+<td>vlan ID /no vlan ID</td>
+<td>vlan batch ID /undo vlan batch ID</td>
+<td>vlan batch ID /undo vlan batch ID</td>
+<td>添加、删除vlan</td>
+</tr>
+<tr>
+<td>switchport access  vlan</td>
+<td>port default vlan ID</td>
+<td>port acces vlan ID</td>
+<td>将端口接入vlan</td>
+</tr>
+<tr>
+<td>show interface</td>
+<td>display interface</td>
+<td>display interface</td>
+<td>查看接口</td>
+</tr>
+<tr>
+<td>show vlan ID</td>
+<td>display vlan ID</td>
+<td>display vlan ID</td>
+<td>查看vlan</td>
+</tr>
+<tr>
+<td>encapsulation</td>
+<td>link-protocol</td>
+<td>link-protocol</td>
+<td>封装协议</td>
+</tr>
+<tr>
+<td>channel-group 1 mode on</td>
+<td>port link-aggregation  group 1</td>
+<td>port link-aggregation  group 1</td>
+<td>链路聚合</td>
+</tr>
+<tr>
+<td>ip routing</td>
+<td>默认开启</td>
+<td>默认开启</td>
+<td>开启三层交换的路由功能</td>
+</tr>
+<tr>
+<td>no switchport</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>开启接口三层功能</td>
+</tr>
+<tr>
+<td>vtp domain</td>
+<td>GVRP</td>
+<td>GVRP</td>
+<td>对跨以太网交换机的VLAN进行动态注册和删除</td>
+</tr>
+<tr>
+<td>spanning-tree vlan ID  root primary</td>
+<td>stp instance id root primary</td>
+<td>stp instance id root primary</td>
+<td>stp配置根网桥</td>
+</tr>
+<tr>
+<td>spanning-tree vlan ID  priority</td>
+<td>stp primary vlaue</td>
+<td>stp primary vlaue</td>
+<td>配置网桥优先级</td>
+</tr>
+<tr>
+<td>show spanning-tree</td>
+<td>dis stp brief</td>
+<td>dis stp brief</td>
+<td>查看STP配置</td>
+</tr>
+<tr>
+<td>路由部分</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ip route 0.0.0.0  0.0.0.0</td>
+<td>ip route-static  0.0.0.0 0.0.0.0</td>
+<td>ip route-static  0.0.0.0 0.0.0.0</td>
+<td>配置默认路由</td>
+</tr>
+<tr>
+<td>ip route 目标网段+掩码 下一跳</td>
+<td>ip route-static 目标网段+掩码 下一跳</td>
+<td>ip route-static 目标网段+掩码 下一跳</td>
+<td>配置静态路由</td>
+</tr>
+<tr>
+<td>show ip route</td>
+<td>display ip  routing-table</td>
+<td>display ip  routing-table</td>
+<td>查看路由表</td>
+</tr>
+<tr>
+<td>router rip /network 网段</td>
+<td>rip /network 网段</td>
+<td>rip /network 网段</td>
+<td>启用rip、并宣告网段</td>
+</tr>
+<tr>
+<td>router ospf</td>
+<td>ospf</td>
+<td>ospf</td>
+<td>启用ospf</td>
+</tr>
+<tr>
+<td>network ip 反码 area <area-id></area-id></td>
+<td>area  <area-id></area-id></td>
+<td>area  <area-id></area-id></td>
+<td>配置OSPF区域</td>
+</tr>
+<tr>
+<td>no auto-summary</td>
+<td>rip split-horizon</td>
+<td>rip split-horizon</td>
+<td>配置RIP V2水平分割</td>
+</tr>
+<tr>
+<td>show ip protocol</td>
+<td>display ip protocol</td>
+<td>display ip protocol</td>
+<td>查看路由协议</td>
+</tr>
+<tr>
+<td>access-list 1-99  permit/deny IP</td>
+<td>rule id permit source  IP</td>
+<td>rule id permit source  IP</td>
+<td>标准访问控制列表</td>
+</tr>
+<tr>
+<td>access-list 100-199  permit/deny protocol source IP+反码  destination IP+反码 operator operan</td>
+<td>rule  {normal|special}{permit|deny}{tcp|udp}source {<ip wild>|any}destination  <ip wild>|any}[operate]</ip></ip></td>
+<td>rule  {normal|special}{permit|deny}{tcp|udp}source {<ip wild>|any}destination  <ip wild>|any}[operate]</ip></ip></td>
+<td>扩展访问控制列表</td>
+</tr>
+<tr>
+<td>standby group-number  ip virtual-ip</td>
+<td>vrrp vrid number  virtual-ip</td>
+<td>vrrp vrid number  virtual-ip</td>
+<td>配置HSRP组</td>
+</tr>
+<tr>
+<td>standby group-number  priority</td>
+<td>vrrp vrid number  priority</td>
+<td>vrrp vrid number  priority</td>
+<td>配置HSRP优先级</td>
+</tr>
+<tr>
+<td>standby group-number  preempt</td>
+<td>vrrp vrid number  preempt-mode</td>
+<td>vrrp vrid number  preempt-mode</td>
+<td>配置HSRP占先权</td>
+</tr>
+<tr>
+<td>standby group-number  track</td>
+<td></td>
+<td></td>
+<td>配置端口跟踪</td>
+</tr>
+<tr>
+<td>ip nat inside source  static</td>
+<td>nat server global  <ip> [port] inside <ip> port [protocol]</ip></ip></td>
+<td>nat server global  <ip> [port] inside <ip> port [protocol]</ip></ip></td>
+<td>配置静态地址转换</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>cisco****常用命令解释</strong></p>
+<p>视图模式介绍：</p>
+<p>普通视图 router&gt;</p>
+<p>特权视图 router#  /在普通模式下输入enable</p>
+<p>全局视图 router(config)#  /在特权模式下输入config t</p>
+<p>接口视图 router(config-if)#    /在全局模式下输入int 接口名称 例如int s0或int e0</p>
+<p>路由协议视图 router（config-route）#   /在全局模式下输入router 动态路由协议名称</p>
+<p>1、基本配置：</p>
+<p>router&gt;enable    /进入特权模式</p>
+<p>router#conf t    /进入全局配置模式</p>
+<p>router(config)#hostname xxx    /设置设备名称就好像给我们的计算机起个名字</p>
+<p>router(config)#enable password   /设置特权口令</p>
+<p>router(config)#no ip domain-lookup    /不允许路由器缺省使用DNS解析命令</p>
+<p>router(config)#line console 0   /进入控制口的服务模式</p>
+<p>router(config-line)#password xxx /要设置console的密码</p>
+<p>router(config-line)#login /使能可以登陆</p>
+<p>router(config-line)#logging synchronous /日志同步</p>
+<p>router(config-line)#exec-timeout 0 0   /设置时间溢出为0</p>
+<p>router(config-line)#line vty 0 4 /进入设置telnet服务模式</p>
+<p>router(config-line)#password xxx /设置telnet的密码</p>
+<p>router(config-line)#login /使能可以登陆</p>
+<p>router(config-line)#exit  /保存退出到特权模式</p>
+<p>router(config)# Service password-encrypt /对所有在路由器上输入的口令进行暗文加密</p>
+<p><strong>2****、接口配置：</strong> </p>
+<p>router(config)#interface serial0 /进入接口配置模式 serial 0 端口配置（如果是模块化的路由器前面加上槽位编号，例如serial0/0 代表这个路由器的0槽位上的第一个接口）</p>
+<p>router(config-if)#ip address xxx.xxx.xxx.xxx xxx.xxx.xxx.xxx  /添加ip 地址和掩码</p>
+<p>router(config-if)#enca hdl/ppp   捆绑链路协议 hdlc 或者 ppp 思科缺省串口封装的链路层协议是HDLC所以在show run配置的时候接口上的配置没有，如果要封装为别的链路层协议例如PPP/FR/X25就是看到接口下的enca ppp或者enca fr</p>
+<p>router(config)#int loopback    /建立环回口(逻辑接口)模拟不同的本机网段</p>
+<p>router(config-if)#ip add xxx.xxx.xxx.xxx xxx.xxx.xxx.xxx  /添加ip 地址和掩码给环回口</p>
+<p>router(config-if)#no shutdown   /在物理接口上配置了ip地址后用no shut启用这个物理接口反之可以用shutdown管理性的关闭接口</p>
+<p>3、路由配置：</p>
+<p>(1)静态路由</p>
+<p>router(config)#ip route xxx.xxx.xxx.xxx xxx.xxx.xxx.xxx 下一条或自己的接口</p>
+<p>router(config)#ip route 0.0.0.0 0.0.0.0 s 0    添加缺省路由</p>
+<p>(2)动态路由</p>
+<p>rip协议</p>
+<p>router(config)#router rip  /启动rip协议</p>
+<p>router(config-router)#network xxx.xxx.xxx.xxx   /宣告自己的网段</p>
+<p>router(config-router)#version 2   转换为rip 2版本</p>
+<p>router(config-router)#no auto-summary   /关闭自动汇总功能，rip V2才有作用</p>
+<p>router(config-router)# passive-int 接口名 /启动本路由器的那个接口为被动接口</p>
+<p>router(config-router)# nei xxx.xxx.xxx.xxx /广播转单播报文，指定邻居的接ip</p>
+<p>igrp协议</p>
+<p>router(config)#router igrp xxx    /启动igrp协议</p>
+<p>router(config-router)#network xxx.xxx.xxx.xxx   /宣告自己的网段</p>
+<p>router(config-router)#variance xxx /调整倍数因子，使用不等价的负载均衡</p>
+<p>eigrp协议</p>
+<p>router(config)router eigrp xxx    /启动协议</p>
+<p>router(config-router)#network xxx.xxx.xxx.xxx   /宣告自己的网段</p>
+<p>router(config-router)#variance xxx /调整倍数因子，使用不等价的负载均衡</p>
+<p>router(config-router)#no auto-summary    /关闭自动汇总功能</p>
+<p>ospf协议</p>
+<p>router(config)router ospf xxx    /启动协议启动一个OSPF协议进程</p>
+<p>router(config-router)network xxx.xxx.xxx.xxx area xxx /宣告自己的接口或网段在ospf的区域中可以把不同接口宣告在不同区域中</p>
+<p>router(config-router)router-id xxx.xxx.xxx.xxx   /配置路由的id</p>
+<p>router(config-router)aera xxx stub  /配置xxx区域为末梢区域 加入这个区域的路由器全部要配置这个条命令</p>
+<p>router(config-router)aera xxx stub no-summary    /配置xxx区域为完全末梢区域 只在ABR上配置</p>
+<p>router(config-router)aera xxx nssa  /配置xxx区域为非纯末梢区域加入这个区域的路由器全部要配置这个条命令</p>
+<p>router(config-router)aera xxx nssa no-summary    /配置xxx区域为完全非纯末梢区域 只在ABR上配置,并发布缺省路由信息进入这个区域内的路由器</p>
+<p>4、保存当前修改/运行的配置：</p>
+<p>router#write  /将RAM中的当前配置存储到NVRAM中，下次路由器启动就是</p>
+<p>执行保存的配置</p>
+<p>router#Copy running-config startup-config  /命令与write效果一样</p>
+<p><strong>5****、一般的常用命令</strong></p>
+<p>router(config-if)#exit</p>
+<p>router(config)#</p>
+<p>router(config-router)#exit</p>
+<p>router(config)#</p>
+<p>router(config-line)#exit</p>
+<p>router(config)#</p>
+<p>router(config)#exit</p>
+<p>router#</p>
+<p>exit命令     /从接口、协议、line等视图模式下退回到全局配置模式，或从全局配置模式退回到特权模式</p>
+<p>router(config-if)#end</p>
+<p>router(config-router)#end</p>
+<p>router(config-line)#end</p>
+<p>router#</p>
+<p>end命令   /从任何视图直接回到特权模式</p>
+<p>router#Logout     /退出当前路由器登陆模式相对与windows的注销</p>
+<p>router#reload     /重新启动路由器（热启动）冷启动就是关闭路由器再打开电源开关</p>
+<p>特权模式下：</p>
+<p>router#show ip route      /查看当前的路由表</p>
+<p>router#clear ip route *    /清楚当前的路由表</p>
+<p>router#show ip protocol    /查看当前路由器运行的动态路由协议情况</p>
+<p>router#show ip int brief    /查看当前的路由器的接口ip地址启用情况</p>
+<p>router#show running-config  /查看当前运行配置</p>
+<p>router#show startup-config  /查看启动配置</p>
+<p>router#debug ip pack      /打开ip报文的调试</p>
+<p>router#terminal monitor    /输出到终端上显示调试信息</p>
+<p>router#show ip eigrp neighbors    /查看eigrp协议的邻居表</p>
+<p>router#show ip eigrp top    /查看eigrp协议的拓朴表</p>
+<p>router#show ip eigrp interface    /查看当前路由器运行eigrp协议的接口情况</p>
+<p>router#show ip ospf neighbor     /查看当前路由器的ospf协议的邻居表</p>
+<p>router#show ip ospf interface    /查看当前路由器运行ospf协议的接口情况</p>
+<p>router#clear ip ospf process     /清楚当前路由器ospf协议的进程</p>
+<p>router#Show interfaces     /显示设置在路由器和访问服务器上所有接口的统计信息. 显示路由器上配置的所有接口的状态</p>
+<p>router#Show interfaces serial    /显示关于一个串口的信息</p>
+<p>router#Show ip interface    /列出一个接口的IP信息和状态的小结, 列出接口的状态和全局参数</p>
+<p>――――――――――――――――――――――――</p>
+<p><strong>CISCO****命令全集　－　思科命令汇总</strong></p>
+<p>Access-enable   允许路由器在动态访问列表中创建临时访问列表入口</p>
+<p>Access-group   把访问控制列表(ACL)应用到接口上</p>
+<p>Access-list    定义一个标准的IP ACL</p>
+<p>Access-template     在连接的路由器上手动替换临时访问列表入口</p>
+<p>Appn    向APPN子系统发送命令</p>
+<p>Atmsig       执行ATM信令命令</p>
+<p>B     手动引导操作系统</p>
+<p>Bandwidth     设置接口的带宽</p>
+<p>Banner motd    指定日期信息标语</p>
+<p>Bfe    设置突发事件手册模式</p>
+<p>Boot system    指定路由器启动时加载的系统映像</p>
+<p>Calendar      设置硬件日历</p>
+<p>Cd     更改路径</p>
+<p>Cdp enable     允许接口运行CDP协议</p>
+<p>Clear   复位功能</p>
+<p>Clear counters      清除接口计数器</p>
+<p>Clear interface     重新启动接口上的硬件逻辑</p>
+<p>Clockrate     设置串口硬件连接的时钟速率，如网络接口模块和接口处理器能接受的速率</p>
+<p>Cmt    开启/关闭FDDI连接管理功能</p>
+<p>Config-register     修改配置寄存器设置</p>
+<p>Configure     允许进入存在的配置模式，在中心站点上维护并保存配置信息</p>
+<p>Configure memory     从NVRAM加载配置信息</p>
+<p>Configure terminal    从终端进行手动配置</p>
+<p>Connect      打开一个终端连接</p>
+<p>Copy    复制配置或映像数据</p>
+<p>Copy flash tftp     备份系统映像文件到TFTP服务器</p>
+<p>Copy running-config startup-config   将RAM中的当前配置存储到NVRAM</p>
+<p>Copy running-config tftp     将RAM中的当前配置存储到网络TFTP服务器上</p>
+<p>Copy tftp flash     从TFTP服务器上下载新映像到Flash</p>
+<p>Copy tftp running-config 从TFTP服务器上下载配置文件</p>
+<p><strong>Debug</strong> <strong>使用调试功能</strong></p>
+<p>Debug dialer 显示接口在拨什么号及诸如此类的信息</p>
+<p>Debug ip rip 显示RIP路由选择更新数据</p>
+<p>Debug ipx routing activity 显示关于路由选择协议(RIP)更新数据包的信息</p>
+<p>Debug ipx sap 显示关于SAP（业务通告协议）更新数据包信息</p>
+<p>Debug isdn q921 显示在路由器D通道ISDN接口上发生的数据链路层（第2层）的访问过程</p>
+<p>Debug ppp 显示在实施PPP中发生的业务和交换信息</p>
+<p>Delete 删除文件</p>
+<p>Deny 为一个已命名的IP ACL设置条件</p>
+<p>Dialer idle-timeout 规定线路断开前的空闲时间的长度</p>
+<p>Dialer map 设置一个串行接口来呼叫一个或多个地点</p>
+<p>Dialer wait-for-carrier-time 规定花多长时间等待一个载体</p>
+<p>Dialer-group 通过对属于一个特定拨号组的接口进行配置来访问控制</p>
+<p>Dialer-list protocol 定义一个数字数据接受器（DDR）拨号表以通过协议或ACL与协议的组合来控制控制拨号</p>
+<p>Dir 显示给定设备上的文件</p>
+<p>Disable 关闭特许模式</p>
+<p>Disconnect 断开已建立的连接</p>
+<p>Enable 打开特许模式</p>
+<p>Enable password 确定一个密码以防止对路由器非授权的访问</p>
+<p>Enable password 设置本地口令控制不同特权级别的访问</p>
+<p>Enable secret 为enable password命令定义额外一层安全性</p>
+<p>Encapsulation frame-relay 启动帧中继封装</p>
+<p>Encapsulation novell-ether 规定在网络段上使用的Novell独一无二的格式</p>
+<p>Encapsulation PPP 把PPP设置为由串口或ISDN接口使用的封装方法</p>
+<p>Encapsulation sap 规定在网络段上使用的以太网802.2格式Cisco的密码是sap</p>
+<p>End 退出配置模式</p>
+<p>Erase 删除闪存或配置缓存</p>
+<p>Erase startup-config 删除NVRAM中的内容</p>
+<p>Exec-timeout 配置EXEC命令解释器在检测到用户输入前所等待的时间</p>
+<p>Exit 退出所有配置模式或者关闭一个激活的终端会话和终止一个EXEC</p>
+<p>Exit 终止任何配置模式或关闭一个活动的对话和结束EXEC</p>
+<p>format 格式化设备</p>
+<p>Frame-relay local-dlci 为使用帧中继封装的串行线路启动本地管理接口（LMI）</p>
+<p>Help 获得交互式帮助系统</p>
+<p>History 查看历史记录</p>
+<p>Hostname 使用一个主机名来配置路由器，该主机名以提示符或者缺省文件名的方式使用</p>
+<p>Interface 设置接口类型并且输入接口配置模式</p>
+<p>Interface 配置接口类型和进入接口配置模式</p>
+<p>Interface serial 选择接口并且输入接口配置模式</p>
+<p>Ip access-group 控制对一个接口的访问</p>
+<p>Ip address 设定接口的网络逻辑地址</p>
+<p>Ip address 设置一个接口地址和子网掩码并开始IP处理</p>
+<p>Ip default-network 建立一条缺省路由</p>
+<p>Ip domain-lookup 允许路由器缺省使用DNS</p>
+<p>Ip host 定义静态主机名到IP地址映射</p>
+<p>Ip name-server 指定至多6个进行名字-地址解析的服务器地址</p>
+<p>Ip route 建立一条静态路由</p>
+<p>Ip unnumbered 在为给一个接口分配一个明确的IP地址情况下，在串口上启动互联网协议（IP）的处理过程</p>
+<p>Ipx delay 设置点计数</p>
+<p>Ipx ipxwan 在串口上启动IPXWAN协议</p>
+<p>Ipx maximum-paths 当转发数据包时设置Cisco IOS软件使用的等价路径数量</p>
+<p>Ipx network 在一个特定接口上启动互联网数据包交换（IPX）的路由选择并且选择封装的类型（用帧封装）</p>
+<p>Ipx router 规定使用的路由选择协议</p>
+<p>Ipx routing 启动IPX路由选择</p>
+<p>Ipx sap-interval 在较慢的链路上设置较不频繁的SAP（业务广告协议）更新</p>
+<p>Ipx type-20-input-checks 限制对IPX20类数据包广播的传播的接受</p>
+<p>Isdn spid1 在路由器上规定已经由ISDN业务供应商为B1信道分配的业务简介号（SPID）</p>
+<p>Isdn spid2 在路由器上规定已经由ISDN业务供应商为B2信道分配的业务简介号（SPID）</p>
+<p>Isdn switch-type 规定了在ISDN接口上的中央办公区的交换机的类型</p>
+<p>Keeplive 为使用帧中继封装的串行线路LMI（本地管理接口）机制</p>
+<p>Lat 打开LAT连接</p>
+<p>Line 确定一个特定的线路和开始线路配置</p>
+<p>Line concole 设置控制台端口线路</p>
+<p>Line vty 为远程控制台访问规定了一个虚拟终端</p>
+<p>Lock 锁住终端控制台</p>
+<p>Login 在终端会话登录过程中启动了密码检查</p>
+<p>Login 以某用户身份登录，登录时允许口令验证</p>
+<p>Mbranch 向下跟踪组播地址路由至终端</p>
+<p><strong>Media-type</strong> <strong>定义介质类型</strong></p>
+<p>Metric holddown 把新的IGRP路由选择信息与正在使用的IGRP路由选择信息隔离一段时间</p>
+<p>Mrbranch 向上解析组播地址路由至枝端</p>
+<p>Mrinfo 从组播路由器上获取邻居和版本信息</p>
+<p>Mstat 对组播地址多次路由跟踪后显示统计数字</p>
+<p>Mtrace 由源向目标跟踪解析组播地址路径</p>
+<p>Name-connection 命名已存在的网络连接</p>
+<p>Ncia 开启/关闭NCIA服务器</p>
+<p>Network 把一个基于NIC的地址分配给一个与它直接相连的路由器把网络与一个IGRP的路由选择的过程联系起来在IPX路由器配置模式下，在网络上启动加强的IGRP</p>
+<p>Network 指定一个和路由器直接相连的网络地址段</p>
+<p>Network-number 对一个直接连接的网络进行规定</p>
+<p>No shutdown 打开一个关闭的接口</p>
+<p>Pad 开启一个X.29 PAD连接</p>
+<p>Permit 为一个已命名的IP ACL设置条件</p>
+<p>Ping 把ICMP响应请求的数据包发送网络上的另一个节点检查主机的可达性和网络的连通性对网络的基本连通性进行诊断</p>
+<p>Ping 发送回声请求，诊断基本的网络连通性</p>
+<p>Ppp 开始IETF点到点协议</p>
+<p>Ppp authentication 启动Challenge握手鉴权协议（CHAP）或者密码验证协议（PAP）或者将两者都启动，并且对在接口上选择的CHAP和PAP验证的顺序进行规定</p>
+<p>Ppp chap hostname 当用CHAP进行身份验证时，创建一批好像是同一台主机的拨号路由器</p>
+<p>Ppp chap password 设置一个密码，该密码被发送到对路由器进行身份验证的主机命令对进入路由器的用户名/密码的数量进行了限制</p>
+<p>Ppp pap sent-username 对一个接口启动远程PAP支持，并且在PAP对同等层请求数据包验证过程中使用sent-username和password</p>
+<p>Protocol 对一个IP路由选择协议进行定义，该协议可以是RIP，内部网关路由选择协议（IGRP），开放最短路径优先（OSPF），还可以是加强的IGRP</p>
+<p>Pwd 显示当前设备名</p>
+<p>Reload 关闭并执行冷启动；重启操作系统</p>
+<p>Rlogin 打开一个活动的网络连接</p>
+<p>Router 由第一项定义的IP路由协议作为路由进程，例如：router rip 选择RIP作为路由协议</p>
+<p>Router igrp 启动一个IGRP的路由选择过程</p>
+<p>Router rip 选择RIP作为路由选择协议</p>
+<p>Rsh 执行一个远程命令</p>
+<p>Sdlc 发送SDLC测试帧</p>
+<p>Send 在tty线路上发送消息</p>
+<p>Service password-encryption 对口令进行加密</p>
+<p>Setup 运行Setup命令</p>
+<p>Show 显示运行系统信息</p>
+<p>Show access-lists 显示当前所有ACL的内容</p>
+<p>Show buffers 显示缓存器统计信息</p>
+<p>Show cdp entry 显示CDP表中所列相邻设备的信息</p>
+<p>Show cdp interface 显示打开的CDP接口信息</p>
+<p>Show cdp neighbors 显示CDP查找进程的结果</p>
+<p>Show dialer 显示为DDR（数字数据接受器）设置的串行接口的一般诊断信息</p>
+<p>Show flash 显示闪存的布局和内容信息</p>
+<p>Show frame-relay lmi 显示关于本地管理接口（LMI）的统计信息</p>
+<p>Show frame-relay map 显示关于连接的当前映射入口和信息</p>
+<p>Show frame-relay pvc 显示关于帧中继接口的永久虚电路（pvc）的统计信息</p>
+<p>Show hosts 显示主机名和地址的缓存列表</p>
+<p>Show ip protocols 显示活动路由协议进程的参数和当前状态</p>
+<p>Show ip route 显示路由选择表的当前状态</p>
+<p>Show ip router 显示IP路由表信息</p>
+<p>Show ipx interface 显示Cisco IOS软件设置的IPX接口的状态以及每个接口中的参数</p>
+<p>Show ipx route 显示IPX路由选择表的内容</p>
+<p>Show ipx servers 显示IPX服务器列表</p>
+<p>Show ipx traffic 显示数据包的数量和类型</p>
+<p>Show isdn active 显示当前呼叫的信息，包括被叫号码、建立连接前所花费的时间、在呼叫期间使用的自动化操作控制（AOC）收费单元以及是否在呼叫期间和呼叫结束时提供AOC信息</p>
+<p>Show isdn ststus 显示所有isdn接口的状态、或者一个特定的数字信号链路（DSL）的状态或者一个特定isdn接口的状态</p>
+<p>Show memory 显示路由器内存的大小，包括空闲内存的大小</p>
+<p>Show processes 显示路由器的进程</p>
+<p>Show protocols 显示设置的协议</p>
+<p>Show protocols 显示配置的协议。这条命令显示任何配置了的第3层协议的状态</p>
+<p>Show running-config 显示RAM中的当前配置信息</p>
+<p>Show spantree 显示关于虚拟局域网（VLAN）的生成树信息</p>
+<p>Show stacks 监控和中断程序对堆栈的使用，并显示系统上一次重启的原因</p>
+<p>Show startup-config 显示NVRAM中的启动配置文件</p>
+<p>Show ststus 显示ISDN线路和两个B信道的当前状态</p>
+<p>Show version 显示系统硬件的配置，软件的版本，配置文件的名称和来源及引导映像</p>
+<p>Shutdown 关闭一个接口</p>
+<p>Telnet 开启一个telect连接</p>
+<p>Term ip 指定当前会话的网络掩码的格式</p>
+<p>Term ip netmask-format 规定了在show命令输出中网络掩码显示的格式</p>
+<p>Timers basic 控制着IGRP以多少时间间隔发送更新信息</p>
+<p>Trace 跟踪IP路由</p>
+<p>Username password 规定了在CHAP和PAP呼叫者身份验证过程中使用的密码</p>
+<p>Verify 检验flash文件</p>
+<p>Where 显示活动连接</p>
+<p>Which-route OSI路由表查找和显示结果</p>
+<p>Write 运行的配置信息写入内存，网络或终端</p>
+<p>Write erase 现在由copy startup-config命令替换</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">老王</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://docs.aomtop.com/2018/11/08/si-ke-hua-wei-ming-ling/">http://docs.aomtop.com/2018/11/08/si-ke-hua-wei-ming-ling/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">老王</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tzsSX4lmTLqLrn4nsweKKKEC-gzGzoHsz',
+        appKey: 'A5hMGuo1sViKcfjbSDndchrN',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/12/13/ftp-fu-wu-pei-zhi-wen-jian-ji-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/gujian/10.jpg" class="responsive-img" alt="ftp服务配置文件记录">
+                        
+                        <span class="card-title">ftp服务配置文件记录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-12-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/08/cisco-chang-yong-ming-ling-da-quan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/meinu/4.jpg" class="responsive-img" alt="cisco常用命令大全">
+                        
+                        <span class="card-title">cisco常用命令大全</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-11-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="4965675848"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <a href="/about" target="_blank">老王</a>
+            |&nbsp;&nbsp;<a href="https://www.yuque.com/xnops" target="_blank">小诺文档</a>
+            |&nbsp;&nbsp;<a href="http://go.aomtop.com" target="_blank">小诺导航</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2018";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备19026609号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xlqywk" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:48211701@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=48211701" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 48211701" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<!-- 天气接口 -->
+    
+        <!-- 天气接口-->
+<script type="text/javascript">
+    WIDGET = {FID: '1tFpFZ5Mtj'}
+  </script>
+<script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+        }
+  </script>
+
+      
+
+        
+
+
+</body>
+
+</html>

@@ -1,0 +1,2277 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Windows 定时任务 - Schtasks, 运维博客,网络安全,devops,技术博客,Linux运维,k8s,docker,虚拟化,云计算,运维社区,技术支持,自动化运维,微服务架构,数据库DBA,seo">
+    <meta name="description" content="Schtasks安排命令和程序，使其定期运行或在指定时间运行。向计划中添加任务和从中删除任务、根据需要启动和停止任务以及显示和更改计划的任务。 要查看该命令语法，请单击以下命令：
+
+  schtasks create
+  schtasks ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Windows 定时任务 - Schtasks | 小诺运维</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小诺运维</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>QQ群</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/linux">
+          
+          <span>linux</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/windows">
+          
+          <span>windows</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/python">
+          
+          <span>python</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">
+          
+          <span>数据库</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%9B%91%E6%8E%A7">
+          
+          <span>监控</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4">
+          
+          <span>自动化运维</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C">
+          
+          <span>网络</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E5%8A%B1%E5%BF%97">
+          
+          <span>励志</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/sample-page/about">
+          
+          <span>关于本站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index">
+          
+          <span>小诺导航</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud">
+          
+          <span>个人网站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/ji-shu-zhi-chi">
+          
+          <span>技术支持</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/juan-zeng-bo-zhu">
+          
+          <span>捐赠博主</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/wzdh">
+          
+          <span>链接收藏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小诺运维</div>
+        <div class="logo-desc">
+            
+            主要是关注互联网以及分享IT运维工作经验的个人博客,主要涵盖了系统运维、开源工具实战，架构优化，提升业务，致力于实现自动化运维，Devops实践者，总结真实工作经验，帮助各位脱坑的实战经验。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			QQ群
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			分类
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories/linux " style="margin-left:75px">
+				  
+		          <span>linux</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/windows " style="margin-left:75px">
+				  
+		          <span>windows</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/python " style="margin-left:75px">
+				  
+		          <span>python</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 " style="margin-left:75px">
+				  
+		          <span>数据库</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%9B%91%E6%8E%A7 " style="margin-left:75px">
+				  
+		          <span>监控</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4 " style="margin-left:75px">
+				  
+		          <span>自动化运维</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%BD%91%E7%BB%9C " style="margin-left:75px">
+				  
+		          <span>网络</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E5%8A%B1%E5%BF%97 " style="margin-left:75px">
+				  
+		          <span>励志</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/sample-page/about " style="margin-left:75px">
+				  
+		          <span>关于本站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index " style="margin-left:75px">
+				  
+		          <span>小诺导航</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud " style="margin-left:75px">
+				  
+		          <span>个人网站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/ji-shu-zhi-chi " style="margin-left:75px">
+				  
+		          <span>技术支持</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/juan-zeng-bo-zhu " style="margin-left:75px">
+				  
+		          <span>捐赠博主</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/wzdh " style="margin-left:75px">
+				  
+		          <span>链接收藏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/gujian/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Windows 定时任务 - Schtasks</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/windows/" class="post-category">
+                                windows
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-13
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    17.4k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Schtasks"><a href="#Schtasks" class="headerlink" title="Schtasks"></a>Schtasks</h2><p>安排命令和程序，使其定期运行或在指定时间运行。向计划中添加任务和从中删除任务、根据需要启动和停止任务以及显示和更改计划的任务。 要查看该命令语法，请单击以下命令：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_create">schtasks create</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_change">schtasks change</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_run">schtasks run</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_end">schtasks end</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_delete">schtasks delete</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_query">schtasks query</a></li>
+</ul>
+<h3 id="schtasks-create"><a href="#schtasks-create" class="headerlink" title="schtasks create"></a>schtasks create</h3><p>计划任务。 Schtasks 针对各种计划类型使用不同参数组合。要查看创建任务的组合语法或查看使用特定计划类型创建任务的语法，请单击以下选项之一。</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_syntax">组合语法和参数描述</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_minutes">计划任务每 N 分钟运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_hours">计划任务每 N 小时运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_days">计划任务每 N 天运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_weeks">计划任务每 N 周运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_months">计划任务每 N 月运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_spec_day">计划任务在周的指定天运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_spec_week">计划任务在月份的指定周运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_spec_date">计划任务在每月的特定日期运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_last_day">计划任务在月份的最后一天运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_once">计划任务运行一次</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_startup">计划任务在每次系统启动时运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_logon">计划任务在用户登录时运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_idle">计划任务在系统空闲时运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_now">计划任务现在运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_diff_perms">计划任务以不同权限运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_sys_perms">计划任务以系统权限运行</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_multi_progs">计划任务运行多个程序</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_remote">计划任务在远程计算机上运行</a></li>
+</ul>
+<h4 id="组合语法和参数描述"><a href="#组合语法和参数描述" class="headerlink" title="组合语法和参数描述"></a>组合语法和参数描述</h4><h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p><strong>Schtasks /create /sc</strong> <em>ScheduleType</em> <strong>/tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em> [<strong>/s</strong> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em><em>_Password_]]] [**/ru*</em>{[<em>Domain</em><em>*\<strong>]<em>User</em> <strong>System</strong>}] [</strong>/rp</em>* _Password_] [<strong>/mo</strong> _Modifier_] [<strong>/d</strong> _Day_[<strong>,</strong><em>Day</em>…] *] [<strong>/m</strong>_Month_[<strong>,</strong><em>Month</em>…]][<strong>/i</strong> _IdleTime_] [<strong>/st</strong> _StartTime_] [<strong>/ri</strong> _Interval_] [{<strong>/et</strong> <em>EndTime</em>  <strong>/du</strong> <em>Duration</em>} [<strong>/k</strong>]] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/Z</strong>] [<strong>/F</strong>]</p>
+<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p><strong>/sc <em>ScheduleType</em></strong></p>
+<p>指定计划类型。有效值为 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY、ONCE、ONSTART、ONLOGON、ONIDLE。</p>
+<p>计划类型</p>
+<p>描述</p>
+<p><strong>MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY</strong></p>
+<p>指定计划的时间单位。</p>
+<p><strong>ONCE</strong></p>
+<p>任务在指定的日期和时间运行一次。</p>
+<p><strong>ONSTART</strong></p>
+<p>任务在每次系统启动时运行。可以指定启动的日期，或下一次系统启动时运行任务。</p>
+<p><strong>ONLOGON</strong></p>
+<p>每当用户（任意用户）登录时，任务就运行。可以指定日期，或在下次用户登录时运行任务。</p>
+<p><strong>ONIDLE</strong></p>
+<p>只要系统空闲指定的时期，任务就运行。可以指定日期，或在下次系统空闲时运行任务。</p>
+<p><strong>/tn <em>TaskName</em></strong></p>
+<p>指定任务的名称。系统上的每项任务都必须具有一个唯一的名称。名称必须符合文件名称规则，并且长度不得超过 238 个字符。使用引号括起包含空格的名称。</p>
+<p><strong>/tr <em>TaskRun</em></strong></p>
+<p>指定任务运行的程序或命令。键入可执行文件、脚本文件或批处理文件的完全合格的路径和文件名。路径名称的长度不得超过 262 个字符。如果忽略该路径，SchTasks 将假定文件在_Systemroot_\System32 目录下。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>在指定的远程计算机上计划任务。键入远程计算机的名称或 IP 地址（带有或不带有反斜杠）。默认值是本地计算机。只有使用 <strong>/s</strong> 时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/u [_Domain_\]<em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认值为本地计算机上当前用户的权限。只有在远程计算机 (<strong>/s</strong>) 上计划任务时，**/u<strong>和</strong>/p** 参数才有效。 指定帐户的权限用来计划任务和运行任务。要使用其他用户的权限运行任务，请使用 <strong>/ru</strong> 参数。用户帐户必须是远程计算机上 Administrators 组的成员。另外，本地计算机必须与远程计算机处于同一个域中，或者必须处于远程计算机域信任的域中。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>提供在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong> 参数，但忽略 <strong>/p</strong> 参数或密码参数，Schtasks 将提示您输入密码，并且不显示键入的文本。 只有在远程计算机 (<strong>/s</strong>) 上计划任务时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/ru {[_Domain_\]<em>User</em> System}</strong></p>
+<p>使用指定用户帐户的权限运行任务。默认情况下，使用本地计算机当前用户的权限，或者使用 <strong>/u</strong> 参数指定用户的权限（如果包含的话）运行任务。在本地或远程计算机上计划任务时，**/ru** 参数才有效。</p>
+<p>值</p>
+<p>描述</p>
+<p>[<em>Domain</em>**\**]<em>User</em></p>
+<p>指定候选用户帐户。</p>
+<p><strong>System</strong> 或 <strong>“”</strong></p>
+<p>指定 Local System 帐户，这是一种操作系统和系统服务使用的具有高度特权的帐户。</p>
+<p><strong>/rp <em>Password</em></strong></p>
+<p>提供在 <strong>/ru</strong> [<em>Domain</em><em><em>\*<em>]<em>User</em> 参数中指定的用户帐户的密码。如果在指定用户帐户的时候忽略了这个参数，SchTasks.exe 会提示您输入密码，而且不显示键入的文本。 不要将</em></em>/rp</em>* 参数用于使用系统帐户 (<strong>/ru System</strong>) 的权限运行的任务。系统帐户没有密码，而 SchTasks.exe 也不提示输入密码。</p>
+<p><strong>/mo <em>Modifier</em></strong></p>
+<p>指定任务在其计划类型内的运行频率。此参数对于 MINUTE、HOURLY、DAILY、WEEKLY 或 MONTHLY 有效，但是可选的。默认值为 1。</p>
+<p>计划类型</p>
+<p>修饰符值</p>
+<p>描述</p>
+<p>MINUTE</p>
+<p><strong>1</strong> - <strong>1439</strong></p>
+<p>任务每 <em>N</em> 分钟运行一次。</p>
+<p>HOURLY</p>
+<p><strong>1</strong> - <strong>23</strong></p>
+<p>任务每 <em>N</em> 小时运行一次。</p>
+<p>DAILY</p>
+<p><strong>1</strong> - <strong>365</strong></p>
+<p>任务每 <em>N</em> 天运行一次。</p>
+<p>WEEKLY</p>
+<p><strong>1</strong> - <strong>52</strong></p>
+<p>任务每 <em>N</em> 周运行一次。</p>
+<p>ONCE</p>
+<p>没有修饰符。</p>
+<p>任务运行一次。</p>
+<p>ONSTART</p>
+<p>没有修饰符。</p>
+<p>任务在启动时运行。</p>
+<p>ONLOGON</p>
+<p>没有修饰符。</p>
+<p><strong>/u</strong> 参数指定的用户登录时，运行任务。</p>
+<p>ONIDLE</p>
+<p>没有修饰符。</p>
+<p>系统闲置 <strong>/i</strong> 参数（需要与 ONIDLE 一起使用）指定的分钟数之后运行任务。</p>
+<p>MONTHLY</p>
+<p><strong>1</strong> - <strong>12</strong></p>
+<p>任务每 <em>N</em> 月运行一次。</p>
+<p>MONTHLY</p>
+<p><strong>LASTDAY</strong></p>
+<p>任务在月份的最后一天运行。</p>
+<p>MONTHLY</p>
+<p><strong>FIRST</strong>、<strong>SECOND</strong>、<strong>THIRD</strong>、<strong>FOURTH</strong>、<strong>LAST</strong></p>
+<p>与 <strong>/d</strong><em>Day</em> 参数一起使用，并在特定的周和天运行任务。例如，在月份的第三个周三。</p>
+<p><strong>/d _Day_[,<em>Day</em>…] *</strong></p>
+<p>指定周或月的一天（或几天）。只对 WEEKLY 或 MONTHLY 计划有效。</p>
+<p>计划类型</p>
+<p>修饰符</p>
+<p>天值 (/d)</p>
+<p>描述</p>
+<p>WEEKLY</p>
+<p>1 - 52</p>
+<p><strong>MON</strong> - <strong>SUN</strong>[<strong>,MON</strong> - <strong>SUN</strong>…] <strong>*</strong></p>
+<p>可选项。MON 是默认值。通配符值 (*) 指每天。</p>
+<p>MONTHLY</p>
+<p>FIRST、SECOND、THIRD、FOURTH、LAST</p>
+<p><strong>MON</strong> - <strong>SUN</strong></p>
+<p>对于特定周计划是必需的。</p>
+<p>MONTHLY</p>
+<p>无或 {1 - 12}</p>
+<p><strong>1</strong> - <strong>31</strong></p>
+<p>仅在没有修饰符 (<strong>/mo</strong>) 参数（特定日期计划）的情况下或 <strong>/mo</strong> 为 1 - 12（“每_N_ 月”计划）时有效并且可选。默认值是 1 （月份的第一天）。</p>
+<p><strong>/m _Month_[,<em>Month</em>…]</strong></p>
+<p>指定计划任务应在一年的某月或数月运行。有效值为 JAN - DEC。**/m** 参数仅对 MONTHLY 计划有效。在使用 LASTDAY 修饰符时，这个参数是必需的。</p>
+<p><strong>/i <em>IdleTime</em></strong></p>
+<p>指定任务启动之前计算机空闲多少分钟。有效值是从 1 到 999 的整数。此参数只对 ONIDLE 计划有效，并且是必需的。</p>
+<p><strong>/st <em>StartTime</em></strong></p>
+<p>指定任务在一天的什么时间开始（每次开始时间），格式为 <em>HH</em><strong>:</strong><em>MM</em> 24 小时格式。默认值为本地计算机的当前时间。**/st** 参数只对 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY 和 ONCE 计划有效。此参数对于 ONCE 计划是必需的。</p>
+<p><strong>/ri <em>Interval</em></strong></p>
+<p>指定重复的时间间隔（以分钟计）。此参数不适用于以下计划类型：MINUTE、HOURLY、ONSTART、ONLOGON、ONIDLE。有效范围为 1 到 599940 分钟（599940 分钟 = 9999 小时）。如果指定了 /ET 或 /DU，则重复间隔默认为 10 分钟。</p>
+<p><strong>/et <em>EndTime</em></strong></p>
+<p>指定“分钟”或“小时”任务计划在一天的什么时间结束，格式为 <em>HH</em><strong>:</strong><em>MM</em> 24 小时格式。指定的结束时间之后，Schtasks 不重新启动任务，直到启动时间再次到来。默认情况下，任务计划没有结束时间。该参数是可选的，并且仅对“分钟”或“小时”计划有效。 要查看示例，请参阅：</p>
+<ul>
+<li>  “计划任务每 <em>N</em> 分钟运行一次”部分中的“计划任务在非工作时间内每 100 分钟运行一次”。</li>
+</ul>
+<p><strong>/du <em>Duration</em></strong></p>
+<p>指定“分钟”或“小时”计划的最大时间长度，格式为 <em>HHHH</em><strong>:</strong><em>MM</em> 24 小时格式。指定的时间过去之后，Schtasks 不重新启动任务，直到启动时间再次到来。默认情况下，任务计划没有最大持续时间。该参数是可选的，并且仅对“分钟”或“小时”计划有效。 要查看示例，请参阅：</p>
+<ul>
+<li>  “计划任务每 <em>N</em> 小时运行一次”部分中的“计划每 3 小时运行一次持续时间为 10 小时的任务”。</li>
+</ul>
+<p><strong>/k</strong></p>
+<p>在 <strong>/et</strong> 或 <strong>/du</strong> 指定的时间停止任务运行的程序。如果没有 <strong>/k</strong>，Schtasks 在到达**/et** 或 <strong>/du</strong> 指定的时间之后不再启动程序，但它不会停止仍在运行的程序。该参数是可选的，并且仅对“分钟”或“小时”计划有效。 要查看示例，请参阅：</p>
+<ul>
+<li>  “<strong>计划任务每 <em>N</em> 分钟运行一次</strong>”部分中的“计划任务在非工作时间内每 100 分钟运行一次”。</li>
+</ul>
+<p><strong>/sd <em>StartDate</em></strong></p>
+<p>指定任务计划开始的日期。默认值为本地计算机上的当前日期。**/sd** 参数对于所有计划类型均有效，并且是可选的。 <em>StartDate</em> 参数的格式随着“控制面板”的“区域和语言选项”中为本地计算机选择的区域设置而变化。每个区域设置只有一种有效的格式。下表列出了有效的日期格式。使用与本地计算机“控制面板”的“区域和语言选项”中为“短日期”所选格式最为相似的格式。</p>
+<p><em>MM</em><strong>/</strong><em>DD</em><strong>/</strong><em>YYYY</em></p>
+<p>用于以月开头的格式，例如英语（美国）和西班牙语（巴拿马）。</p>
+<p><em>DD</em><strong>/</strong><em>MM</em><strong>/</strong><em>YYYY</em></p>
+<p>用于以日开头的格式，例如保加利亚语和荷兰语（荷兰）。</p>
+<p><em>YYYY</em><strong>/</strong><em>MM</em><strong>/</strong><em>DD</em></p>
+<p>用于以年开头的格式，例如瑞典语和法语（加拿大）。</p>
+<p><strong>/ed <em>EndDate</em></strong></p>
+<p>指定计划结束的日期。此参数是可选的。它对于 ONCE、ONSTART、ONLOGON 或 ONIDLE 计划无效。默认情况下，计划没有结束日期。 <em>EndDate</em> 参数的格式随着“控制面板”的“区域和语言选项”中为本地计算机选择的区域设置而变化。每个区域设置只有一种有效的格式。下表列出了有效的日期格式。使用与在本地计算机控制面板的“区域和语言选项”中为“短日期”选择的格式最为相似的格式。</p>
+<p><em>MM</em><strong>/</strong><em>DD</em><strong>/</strong><em>YYYY</em></p>
+<p>用于以月开头的格式，例如英语（美国）和西班牙语（巴拿马）。</p>
+<p><em>DD</em><strong>/</strong><em>MM</em><strong>/</strong><em>YYYY</em></p>
+<p>用于以日开头的格式，例如保加利亚语和荷兰语（荷兰）。</p>
+<p><em>YYYY</em><strong>/</strong><em>MM</em><strong>/</strong><em>DD</em></p>
+<p>用于以年开头的格式，例如瑞典语和法语（加拿大）。</p>
+<p><strong>/it</strong></p>
+<p>指定只有在“运行方式”用户（运行任务的用户帐户）登录到计算机的情况下才运行任务。此参数不影响使用系统权限运行的任务。 默认情况下，在计划任务时或使用 <strong>/u</strong> 参数指定帐户（如果使用该参数）时，“运行方式”用户将是本地计算机的当前用户。但是，如果该命令包含 <strong>/ru</strong> 参数，“运行方式”用户则是由**/ru** 参数指定的帐户。例如，请参阅：</p>
+<ul>
+<li>  “计划任务每 <em>N</em> 天运行一次”部分中的“计划在我登录后每 70 天运行一次任务”。</li>
+<li>  “计划使用不同权限运行的任务”部分中的“只在特定用户登录时运行任务”。</li>
+</ul>
+<p><strong>/Z</strong></p>
+<p>指定在任务计划完成时删除任务。</p>
+<p><strong>/F</strong></p>
+<p>指定如果指定任务已经存在，就创建任务并取消警告。</p>
+<p><strong>/?</strong></p>
+<p>在命令提示符下显示帮助。</p>
+<h4 id="计划任务每-N-分钟运行一次"><a href="#计划任务每-N-分钟运行一次" class="headerlink" title="计划任务每 N 分钟运行一次"></a>计划任务每 N 分钟运行一次</h4><h5 id="分钟计划语法"><a href="#分钟计划语法" class="headerlink" title="分钟计划语法"></a>分钟计划语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc minute</strong> [<strong>/mo</strong> {1 - 1439}] [<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [{<strong>/et</strong><em>HH</em><strong>:</strong><em>MM</em> <strong>/du</strong> <em>HHHH</em><strong>:</strong><em>MM</em>} [<strong>/k</strong>]] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h5><p>在一个分钟计划中，**/sc minute** 参数是必需的。**/mo<strong>（修饰符）参数是可选的，它指定了每次运行任务之间间隔的分钟数。</strong>/mo** 的默认值为 1（每分钟）。**/et<strong>（结束时间）和</strong>/du**（持续时间）参数是可选的，并且可与或不与 <strong>/k</strong>（结束任务）参数一起使用。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务每-20-分钟运行一次"><a href="#计划任务每-20-分钟运行一次" class="headerlink" title="计划任务每 20 分钟运行一次"></a>计划任务每 20 分钟运行一次</h5><p>下面的命令计划安全脚本 Sec.vbs 每 20 分钟运行一次。该命令使用 <strong>/sc</strong> 参数指定分钟计划，使用 <strong>/mo</strong> 参数指定时间间隔为 20 分钟。 由于该命令没有包含开始日期或时间，因此任务在命令完成 20 分钟后启动，此后在系统运行时每 20 分钟运行一次。请注意，安全脚本源文件位于远程计算机上，但任务在本地计算机上计划并执行。 <strong>schtasks /create /sc minute /mo 20 /tn “Security Script” /tr \\central\data\scripts\sec.vbs</strong></p>
+<h5 id="计划任务在非工作时间内每-100-分钟运行一次"><a href="#计划任务在非工作时间内每-100-分钟运行一次" class="headerlink" title="计划任务在非工作时间内每 100 分钟运行一次"></a>计划任务在非工作时间内每 100 分钟运行一次</h5><p>下面的命令计划安全脚本 Sec.vbs 在本地计算机上每天下午 5:00 和次日上午 7:59 之间每 100 分钟运行一次。该命令使用 <strong>/sc</strong> 参数指定分钟计划，使用**/mo** 参数指定时间间隔为 100 分钟。它使用 <strong>/st</strong> 和 <strong>/et</strong> 参数指定每天计划的开始时间和结束时间。它还使用**/k** 参数停止在上午 7:59 仍在运行的脚本。如果没有 <strong>/k</strong>，Schtasks 就不会在上午 7:59 之后启动脚本，但是，如果在上午 6:20 启动的实例仍在运行，Schtasks 不会停止它。 <strong>schtasks /create /tn “Security Script” /tr sec.vbs /sc minute /mo 100 /st 17:00 /et 08:00 /k</strong></p>
+<h4 id="计划任务每-N-小时运行一次"><a href="#计划任务每-N-小时运行一次" class="headerlink" title="计划任务每 N 小时运行一次"></a>计划任务每 N 小时运行一次</h4><h5 id="小时计划语法"><a href="#小时计划语法" class="headerlink" title="小时计划语法"></a>小时计划语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc hourly</strong> [<strong>/mo</strong> {1 - 23}] [<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [{<strong>/et</strong><em>HH</em><strong>:</strong><em>MM</em> <strong>/du</strong> <em>HHHH</em><strong>:</strong><em>MM</em>} [<strong>/k</strong>]] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-1"><a href="#备注-1" class="headerlink" title="备注"></a>备注</h5><p>在一个小时计划中，**/sc hourly** 参数是必需的。**/mo<strong>（修饰符）参数是可选的，它指定了每次运行任务之间间隔的小时数。</strong>/mo** 的默认值为 1（每小时）。**/k<strong>（结束任务）参数是可选的，并且可与</strong>/et**（指定时间结束）或 <strong>/du</strong>（指定时间间隔后结束）一起使用。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务每五小时运行一次"><a href="#计划任务每五小时运行一次" class="headerlink" title="计划任务每五小时运行一次"></a>计划任务每五小时运行一次</h5><p>下面的命令计划 MyApp 程序从 2002 年 3 月的第一天起每五小时运行一次。它使用 <strong>/mo</strong> 参数来指定间隔时间，使用**/sd**参数来指定开始日期。由于该命令没有指定起始时间，因此当前时间作为起始时间。 由于本地计算机设置为使用“区域和语言选项”中的“英语（津巴布韦）”选项，所以开始日期的格式为 MM/DD/YYYY (03/01/2002)。 <strong>schtasks /create /sc hourly /mo 5 /sd 03/01/2002 /tn “My App” /tr c:\apps\myapp.exe</strong></p>
+<h5 id="计划任务在每小时后五分钟运行一次"><a href="#计划任务在每小时后五分钟运行一次" class="headerlink" title="计划任务在每小时后五分钟运行一次"></a>计划任务在每小时后五分钟运行一次</h5><p>下面的命令将计划 MyApp 程序从午夜过后五分钟起每小时运行一次。因为忽略了 <strong>/mo</strong> 参数，所以命令使用小时计划的默认值，即每 (1) 小时。如果该命令在上午 12:05 之后运行，则程序将在第二天才会运行。 <strong>schtasks /create /sc hourly /st 00:05 /tn “My App” /tr c:\apps\myapp.exe</strong></p>
+<h5 id="计划任务每-3-小时运行一次，持续时间为-10-小时"><a href="#计划任务每-3-小时运行一次，持续时间为-10-小时" class="headerlink" title="计划任务每 3 小时运行一次，持续时间为 10 小时"></a>计划任务每 3 小时运行一次，持续时间为 10 小时</h5><p>以下命令计划 MyApp 程序每 3 小时运行一次，持续时间为 10 小时。 该命令使用 <strong>/sc</strong> 参数指定小时计划，使用 <strong>/mo</strong> 参数指定时间间隔为 3 小时。它使用**/st** 参数在午夜开始计划，并使用 <strong>/du</strong>参数在 10 小时之后结束计划。由于程序仅运行几分钟，因此无需**/k** 参数，该参数停止在持续时间到期时仍然运行的程序。 <strong>schtasks /create /tn “My App” /tr myapp.exe /sc hourly /mo 3 /st 00:00 /du 0010:00</strong> 在此示例中，任务在上午 12:00、上午 3:00、上午 6:00 以及上午 9:00 运行。由于持续时间为 10 小时，任务不会在下午 12:00 运行，而是在第二天上午 12:00 再次开始。</p>
+<h4 id="计划任务每-N-天运行一次"><a href="#计划任务每-N-天运行一次" class="headerlink" title="计划任务每 N 天运行一次"></a>计划任务每 N 天运行一次</h4><h5 id="每日计划语法"><a href="#每日计划语法" class="headerlink" title="每日计划语法"></a>每日计划语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc daily</strong> [<strong>/mo</strong> {1 - 365}] [<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong>{[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-2"><a href="#备注-2" class="headerlink" title="备注"></a>备注</h5><p>在每日计划中，**/sc daily** 参数是必需的。**/mo<strong>（修饰符）参数是可选的，它指定了每次运行任务之间间隔的天数。</strong>/mo** 的默认值为 1（每天）。</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务每天运行一次"><a href="#计划任务每天运行一次" class="headerlink" title="计划任务每天运行一次"></a>计划任务每天运行一次</h5><p>下面的示例计划 MyApp 程序在每天的上午 8:00 运行一次，直到 2002 年 12 月 31 日结束。由于它忽略了 <strong>/mo</strong> 参数，因此使用默认间隔 1 来每天运行命令。 在此示例中，由于本地计算机系统在“控制面板”的“区域和语言选项”中设置为“英语（英国）”，因此结束日期的格式为 DD/MM/YYYY (31/12/2002)。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc daily /st 08:00 /ed 31/12/2002</strong></p>
+<h5 id="计划任务每-12-天运行一次"><a href="#计划任务每-12-天运行一次" class="headerlink" title="计划任务每 12 天运行一次"></a>计划任务每 12 天运行一次</h5><p>以下示例计划 MyApp 程序从 2002 年 12 月 31 日开始，每隔 12 天的下午 1:00 (13:00) 运行一次。该命令使用 <strong>/mo</strong> 参数指定间隔时间为两 (2) 天，而 <strong>/sd</strong> 和 <strong>/st</strong> 参数指定日期和时间。 在此示例中，由于系统在“控制面板”的“区域和语言选项”中设置为“英语（津巴布韦）”，因此结束日期的格式为 MM/DD/YYYY (12/31/2002)。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc daily /mo 12 /sd 12/31/2002 /st 13:00</strong></p>
+<h5 id="计划任务在我登录后每-70-天运行一次"><a href="#计划任务在我登录后每-70-天运行一次" class="headerlink" title="计划任务在我登录后每 70 天运行一次"></a>计划任务在我登录后每 70 天运行一次</h5><p>下面的命令计划安全脚本 Sec.vbs 每 70 天运行一次。该命令使用 <strong>/mo</strong> 参数来指定 70 天间隔时间。它还使用 <strong>/it</strong> 参数指定只有在其帐户下运行任务的用户登录到计算机时才运行任务。由于任务将使用我的用户帐户权限运行，因而任务仅在我登录时才运行。 <strong>schtasks /create /tn “Security Script” /tr sec.vbs /sc daily /mo 70 /it</strong> <strong>注意</strong></p>
+<ul>
+<li>  要使用仅交互 (<strong>/it</strong>) 属性标识任务，请使用详细查询 (<strong>/query /v</strong>)。在一个带有**/it** 的任务的详细查询显示中，<strong>Logon Mode</strong> 字段的值为<strong>Interactive only</strong>。</li>
+</ul>
+<h4 id="计划任务每-N-周运行一次"><a href="#计划任务每-N-周运行一次" class="headerlink" title="计划任务每 N 周运行一次"></a>计划任务每 N 周运行一次</h4><h5 id="周计划语法"><a href="#周计划语法" class="headerlink" title="周计划语法"></a>周计划语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc weekly</strong> [<strong>/mo</strong> {1 - 52}] [<strong>/d</strong> {_MON - SUN_[,MON - SUN…] *}] [<strong>/st</strong><em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-3"><a href="#备注-3" class="headerlink" title="备注"></a>备注</h5><p>在周计划中，**/sc weekly** 参数是必需的。**/mo<strong>（修饰符）参数是可选的，它指定了每次运行任务之间间隔的周数。</strong>/mo** 的默认值为 1（每周）。 周计划也拥有一个可选的 <strong>/d</strong> 参数，用于计划任务在一周的指定天或所有天 (*) 运行。默认值为 MON（星期一）。每天 (*) 选项相当于计划每日任务。</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务每六周运行一次"><a href="#计划任务每六周运行一次" class="headerlink" title="计划任务每六周运行一次"></a>计划任务每六周运行一次</h5><p>下面的命令计划 MyApp 程序在远程计算机上每六周运行一次。该命令使用 <strong>/mo</strong> 参数来指定间隔。由于该命令忽略了 <strong>/d</strong>参数，因此任务就在星期一运行。 该命令也使用 <strong>/s</strong> 参数指定远程计算机，并使用 <strong>/u</strong> 参数，以用户 Adiminsitrator 帐户的权限运行该命令。因为忽略了**/p** 参数，所以 SchTasks.exe 会提示用户输入 Administrator 帐户密码。 另外，因为命令是远程运行的，所以命令中所有的路径，包括到 MyApp.exe 的路径，都是指远程计算机上的路径。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc weekly /mo 6 /s Server16 /u Admin01</strong></p>
+<h5 id="计划任务在隔周的周五运行"><a href="#计划任务在隔周的周五运行" class="headerlink" title="计划任务在隔周的周五运行"></a>计划任务在隔周的周五运行</h5><p>下面的命令计划任务在隔周的周五运行。它使用 <strong>/mo</strong> 参数来指定两周的间隔，使用 <strong>/d</strong> 参数来指定是一周内的哪一天。要计划任务在每个周五运行，要忽略**/mo** 参数或将其设置为 1。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc weekly /mo 2 /d FRI</strong></p>
+<h4 id="计划任务每-N-月运行一次"><a href="#计划任务每-N-月运行一次" class="headerlink" title="计划任务每 N 月运行一次"></a>计划任务每 N 月运行一次</h4><h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc monthly</strong> [<strong>/mo</strong> {1 - 12}] [<strong>/d</strong> {<strong>1</strong> -<strong>31</strong>}] [<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong>_StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-4"><a href="#备注-4" class="headerlink" title="备注"></a>备注</h5><p>在此计划类型中，**/sc monthly** 参数是必需的。**/mo<strong>（修饰符）参数指定每次运行任务之间的月份数，它是可选的，默认值为 1（每月）。此计划类型也拥有一个可选的</strong>/d** 参数，用于计划任务在月份的指定日期运行。默认值是 1 （月份的第一天）。</p>
+<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在每月的第一天运行"><a href="#计划任务在每月的第一天运行" class="headerlink" title="计划任务在每月的第一天运行"></a>计划任务在每月的第一天运行</h5><p>下面的命令计划 MyApp 程序在每月的第一天运行。由于值 1 是 <strong>/mo</strong>（修饰符）参数和 <strong>/d</strong>（天）参数的默认值，因此该命令中省略了这两个参数。 <strong>schtasks /create /tn “My App” /tr myapp.exe /sc monthly</strong></p>
+<h5 id="计划任务每三个月运行一次"><a href="#计划任务每三个月运行一次" class="headerlink" title="计划任务每三个月运行一次"></a>计划任务每三个月运行一次</h5><p>下面的命令计划 MyApp 程序每三个月运行一次。它使用 <strong>/mo</strong> 参数来指定间隔。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo 3</strong></p>
+<h5 id="计划任务在每隔一个月的第-21-天的午夜运行"><a href="#计划任务在每隔一个月的第-21-天的午夜运行" class="headerlink" title="计划任务在每隔一个月的第 21 天的午夜运行"></a>计划任务在每隔一个月的第 21 天的午夜运行</h5><p>以下命令计划 MyApp 程序在每隔一个月的第 21 天的午夜运行。该命令指定此任务应运行一年，从 2002 年 7 月 2 日到 2003 年 6 月 30 日。 该命令使用 <strong>/mo</strong> 参数指定月时间间隔（每两个月），**/d** 参数指定日期，而 <strong>/st</strong> 指定时间。它还使用 <strong>/sd</strong> 和 <strong>/ed</strong> 参数分别指定开始日期和结束日期。由于本地计算机在控制面板的“区域和语言选项”中设置为“英语（南非）”选项，因此以本地格式 YYYY/MM/DD 指定日期。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo 2 /d 21 /st 00:00 /sd 2002/07/01 /ed 2003/06/30</strong></p>
+<h4 id="计划任务在周的指定天运行"><a href="#计划任务在周的指定天运行" class="headerlink" title="计划任务在周的指定天运行"></a>计划任务在周的指定天运行</h4><h5 id="周计划语法-1"><a href="#周计划语法-1" class="headerlink" title="周计划语法"></a>周计划语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc weekly</strong> [<strong>/d</strong> {_MON - SUN_[,MON - SUN…] *}] [<strong>/mo</strong> {1 - 52}] [<strong>/st</strong><em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-5"><a href="#备注-5" class="headerlink" title="备注"></a>备注</h5><p>“周的天”计划是周计划的变体。在周计划中，**/sc weekly** 参数是必需的。**/mo<strong>（修饰符）参数是可选的，它指定了每次运行任务之间间隔的周数。</strong>/mo** 的默认值为 1（每周）。**/d** 参数是可选的，它计划任务在周的指定天或所有天 (*) 运行。默认值为 MON（星期一）。每天选项 (<strong>/d *</strong>) 相当于计划每日任务。</p>
+<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务每星期三运行一次"><a href="#计划任务每星期三运行一次" class="headerlink" title="计划任务每星期三运行一次"></a>计划任务每星期三运行一次</h5><p>下面的命令计划 MyApp 程序在每周的星期三运行一次。该命令使用 <strong>/d</strong> 参数指定周的天。由于该命令忽略了 <strong>/mo</strong> 参数，因此任务每周运行一次。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc weekly /d WED</strong></p>
+<h5 id="计划任务每隔八周在星期一和星期五运行"><a href="#计划任务每隔八周在星期一和星期五运行" class="headerlink" title="计划任务每隔八周在星期一和星期五运行"></a>计划任务每隔八周在星期一和星期五运行</h5><p>以下命令计划任务每隔八周在星期一和星期五运行。它使用 <strong>/d</strong> 参数来指定天数，使用 <strong>/mo</strong> 参数指定八周时间间隔。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc weekly /mo 8 /d MON,FRI</strong></p>
+<h4 id="计划任务在月份的指定周运行"><a href="#计划任务在月份的指定周运行" class="headerlink" title="计划任务在月份的指定周运行"></a>计划任务在月份的指定周运行</h4><h5 id="指定周的语法"><a href="#指定周的语法" class="headerlink" title="指定周的语法"></a>指定周的语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc monthly /mo</strong> {<strong>FIRST</strong>  <strong>SECOND</strong> <strong>THIRD</strong>  <strong>FOURTH</strong>  <strong>LAST</strong>} <strong>/d MON</strong> - <strong>SUN</strong> [<strong>/m</strong> {<strong>JAN</strong> -<strong>DEC</strong>[<strong>,JAN</strong> - <strong>DEC</strong>…] <strong>*</strong>}] [<strong>/st</strong><em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-6"><a href="#备注-6" class="headerlink" title="备注"></a>备注</h5><p>在此计划类型中，**/sc monthly** 参数、**/mo<strong>（修饰符）参数以及 <strong>/d</strong>（天）参数是必需的。</strong>/mo<strong>（修饰符）参数指定任务运行的周。</strong>/d** 参数指定一周中的第几天。（您可以仅为此计划类型指定一周中的某一天。）此计划也拥有一个可选的**/m**（月份）参数，用于针对特定月份计划任务。</p>
+<h5 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在每月的第二个周日运行"><a href="#计划任务在每月的第二个周日运行" class="headerlink" title="计划任务在每月的第二个周日运行"></a>计划任务在每月的第二个周日运行</h5><p>下面的命令计划 MyApp 程序在每月的第二个周日运行。它使用 <strong>/mo</strong> 参数指定每月的第二周，使用 <strong>/d</strong> 参数指定天。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo SECOND /d SUN</strong></p>
+<h5 id="计划任务在三月和九月的第一个星期一运行"><a href="#计划任务在三月和九月的第一个星期一运行" class="headerlink" title="计划任务在三月和九月的第一个星期一运行"></a>计划任务在三月和九月的第一个星期一运行</h5><p>下面的命令计划 MyApp 程序在三月和九月的第一个星期一运行。它使用 <strong>/mo</strong> 参数指定是月份的第一个星期，使用 <strong>/d</strong> 参数指定天。它使用 <strong>/m</strong> 参数指定月份，用一个逗号把月份参数隔开。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo FIRST /d MON /m MAR,SEP</strong></p>
+<h4 id="计划任务在每月的特定日期运行"><a href="#计划任务在每月的特定日期运行" class="headerlink" title="计划任务在每月的特定日期运行"></a>计划任务在每月的特定日期运行</h4><h5 id="特定日期语法"><a href="#特定日期语法" class="headerlink" title="特定日期语法"></a>特定日期语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc monthly /d</strong> {<strong>1</strong> - <strong>31</strong>} [<strong>/m</strong> {<strong>JAN</strong> -<strong>DEC</strong>[<strong>,JAN</strong> - <strong>DEC</strong>…] *}] [<strong>/st</strong><em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong>_StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-7"><a href="#备注-7" class="headerlink" title="备注"></a>备注</h5><p>在特定日期计划类型中，**/sc monthly** 参数和 <strong>/d</strong>（天）参数是必需的。**/d** 参数指定月份的日期 (1 - 31)，而不是周的天。您可以在计划中仅指定一天。**/mo<strong>（修饰符）参数对此计划类型无效。 <strong>/m</strong>（月份）参数对此计划类型而言是可选的，默认值为每个月 (*)。Schtasks 不允许您针对在 <strong>/m</strong> 参数指定的月份中不出现的日期计划任务。但是，如果忽略</strong>/m** 参数，并针对不是在每个月中出现的日期（如 31 日）计划任务，则该任务不会在较短的月份发生。要针对月份的最后一天计划任务，请使用最后一天计划类型。</p>
+<h5 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在每月的第一天运行-1"><a href="#计划任务在每月的第一天运行-1" class="headerlink" title="计划任务在每月的第一天运行"></a>计划任务在每月的第一天运行</h5><p>下面的命令计划 MyApp 程序在每月的第一天运行。因为默认修饰符是 none（即没有修饰符），默认天是第一天，默认的月份是每个月，所以该命令不需要任何其他参数。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly</strong></p>
+<h5 id="计划任务在五月和六月的第-15-天运行"><a href="#计划任务在五月和六月的第-15-天运行" class="headerlink" title="计划任务在五月和六月的第 15 天运行"></a>计划任务在五月和六月的第 15 天运行</h5><p>下面的命令计划 MyApp 程序在 5 月 15 日和 6 月 15 日的下午 3:00 (15:00) 运行。它使用 <strong>/d</strong> 参数来指定日期，使用**/m** 参数指定月份。它也使用 <strong>/st</strong> 参数来指定开始时间。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /d 15 /m MAY,JUN /st 15:00</strong></p>
+<h4 id="计划任务在月份的最后一天运行"><a href="#计划任务在月份的最后一天运行" class="headerlink" title="计划任务在月份的最后一天运行"></a>计划任务在月份的最后一天运行</h4><h5 id="最后一天语法"><a href="#最后一天语法" class="headerlink" title="最后一天语法"></a>最后一天语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc monthly /mo LASTDAY /m</strong> {<strong>JAN</strong> - <strong>DEC</strong>[<strong>,JAN</strong> - <strong>DEC</strong>…]}[<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]_User_[</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-8"><a href="#备注-8" class="headerlink" title="备注"></a>备注</h5><p>在最后一天计划类型中，**/sc monthly** 参数、**/mo LASTDAY<strong>（修饰符）参数以及</strong>/m<strong>（月份）参数是必需的。</strong>/d**（天）参数无效。</p>
+<h5 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在每月的最后一天运行"><a href="#计划任务在每月的最后一天运行" class="headerlink" title="计划任务在每月的最后一天运行"></a>计划任务在每月的最后一天运行</h5><p>要在每个月的最后一天运行程序，您必须创建三项独立的任务。各项任务分别包括具有相同天数的月份。每项任务都使用 <strong>/mo</strong> 参数来指定最后一天，使用**/m** 参数指定月份。 下列命令计划 MyApp 程序在包含 31 天的每个月的最后一天运行。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo lastday /m JAN,MAR,MAY,JUL,AUG,OCT,DEC</strong> 下列命令计划 MyApp 程序在包含 30 天的每个月的最后一天运行。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo lastday /m APR,JUN,SEP,NOV</strong> 下列命令计划 MyApp 程序在二月的最后一天运行。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo lastday /m FEB</strong></p>
+<h5 id="计划任务在二月的最后一天的下午-6-00-运行"><a href="#计划任务在二月的最后一天的下午-6-00-运行" class="headerlink" title="计划任务在二月的最后一天的下午 6:00 运行"></a>计划任务在二月的最后一天的下午 6:00 运行</h5><p>您还可以计划任务在某个月最后一天的特定时间运行。下列命令计划 MyApp 程序在二月最后一天的下午 6:00 运行。该命令使用 <strong>/mo</strong> 参数指定最后一天，使用**/m** 参数指定月份，使用 <strong>/st</strong> 参数指定开始时间。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /mo lastday /m FEB /st 18:00</strong></p>
+<h4 id="计划任务运行一次"><a href="#计划任务运行一次" class="headerlink" title="计划任务运行一次"></a>计划任务运行一次</h4><h5 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc once /st</strong> <em>HH</em> <strong>:</strong> <em>MM</em> [<strong>/sd</strong>_StartDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-9"><a href="#备注-9" class="headerlink" title="备注"></a>备注</h5><p>在运行一次计划类型中，**/sc once** 参数是必需的。**/st** 参数（指定任务运行时间）是必需的。**/sd** 参数（指定任务运行的日期）是可选的。**/mo<strong>（修饰符）和</strong>/ed**（结束日期）参数对此计划类型无效。 如果根据本地计算机的时间，指定的日期和时间已经过去，Schtasks 就不允许您计划任务运行一次。要在不同时区的远程计算机上计划任务运行一次，您必须在本地计算机上的日期和时间到来之前计划任务。</p>
+<h5 id="示例-9"><a href="#示例-9" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务运行一次-1"><a href="#计划任务运行一次-1" class="headerlink" title="计划任务运行一次"></a>计划任务运行一次</h5><p>以下命令计划 MyApp 程序在 2003 年 1 月 1 日的午夜运行。它使用 <strong>/sc</strong> 参数指定计划类型，并使用 <strong>/sd</strong> 和 <strong>st</strong> 指定日期和时间。 由于本地计算机使用“控制面板”的“区域和语言选项”中的“英语（美国）”选项，因此开始日期的格式为 MM/DD/YYYY。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc once /sd 01/01/2003 /st 00:00</strong></p>
+<h4 id="计划任务在每次系统启动时运行"><a href="#计划任务在每次系统启动时运行" class="headerlink" title="计划任务在每次系统启动时运行"></a>计划任务在每次系统启动时运行</h4><h5 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc onstart</strong> [<strong>/sd</strong> _StartDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_] <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-10"><a href="#备注-10" class="headerlink" title="备注"></a>备注</h5><p>在启动时计划类型中，**/sc onstart** 参数是必需的。**/sd**（开始日期）参数是可选的，其默认值为当前日期。</p>
+<h5 id="示例-10"><a href="#示例-10" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在系统启动时运行"><a href="#计划任务在系统启动时运行" class="headerlink" title="计划任务在系统启动时运行"></a>计划任务在系统启动时运行</h5><p>下面的命令计划 MyApp 程序在每次系统启动时运行，开始日期是 2001 年 3 月 15 日： 由于本地计算机使用“控制面板”的“区域和语言选项”中的“英语（美国）”选项，因此开始日期的格式为 MM/DD/YYYY。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc onstart /sd 03/15/2001</strong></p>
+<h4 id="计划任务在用户登录时运行"><a href="#计划任务在用户登录时运行" class="headerlink" title="计划任务在用户登录时运行"></a>计划任务在用户登录时运行</h4><h5 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc onlogon</strong> [<strong>/sd</strong> _StartDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_] <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-11"><a href="#备注-11" class="headerlink" title="备注"></a>备注</h5><p>“登录时”计划类型计划任务在任何用户登录到计算机时运行。在“登录时”计划类型中，**/sc onlogon** 参数是必需的。**/sd**（开始日期）参数是可选的，其默认值为当前日期。</p>
+<h5 id="示例-11"><a href="#示例-11" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在用户登录到远程计算机时运行"><a href="#计划任务在用户登录到远程计算机时运行" class="headerlink" title="计划任务在用户登录到远程计算机时运行"></a>计划任务在用户登录到远程计算机时运行</h5><p>下面的命令计划批处理文件在用户（任何用户）每次登录到远程计算机时运行。它使用 <strong>/s</strong> 参数指定远程计算机。因为命令是远程的，所以命令中所有的路径，包括批处理文件的路径，都是指远程计算机上的路径。 <strong>schtasks /create /tn “Start Web Site” /tr c:\myiis\webstart.bat /sc onlogon /s Server23</strong></p>
+<h4 id="计划任务在系统空闲时运行"><a href="#计划任务在系统空闲时运行" class="headerlink" title="计划任务在系统空闲时运行"></a>计划任务在系统空闲时运行</h4><h5 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc onidle /i</strong> {1 - 999} [<strong>/sd</strong> _StartDate_] [<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="备注-12"><a href="#备注-12" class="headerlink" title="备注"></a>备注</h5><p>“空闲时”计划类型计划任务在 <strong>/i</strong> 参数指定的时间期间没有用户活动时运行。在“空闲时”计划类型中，**/sc onidle** 参数和**/i** 参数是必需的。**/sd**（开始日期）是可选的，其默认值为当前日期。</p>
+<h5 id="示例-12"><a href="#示例-12" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务在计算机空闲时运行"><a href="#计划任务在计算机空闲时运行" class="headerlink" title="计划任务在计算机空闲时运行"></a>计划任务在计算机空闲时运行</h5><p>下面的命令计划 MyApp 程序在计算机空闲时运行。它使用必需的 <strong>/i</strong> 参数指定计算机必需持续空闲十分钟以后才启动任务。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc onidle /i 10</strong></p>
+<h4 id="计划任务现在运行"><a href="#计划任务现在运行" class="headerlink" title="计划任务现在运行"></a>计划任务现在运行</h4><p>Schtasks 没有“现在运行”选项，但您可以模拟该选项，方法是创建运行一次，并且在几分钟内开始的任务。</p>
+<h5 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /create /tn</strong> <em>TaskName</em> <strong>/tr</strong> <em>TaskRun</em><strong>/sc once</strong> [<strong>/st</strong> <em>HH</em><strong>:</strong>_MM_]<strong>/sd</strong> <em>MM</em><strong>/</strong><em>DD</em><strong>/</strong>_YYYY_[<strong>/it</strong>] [<strong>/ru</strong> {[<em>Domain</em><em>*\<strong>]_User_[</strong>/rp</em><em>_Password_]  <strong>System</strong>}] [**/s*</em> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="示例-13"><a href="#示例-13" class="headerlink" title="示例"></a>示例</h5><h5 id="计划任务从现在起运行几分钟。"><a href="#计划任务从现在起运行几分钟。" class="headerlink" title="计划任务从现在起运行几分钟。"></a>计划任务从现在起运行几分钟。</h5><p>下列命令计划任务在本地时间 2002 年 11 月 13 日上午 2:18 运行一次。 由于本地计算机使用“控制面板”的“区域和语言选项”中的“英语（美国）”选项，因此开始日期的格式为 MM/DD/YYYY。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc once /st 14:18 /sd 11/13/2002</strong></p>
+<h4 id="计划任务以不同权限运行"><a href="#计划任务以不同权限运行" class="headerlink" title="计划任务以不同权限运行"></a>计划任务以不同权限运行</h4><p>您可以计划各种类型的任务以候选帐户的权限在本地计算机和远程计算机上运行。除了特定计划类型必需的参数之外，**/ru** 参数是必需的，而**/rp** 参数是可选的。</p>
+<h5 id="示例-14"><a href="#示例-14" class="headerlink" title="示例"></a>示例</h5><h5 id="以-Administrator-权限在本地计算机上运行任务"><a href="#以-Administrator-权限在本地计算机上运行任务" class="headerlink" title="以 Administrator 权限在本地计算机上运行任务"></a>以 Administrator 权限在本地计算机上运行任务</h5><p>下面的命令计划 MyApp 程序在本地计算机上运行。它使用 <strong>/ru</strong> 指定任务应以用户 Administrator 帐户 (Admin06) 的权限运行。在此示例中，计划任务每星期二运行，但是您可以将任何计划类型用于以候选权限运行的任务。 <strong>schtasks /create /tn “My App” /tr myapp.exe /sc weekly /d TUE /ru Admin06</strong> 作为响应，SchTasks.exe 会提示为 Admin06 帐户提供“运行方式”密码，然后显示成功消息。</p>
+<p>Please enter the run as password for Admin06: ********</p>
+<p>SUCCESS: The scheduled task “My App” has successfully been created.</p>
+<h5 id="以候选权限在远程计算机上运行任务"><a href="#以候选权限在远程计算机上运行任务" class="headerlink" title="以候选权限在远程计算机上运行任务"></a>以候选权限在远程计算机上运行任务</h5><p>下面的命令计划 MyApp 程序每四天在 Marketing 计算机上运行。 该命令使用 <strong>/sc</strong> 参数指定日计划，使用 <strong>/mo</strong> 参数指定时间间隔为四天。 该命令使用 <strong>/s</strong> 参数提供远程计算机的名称，使用 <strong>/u</strong> 参数指定在远程计算机上拥有计划任务权限的帐户（Marketing 计算机上的 Admin01）。它还使用**/ru** 参数指定任务应以用户的非 Administrator 帐户（Reskits 域中的 User01）权限运行。如果不使用 <strong>/ru</strong> 参数，任务将以 <strong>/u</strong> 指定的帐户权限运行。 <strong>schtasks /create /tn “My App” /tr myapp.exe /sc daily /mo 4 /s Marketing /u Marketing\Admin01 /ru Reskits\User01</strong> Schtasks 首次请求由 <strong>/u</strong> 参数（运行命令）所命名用户的密码，然后请求由 <strong>/ru</strong> 参数（运行任务）所命名用户的密码。对这些密码进行身份验证之后，Schtasks 显示表明已计划任务的消息。</p>
+<p>Type the password for Marketing\Admin01:********</p>
+<p>Please enter the run as password for Reskits\User01: ********</p>
+<p>SUCCESS: The scheduled task “My App” has successfully been created.</p>
+<h5 id="仅在特定用户登录时运行任务"><a href="#仅在特定用户登录时运行任务" class="headerlink" title="仅在特定用户登录时运行任务"></a>仅在特定用户登录时运行任务</h5><p>下面的命令计划 AdminCheck.exe 程序每星期五上午 4:00 在 Public 计算机上运行，但是只有在计算机管理员登录时才运行。 该命令使用 <strong>/sc</strong> 参数指定周计划，使用 <strong>/d</strong> 参数指定天，使用 <strong>/st</strong> 参数指定开始时间。 该命令使用 <strong>/s</strong> 参数提供远程计算机的名称，使用 <strong>/u</strong> 参数指定在远程计算机上拥有计划任务权限的帐户。它还使用**/ru** 参数把任务配置为以 Public 计算机的管理员 (Public\Admin01) 权限运行，使用 <strong>/it</strong> 参数表明仅在 Public\Admin01 帐户登录时才运行任务。 <strong>schtasks /create /tn “Check Admin” /tr AdminCheck.exe /sc weekly /d FRI /st 04:00 /s Public /u Domain3\Admin06 /ru Public\Admin01 /it</strong> <strong>注意</strong></p>
+<ul>
+<li>  要使用仅交互 (<strong>/it</strong>) 属性标识任务，请使用详细查询 (<strong>/query /v</strong>)。在一个带有**/it** 的任务的详细查询显示中，<strong>Logon Mode</strong> 字段的值为<strong>Interactive only</strong>。</li>
+</ul>
+<h4 id="计划任务以系统权限运行"><a href="#计划任务以系统权限运行" class="headerlink" title="计划任务以系统权限运行"></a>计划任务以系统权限运行</h4><p>各种类型的任务都可以用系统帐户的权限在本地和远程计算机上运行。除了特定计划类型所需的参数之外，**/ru system**（或 **/ru “”**）参数也是必需的，而 <strong>/rp</strong> 参数无效。 <strong>要点</strong></p>
+<ul>
+<li>  系统帐户没有交互式登录权限。用户无法看到以系统权限运行的程序或任务，也无法与它们进行交互。</li>
+<li>  <strong>/ru</strong> 参数确定运行任务的权限，而不是用来计划任务的权限。只有 Administrators 可以计划任务，与**/ru** 参数的值无关。</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>  要标识以系统权限运行的任务，请使用详细查询 (<strong>/query /v</strong>)。在系统运行任务的详细查询显示中，<strong>Run As User</strong> 字段拥有一个值<strong>NT AUTHORITY\SYSTEM</strong>，而 <strong>Logon Mode</strong> 字段拥有一个值 <strong>Background only</strong>。</li>
+</ul>
+<h5 id="示例-15"><a href="#示例-15" class="headerlink" title="示例"></a>示例</h5><h5 id="以系统权限运行任务"><a href="#以系统权限运行任务" class="headerlink" title="以系统权限运行任务"></a>以系统权限运行任务</h5><p>下面的命令计划 MyApp 程序以系统帐户权限在本地计算机上运行。在此示例中，任务计划在每月的第十四天运行，但是您可以将任何计划类型用于以系统权限运行的任务。 该命令使用 <strong>/ru System</strong> 参数指定系统安全上下文。因为系统任务不需要密码，所以忽略 <strong>/rp</strong> 参数。 <strong>schtasks /create /tn “My App” /tr c:\apps\myapp.exe /sc monthly /d 15 /ru System</strong> 作为响应，SchTasks.exe 显示一条信息性消息和一条成功消息。它不提示输入密码。</p>
+<p>INFO: The task will be created under user name (“NT AUTHORITY\SYSTEM”).<br>SUCCESS: The Scheduled task “My App” has successfully been created.</p>
+<h5 id="以系统权限在远程计算机上运行任务"><a href="#以系统权限在远程计算机上运行任务" class="headerlink" title="以系统权限在远程计算机上运行任务"></a>以系统权限在远程计算机上运行任务</h5><p>以下命令计划 MyApp 程序以系统权限每天上午 4:00 在 Finance01 计算机上运行。 此命令使用 <strong>/tn</strong> 参数命名任务，使用 <strong>/tr</strong> 参数指定 MyApp 程序的远程副本。它使用**/sc** 参数指定日计划，但省略 <strong>/mo</strong> 参数，因为 1（每天）为默认值。它使用 <strong>/st</strong> 参数指定开始时间，此时间也是任务每天运行的时间。 该命令使用 <strong>/s</strong> 参数提供远程计算机的名称，使用 <strong>/u</strong> 参数指定在远程计算机上拥有计划任务权限的帐户。它还使用**/ru** 参数指定任务应在系统帐户下运行。如果不使用 <strong>/ru</strong> 参数，任务将以 <strong>/u</strong> 指定的帐户权限运行。 <strong>schtasks /create /tn “My App” /tr myapp.exe /sc daily /st 04:00 /s Finance01 /u Admin01 /ru System</strong> Schtasks 请求 <strong>/u</strong> 参数命名的用户的密码，并对该密码进行身份验证之后显示一条消息，表明已创建任务，而且任务将以系统帐户权限运行。</p>
+<p>Type the password for Admin01:**********</p>
+<p>INFO: The Schedule Task “My App” will be created under user name (“NT AUTHORITY\<br>SYSTEM”).<br>SUCCESS: The scheduled task “My App” has successfully been created.</p>
+<h4 id="计划任务运行多个程序"><a href="#计划任务运行多个程序" class="headerlink" title="计划任务运行多个程序"></a>计划任务运行多个程序</h4><p>每个任务只能运行一个程序。但是可以创建一个运行多个程序的批处理文件，然后计划一个任务来运行这个批处理文件。下面的过程演示了这个方法：</p>
+<ol>
+<li>创建一个启动所要运行程序的批处理文件。 在此示例中，创建一个启动“事件查看器”(Eventvwr.exe) 和“系统监视器”(Perfmon.exe) 的批处理文件。<ul>
+<li>  启动文本编辑器，如“记事本”。</li>
+<li>  键入每个程序的名称和可执行文件的完全合格路径。在这种情况下，文件包含下列语句。 <strong>C:\Windows\System32\Eventvwr.exe C:\Windows\System32\Perfmon.exe</strong></li>
+<li>  将文件保存为 MyApps.bat。</li>
+</ul>
+</li>
+<li> 使用 SchTasks.exe 创建一个运行 MyApps.bat 的任务。 以下命令创建了 Monitor 任务，每当有人登录时就运行该任务。它使用 <strong>/tn</strong> 参数命名任务，使用 <strong>/tr</strong> 参数运行 MyApps.bat。它使用**/sc** 参数来指明 OnLogon 计划类型，并使用 <strong>/ru</strong> 参数以用户 Administrator 帐户的权限运行任务。 <strong>schtasks /create /tn Monitor /tr C:\MyApps.bat /sc onlogon /ru Reskit\Administrator</strong> 该命令的结果是，每当用户登录到计算机，任务就启动“事件查看器”和“系统监视器”。</li>
+</ol>
+<h4 id="计划任务在远程计算机上运行"><a href="#计划任务在远程计算机上运行" class="headerlink" title="计划任务在远程计算机上运行"></a>计划任务在远程计算机上运行</h4><p>要计划任务在远程计算机上运行，您必须把任务添加到远程计算机的计划中。可以在远程计算机上计划各种类型的任务，但必须满足以下条件。</p>
+<ul>
+<li>  您必须具有计划任务的权限。因此，您必须以属于远程计算机上 Administrators 组成员的帐户登录到本地计算机，或者，您必须使用**/u** 参数提供远程计算机管理员的凭据。</li>
+<li>  只有在本地和远程计算机处于同一个域，或者本机计算机处于远程计算机域信任的域时，您才能使用 <strong>/u</strong> 参数。否则，远程计算机无法对指定的用户帐户进行身份验证，也无法验证该帐户是否为 Administrators 组的成员。</li>
+<li>  您必须具有足够的权限才能在远程计算机上运行。不同的任务要求不同的权限。默认情况下，任务以本地计算机当前用户的权限运行，或如果使用**/u** 参数，任务就以 <strong>/u</strong> 参数指定的帐户权限运行。但是，您可以使用 <strong>/ru</strong> 参数以另一个用户帐户的权限或以系统权限运行任务。</li>
+</ul>
+<h5 id="示例-16"><a href="#示例-16" class="headerlink" title="示例"></a>示例</h5><h5 id="管理员在远程计算机上计划任务"><a href="#管理员在远程计算机上计划任务" class="headerlink" title="管理员在远程计算机上计划任务"></a>管理员在远程计算机上计划任务</h5><p>下面的命令计划 MyApp 程序从现在开始每十天在 SRV01 远程计算机上运行。该命令使用 <strong>/s</strong> 参数提供远程计算机的名称。由于本地当前用户为远程计算机的管理员，因此不必使用为计划任务提供候选权限的**/u** 参数。 请注意，在远程计算机上计划任务时，所有参数都是指远程计算机。因此，**/tr** 参数指定的可执行文件是指远程计算机上的 MyApp.exe 的副本。 <strong>schtasks /create /s SRV01 /tn “My App” /tr “c:\program files\corpapps\myapp.exe” /sc daily /mo 10</strong> 作为响应，Schtasks 将显示一条表明任务已计划的成功消息。</p>
+<h5 id="用户在远程计算机上计划命令（情况-1）"><a href="#用户在远程计算机上计划命令（情况-1）" class="headerlink" title="用户在远程计算机上计划命令（情况 1）"></a>用户在远程计算机上计划命令（情况 1）</h5><p>下面的命令计划 MyApp 程序在 SRV06 远程计算机上每三小时运行一次。由于需要“管理员”权限来计划任务，因此该命令使用 <strong>/u</strong> 和**/p** 参数提供用户管理员帐户（Reskits 域中的 Admin01）的凭据。默认情况下，这些权限还用来运行任务。但是，由于任务不需要“管理员”权限就能运行，因此该命令包括**/ru** 和 <strong>/rp</strong> 参数，以取代默认值，并以用户的非“管理员”帐户的权限在远程计算机上运行任务。 <strong>schtasks /create /s SRV06 /tn “My App” /tr “c:\program files\corpapps\myapp.exe” /sc hourly /mo 3 /u reskits\admin01 /p R43253@4$ /ru SRV06\user03 /rp MyFav!!Pswd</strong> 作为响应，Schtasks 将显示一条表明任务已计划的成功消息。</p>
+<h5 id="用户在远程计算机上计划命令（情况-2）"><a href="#用户在远程计算机上计划命令（情况-2）" class="headerlink" title="用户在远程计算机上计划命令（情况 2）"></a>用户在远程计算机上计划命令（情况 2）</h5><p>下面的命令计划 MyApp 程序每月的最后一天在 SRV02 远程计算机上运行。由于本地当前用户 (user03) 不是远程计算机的管理员，因此该命令使用 <strong>/u</strong> 参数提供用户“管理员”帐户（Reskits 域中的 Admin01）的凭据。“管理员”帐户权限将用来计划任务和运行任务。 <strong>schtasks /create /s SRV02 /tn “My App” /tr “c:\program files\corpapps\myapp.exe” /sc monthly /mo LASTDAY /m * /u reskits\admin01</strong> 由于该命令没有包含 <strong>/p</strong>（密码）参数，因此 Schtasks 会提示输入密码。然后，它显示一条成功消息，在此情况下，是一条警告。</p>
+<p>Type the password for reskits\admin01:********</p>
+<p>SUCCESS: The scheduled task “My App” has successfully been created.</p>
+<p>WARNING: The Scheduled task “My App” has been created, but may not run because<br>the account information could not be set.</p>
+<p>此警告表示远程域无法对 <strong>/u</strong> 参数指定的帐户进行身份验证。在此种情况下，远程域无法对用户帐户进行身份验证，因为本地计算机不是远程计算机域信任的域的成员。如果发生这种情况，任务作业就会出现在计划任务的列表中，但任务实际上为空，所以不会运行。 以下来自一个详细查询的显示内容指明任务所遇到的问题。在显示内容中，请注意“下次运行时间”的值是“永不过期”，“作为用户运行”的值是“无法从任务计划程序数据库检索”。 如果此计算机是同一域或可信域的成员，任务就会成功计划，并会按指定的方式运行。</p>
+<p>HostName:                             SRV44<br>TaskName:                             My App<br>Next Run Time:                        Never<br>Status:<br>Logon mode:                           Interactive/Background<br>Last Run Time:                        Never<br>Last Result:                          0<br>Creator:                              user03<br>Schedule:                             At 3:52 PM on day 31 of every month, start<br> starting 12/14/2001<br>Task To Run:                          c:\program files\corpapps\myapp.exe<br>Start In:                             myapp.exe<br>Comment:                              N/A<br>Scheduled Task State:                 Disabled<br>Scheduled Type:                       Monthly<br>Start Time:                           3:52:00 PM<br>Start Date:                           12/14/2001<br>End Date:                             N/A<br>Days:                                 31<br>Months:                               JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NO<br>V,DEC<br>Run As User:                          Could not be retrieved from the task sched<br>uler database<br>Delete Task If Not Rescheduled:       Enabled<br>Stop Task If Runs X Hours and X Mins: 72:0<br>Repeat: Every:                        Disabled<br>Repeat: Until: Time:                  Disabled<br>Repeat: Until: Duration:              Disabled<br>Repeat: Stop If Still Running:        Disabled<br>Idle Time:                            Disabled<br>Power Management:                     Disabled</p>
+<h5 id="备注-13"><a href="#备注-13" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  要以另一个用户的权限运行 <strong>/create</strong> 命令，请使用 <strong>/u</strong> 参数。只有在远程计算机上计划任务时，**/u** 参数才有效。</li>
+<li>  要查看更多 <strong>schtasks /create</strong> 示例，请在命令提示符下键入 **schtasks /create /?**。</li>
+<li>  要计划任务以另一个用户的权限运行，请使用 <strong>/ru</strong> 参数。**/ru** 参数对于本地和远程计算机上的任务均有效。</li>
+<li>  要使用 <strong>/u</strong> 参数，本地计算机必须与远程计算机处于同一个域，或者必须处于远程计算机域信任的域中。否则，要么不创建任务，要么任务作业为空，并且任务不运行。</li>
+<li>  Schtasks 会始终提示提供密码（除非您提供了密码），即使使用当前用户帐户在本地计算机上计划任务。这是 Schtasks 的正常行为。</li>
+<li>  SchTasks 不验证程序文件的位置或用户帐户密码。如果没有为用户帐户输入正确的文件位置或正确的密码，任务仍然可以创建，但不会运行。另外，如果帐户的密码更改或过期，而且没有更改存储在任务中的密码，那么任务也不会运行。</li>
+<li>  系统帐户没有交互式登录权限。用户看不到以系统权限运行的程序，也不能与其交互。</li>
+<li>  每个任务只能运行一个程序。但是可以创建一个启动多个任务的批处理文件，然后计划运行该批处理文件的任务。</li>
+<li>  创建任务之后即可对其进行测试。使用 <strong>run</strong> 操作来测试任务，然后从 SchedLgU.txt 文件 (_Systemroot_\SchedLgU.txt ) 中查阅错误。</li>
+</ul>
+<h3 id="schtasks-change"><a href="#schtasks-change" class="headerlink" title="schtasks change"></a>schtasks change</h3><p>更改一个或多个任务属性。</p>
+<ul>
+<li>  任务运行的程序 (<strong>/tr</strong>)。</li>
+<li>  任务运行的用户帐户 (<strong>/ru</strong>)。</li>
+<li>  用户帐户的密码 (<strong>/rp</strong>)。</li>
+<li>  将仅交互属性添加到任务 (<strong>/it</strong>)。</li>
+</ul>
+<h5 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /change /tn</strong> <em>TaskName</em> [<strong>/s</strong> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em><em>_Password_]]] [**/ru*</em> {[<em>Domain</em><em>*\<strong>]<em>User</em> <strong>System</strong>}] [</strong>/rp</em>* _Password_] [<strong>/tr</strong> _TaskRun_] [<strong>/st</strong> _StartTime_] [<strong>/ri</strong> _Interval_] [{<strong>/et</strong> <em>EndTime</em>  <strong>/du</strong> <em>Duration</em>} [<strong>/k</strong>]] [<strong>/sd</strong> _StartDate_] [<strong>/ed</strong>_EndDate_] [/{<strong>ENABLE</strong>  <strong>DISABLE</strong>}] [<strong>/it</strong>] [<strong>/z</strong>]</p>
+<h5 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h5><p><strong>/tn <em>TaskName</em></strong></p>
+<p>标识要更改的任务。输入任务名。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>指定远程计算机的名称或 IP 地址（带有或不带有反斜杠）。默认值是本地计算机。</p>
+<p><strong>/u [_Domain_\] <em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认值为本地计算机上当前用户的权限。指定的用户帐户必须是远程计算机上 Administrators 组的成员。只有在远程计算机 (<strong>/s</strong>) 上更改任务时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>指定在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong> 参数，但忽略 <strong>/p</strong> 参数或密码参数，Schtasks 将提示您输入密码。 只有使用 <strong>/s</strong> 时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/ru {[_Domain_\]<em>User</em> System}</strong></p>
+<p>指定更改运行任务的用户帐户。对于指定 Local System 帐户，有效项为“”、“NT AUTHORITY\SYSTEM”或“SYSTEM”。 在更改用户帐户时，同时必须更改用户密码。如果某个命令包含**/ru** 参数，但不包含 <strong>/rp</strong> 参数，schtasks 就会提示提供新密码。使用本地系统帐户的权限运行任务不需要密码或不提示输入密码。</p>
+<p><strong>/rp <em>Password</em></strong></p>
+<p>为现有用户帐户或 <strong>/ru</strong> 参数指定的用户帐户指定一个新密码。在本地系统帐户中使用时，此参数会被忽略。</p>
+<p><strong>/tr <em>TaskRun</em></strong></p>
+<p>更改任务运行的程序。输入可执行文件、脚本文件或批处理文件的完全合格的路径和文件名。如果忽略该路径，SchTasks 将假定文件在 _systemroot_\System32 目录下。指定的程序替换任务运行的原始程序。</p>
+<p><strong>/st <em>Starttime</em></strong></p>
+<p>使用 24 小时时间格式 HH:mm 指定任务的开始时间。例如，值 14:30 相当于 12 小时时间格式的下午 2:30。</p>
+<p><strong>/ri <em>Interval</em></strong></p>
+<p>指定计划任务的重复间隔（以分钟计）。有效范围为 1 - 599940（599940 分钟 = 9999 小时）。</p>
+<p><strong>/et <em>EndTime</em></strong></p>
+<p>使用 24 小时时间格式 HH:mm 指定任务的结束时间。例如，值 14:30 相当于 12 小时时间格式的下午 2:30。</p>
+<p><strong>/du <em>Duration</em></strong></p>
+<p>指定关闭 <em>EndTime</em> 或 <em>Duration</em> 的任务（如果指定的话）。</p>
+<p><strong>/k</strong></p>
+<p>在 <strong>/et</strong> 或 <strong>/du</strong> 指定的时间停止任务运行的程序。如果没有 <strong>/k</strong>，Schtasks 在到达**/et** 或 <strong>/du</strong> 指定的时间之后不再启动程序，但它不会停止仍在运行的程序。此参数是可选的，并且仅对 MINUTE 或 HOURLY 计划有效。</p>
+<p><strong>/sd <em>StartDate</em></strong></p>
+<p>指定任务应运行的第一个日期。日期格式为 _mm/dd/yyyy_。</p>
+<p><strong>/ed <em>EndDate</em></strong></p>
+<p>指定任务应运行的最后一个日期。格式为 _mm/dd/yyyy_。</p>
+<p><strong>/ENABLE</strong></p>
+<p>指定启用已计划的任务。</p>
+<p><strong>/DISABLE</strong></p>
+<p>指定禁用已计划的任务。</p>
+<p><strong>/it</strong></p>
+<p>指定仅在“运行方式”用户（运行任务的用户帐户）登录到计算机时才运行已计划的任务。 此参数不会影响使用系统权限运行的任务，也不会影响已经设置仅交互属性的任务。不能使用更改命令从任务中删除仅交互属性。默认情况下，在计划任务时或由**/u** 参数（如果使用该参数）指定帐户时，“运行方式”用户将是本地计算机的当前用户。但是，如果该命令包含 <strong>/ru</strong> 参数，“运行方式”用户则是由**/ru** 参数指定的帐户。</p>
+<p><strong>/z</strong></p>
+<p>指定在计划完成时删除任务。</p>
+<p><strong>/?</strong></p>
+<p>在命令提示符下显示帮助。</p>
+<h5 id="备注-14"><a href="#备注-14" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  <strong>/tn</strong> 和 <strong>/s</strong> 参数标识该任务。**/tr<strong>、</strong>/ru** 和**/rp** 参数指定可以更改的任务属性。</li>
+<li>  <strong>/ru</strong> 和 <strong>/rp</strong> 参数指定运行任务的权限。**/u** 和**/p** 参数指定用于更改任务的权限。</li>
+<li>  要在远程计算机上更改任务，用户必须使用属于远程计算机上 Administrators 组成员的帐户登录到本地计算机。</li>
+<li>  要使用另一个用户 (<strong>/u</strong>, <strong>/p</strong>) 的权限运行 <strong>/change</strong> 命令，本地计算机上必须与远程计算机处于同一个域，或者必须处于远程计算机域信任的域中。</li>
+<li>  系统帐户没有交互式登录权限。用户看不到以系统权限运行的程序，也不能与其交互。</li>
+<li>  要使用 <strong>/it</strong> 属性标识任务，请使用详细查询 (<strong>/query /v</strong>)。在一个带有**/it** 的任务的详细查询显示中，<strong>Logon Mode</strong> 字段的值为<strong>Interactive only</strong>。</li>
+</ul>
+<h5 id="示例-17"><a href="#示例-17" class="headerlink" title="示例"></a>示例</h5><h5 id="更改任务运行的程序"><a href="#更改任务运行的程序" class="headerlink" title="更改任务运行的程序"></a>更改任务运行的程序</h5><p>下面的命令将 Virus Check 任务运行的程序由 VirusCheck.exe 更改为 VirusCheck2.exe。此命令使用 <strong>/tn</strong> 参数标识任务，使用**/tr** 参数指定任务的新程序。（不能更改任务名称。） <strong>schtasks /change /tn “Virus Check” /tr C:\VirusCheck2.exe</strong> 作为响应，SchTasks.exe 显示以下成功消息：</p>
+<p>SUCCESS: The parameters of the scheduled task “Virus Check” have been changed.</p>
+<p>此命令的结果是，Virus Check 任务现运行 VirusCheck2.exe。</p>
+<h5 id="更改远程任务的密码"><a href="#更改远程任务的密码" class="headerlink" title="更改远程任务的密码"></a>更改远程任务的密码</h5><p>以下命令用于更改远程计算机 Svr01 上 RemindMe 任务的用户帐户密码。该命令使用 <strong>/tn</strong> 参数标识任务，使用 <strong>/s</strong> 参数指定远程计算机。它使用 <strong>/rp</strong> 参数指定新的密码 p@ssWord3。 在用户帐户密码过期或更改时需要执行此程序。如果保存在任务中的密码不再有效，任务不会运行。 <strong>schtasks /change /tn RemindMe /s Svr01 /rp p@ssWord3</strong> 作为响应，SchTasks.exe 显示下列成功消息：</p>
+<p>SUCCESS: The parameters of the scheduled task “RemindMe” have been changed.</p>
+<p>此命令的结果是，RemindMe 任务现在以其初始的用户帐户运行，但拥有一个新密码。</p>
+<h5 id="更改任务的程序和用户帐户"><a href="#更改任务的程序和用户帐户" class="headerlink" title="更改任务的程序和用户帐户"></a>更改任务的程序和用户帐户</h5><p>以下命令用于更改任务运行的程序以及任务运行的用户帐户。实质上，它将旧的计划用于新的任务。此命令将 ChkNews 任务（该任务每天早上 9:00 启动 Notepad.exe）更改为启动 Internet Explorer。 该命令使用 <strong>/tn</strong> 参数来标识任务。它使用 <strong>/tr</strong> 参数更改任务运行的程序，使用 <strong>/ru</strong> 参数更改任务运行的用户帐户。 忽略为用户帐户提供密码的 <strong>/rp</strong> 参数。必须为帐户提供密码，但可以使用 <strong>/rp</strong> 参数，并以明文形式键入密码，或等待 SchTasks.exe 提示您输入密码，然后以不显示文本的方式输入密码。 <strong>schtasks /change /tn ChkNews /tr “c:\program files\Internet Explorer\iexplore.exe” /ru DomainX\Admin01</strong> 作为响应，SchTasks.exe 要求输入用户帐户的密码。它不显示键入的文本，因此密码不可见。</p>
+<p>Please enter the password for DomainX\Admin01: </p>
+<p>请注意，**/tn** 参数标识任务，**/tr** 和 <strong>/ru</strong> 参数更改任务的属性。不能使用另外一个参数来标识任务，而且不能更改任务的名称。 作为响应，SchTasks.exe 显示下列成功消息：</p>
+<p>SUCCESS: The parameters of the scheduled task “ChkNews” have been changed.</p>
+<p>此命令的结果是，ChkNews 任务现在使用“管理员”帐户的权限运行 Internet Explorer。</p>
+<h5 id="将程序更改为系统帐户"><a href="#将程序更改为系统帐户" class="headerlink" title="将程序更改为系统帐户"></a>将程序更改为系统帐户</h5><p>以下命令用于更改 SecurityScript 任务，以使其以“系统”帐户权限运行。它使用 <strong>/ru “”</strong> 参数来表示系统帐户。 <strong>schtasks /change /tn SecurityScript /ru “”</strong> 作为响应，SchTasks.exe 显示下列成功消息：</p>
+<p>INFO: The run as user name for the scheduled task “SecurityScript” will be changed to “NT AUTHORITY\SYSTEM”.<br>SUCCESS: The parameters of the scheduled task “SecurityScript” have been changed.</p>
+<p>因为任务以系统帐户权限运行不需要密码，所以 SchTasks.exe 不提示输入密码。</p>
+<h5 id="仅在我登录时才运行程序"><a href="#仅在我登录时才运行程序" class="headerlink" title="仅在我登录时才运行程序"></a>仅在我登录时才运行程序</h5><p>以下命令将仅交互属性添加到现有任务 MyApp 中。此属性确保只有在“运行方式”用户（即运行任务的用户帐户）登录到计算机的情况下才运行任务。 此命令使用 <strong>/tn</strong> 参数标识任务，并使用 <strong>/it</strong> 参数将仅交互属性添加到任务中。由于任务已经以我的用户帐户权限运行，所以我不需要更改任务的**/ru** 参数。 <strong>schtasks /change /tn MyApp /it</strong> 作为响应，SchTasks.exe 显示以下成功消息。</p>
+<p>SUCCESS: The parameters of the scheduled task “MyApp” have been changed.</p>
+<h3 id="schtasks-run"><a href="#schtasks-run" class="headerlink" title="schtasks run"></a>schtasks run</h3><p>立即运行计划任务。<strong>run</strong> 操作忽略计划，但使用程序文件位置、用户帐户和保存在任务中的密码立即运行任务。</p>
+<h5 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /run /tn</strong> <em>TaskName</em> [<strong>/s</strong> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h5><p><strong>/tn <em>TaskName</em></strong></p>
+<p>必需。标识任务。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>指定远程计算机的名称或 IP 地址（带有或不带有反斜杠）。默认设置为本地计算机。</p>
+<p><strong>/u [_Domain_\] <em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认情况下，使用本地计算机当前用户的权限运行该命令。 指定的用户帐户必须是远程计算机上 Administrators 组的成员。只有使用**/s** 时，**/u** 和 <strong>/p</strong> 参数才有效。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>指定在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong> 参数，但忽略 <strong>/p</strong> 参数或密码参数，Schtasks 将提示您输入密码。 只有使用 <strong>/s</strong> 时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/?</strong></p>
+<p>在命令提示符下显示帮助。</p>
+<h5 id="备注-15"><a href="#备注-15" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  使用这个操作来测试任务。如果任务没有运行，请查阅“任务计划程序服务”事务日志 _Systemroot_\SchedLgU.txt，以获取错误。</li>
+<li>  运行任务既不会影响任务计划，也不会更改为任务计划好的下次运行时间。</li>
+<li>  要远程运行任务，必须在远程计算机上计划任务。在运行该任务时，它仅在远程计算机上运行。要验证任务正在远程计算机上运行，请使用“任务管理器”或“任务计划程序”事务日志_Systemroot_\SchedLgU.txt。</li>
+</ul>
+<h5 id="示例-18"><a href="#示例-18" class="headerlink" title="示例"></a>示例</h5><h5 id="在本地计算机上运行任务"><a href="#在本地计算机上运行任务" class="headerlink" title="在本地计算机上运行任务"></a>在本地计算机上运行任务</h5><p>以下命令用于启动“Security Script”任务。 <strong>schtasks /run /tn “Security Script”</strong> 作为响应，SchTasks.exe 启动与任务相关联的脚本并显示以下消息：</p>
+<p>SUCCESS: Attempted to run the scheduled task “Security Script”.</p>
+<p>正如消息提示的那样，Schtasks 尝试启动程序，但它无法验证该程序实际上已经启动。</p>
+<h5 id="在远程计算机上运行任务"><a href="#在远程计算机上运行任务" class="headerlink" title="在远程计算机上运行任务"></a>在远程计算机上运行任务</h5><p>以下命令用于在远程计算机 Svr01 上启动 Update 任务： <strong>schtasks /run /tn Update /s Svr01</strong> 在这种情况下，SchTasks.exe 显示以下错误消息：</p>
+<p>ERROR: Unable to run the scheduled task “Update”.</p>
+<p>查看 Svr01 上的“计划任务程序”事务日志 C:\Windows\SchedLgU.txt 以获取错误的原因。在这种情况下，日志中显示以下条目：</p>
+<p>“Update.job” (update.exe) 3/26/2001 1:15:46 PM ** ERROR **<br>The attempt to log on to the account associated with the task failed, therefore, the task did not run.<br>The specific error is:<br>0x8007052e: Logon failure: unknown user name or bad password.<br>Verify that the task’s Run-as name and password are valid and try again.</p>
+<p>显然，任务中的用户名或密码在此系统中无效。下面的 <strong>schtasks /change</strong> 命令用于更新 Svr01 上 Update 任务的用户名和密码： <strong>schtasks /change /tn Update /s Svr01 /ru Administrator /rp PassW@rd3</strong> 在 <strong>change</strong> 命令完成之后，重新运行 <strong>run</strong> 命令。此时，Update.exe 程序启动，SchTasks.exe 显示以下消息：</p>
+<p>SUCCESS: Attempted to run the scheduled task “Update”.</p>
+<p>正如消息提示的那样，Schtasks 尝试启动程序，但它无法验证该程序实际上已经启动。</p>
+<h3 id="schtasks-end"><a href="#schtasks-end" class="headerlink" title="schtasks end"></a>schtasks end</h3><p>停止由任务启动的程序。</p>
+<h5 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /end /tn</strong> <em>TaskName</em> [<strong>/s</strong> <em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h5><p><strong>/tn <em>TaskName</em></strong></p>
+<p>必需。标识启动程序的任务。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>指定远程计算机的名称或 IP 地址。默认设置为本地计算机。</p>
+<p><strong>/u [_Domain_\] <em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认情况下，使用本地计算机当前用户的权限运行该命令。 指定的用户帐户必须是远程计算机上 Administrators 组的成员。只有使用**/s** 时，**/u** 和 <strong>/p</strong> 参数才有效。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>指定在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong> 参数，但忽略 <strong>/p</strong> 参数或密码参数，Schtasks 将提示您输入密码。 只有使用 <strong>/s</strong> 时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/?</strong></p>
+<p>显示帮助。</p>
+<h5 id="备注-16"><a href="#备注-16" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  SchTasks.exe 只终止由计划任务启动的程序实例。要停止其他进程，请使用 TaskKill，它是一个包含在 Windows XP Professional 中的工具。有关 TaskKill 的详细信息，请参阅<a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc755991.aspx">Taskkill</a>。</li>
+</ul>
+<h5 id="示例-19"><a href="#示例-19" class="headerlink" title="示例"></a>示例</h5><h5 id="终止本地计算机上的任务"><a href="#终止本地计算机上的任务" class="headerlink" title="终止本地计算机上的任务"></a>终止本地计算机上的任务</h5><p>以下命令用于终止由 My Notepad 任务启动的 Notepad.exe 实例： <strong>schtasks /end /tn “My Notepad”</strong> 作为响应，SchTasks.exe 停止由任务启动的 Notepad.exe 实例，并显示以下成功消息：</p>
+<p>SUCCESS: The scheduled task “My Notepad” has been terminated successfully.</p>
+<h5 id="终止远程计算机上的任务"><a href="#终止远程计算机上的任务" class="headerlink" title="终止远程计算机上的任务"></a>终止远程计算机上的任务</h5><p>以下命令用于终止远程计算机 Svr01 上由 InternetOn 任务启动的 Internet Explorer 实例： <strong>schtasks /end /tn InternetOn /s Svr01</strong> 作为响应，SchTasks.exe 停止由任务启动的 Internet Explorer 实例，并显示以下成功消息：</p>
+<p>SUCCESS: The scheduled task “InternetOn” has been terminated successfully.</p>
+<h3 id="schtasks-delete"><a href="#schtasks-delete" class="headerlink" title="schtasks delete"></a>schtasks delete</h3><p>删除计划任务。</p>
+<h5 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h5><p><strong>schtasks /delete /tn</strong> {<em>TaskName</em>  *} [<strong>/f</strong>] [<strong>/s</strong><em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h5><p><strong>/tn {<em>TaskName</em>  *}</strong></p>
+<p>必需。标识要删除的任务。</p>
+<p>值</p>
+<p>描述</p>
+<p><em>TaskName</em></p>
+<p>删除已命名任务。</p>
+<p><em>*</em></p>
+<p>删除计算机上的所有计划任务。</p>
+<p><strong>/f</strong></p>
+<p>阻止确认消息。不警告就删除任务。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>指定远程计算机的名称或 IP 地址（带有或不带有反斜杠）。默认设置为本地计算机。</p>
+<p><strong>/u [_Domain_\] <em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认情况下，使用本地计算机当前用户的权限运行该命令。 指定的用户帐户必须是远程计算机上 Administrators 组的成员。只有使用**/s** 时，**/u** 和 <strong>/p</strong> 参数才有效。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>指定在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong> 参数，但忽略 <strong>/p</strong> 参数或密码参数，Schtasks 将提示您输入密码。 只有使用 <strong>/s</strong> 时，**/u** 和**/p** 参数才有效。</p>
+<p><strong>/?</strong></p>
+<p>在命令提示符下显示帮助。</p>
+<h5 id="备注-17"><a href="#备注-17" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  <strong>delete</strong> 操作从计划中删除任务。它不删除任务运行的程序或中断正在运行的程序。</li>
+<li>  <strong>delete *</strong> 命令删除所有为计算机计划的任务，而不仅仅是删除由当前用户计划的任务。</li>
+</ul>
+<h5 id="示例-20"><a href="#示例-20" class="headerlink" title="示例"></a>示例</h5><h5 id="从远程计算机上的计划中删除任务"><a href="#从远程计算机上的计划中删除任务" class="headerlink" title="从远程计算机上的计划中删除任务"></a>从远程计算机上的计划中删除任务</h5><p>下面的命令从远程计算机上的计划中删除“Start Mail”任务。它使用 <strong>/s</strong> 参数来标识远程计算机。 <strong>schtasks /delete /tn “Start Mail” /s Svr16</strong> 作为响应， SchTasks.exe 显示以下确认消息。要删除任务，请键入 <strong>y</strong>。要取消命令，请键入 <strong>n</strong>：</p>
+<p>WARNING: Are you sure you want to remove the task “Start Mail” (Y/N )?<br>SUCCESS: The scheduled task “Start Mail” was successfully deleted.</p>
+<h5 id="删除所有为本地计算机计划的任务。"><a href="#删除所有为本地计算机计划的任务。" class="headerlink" title="删除所有为本地计算机计划的任务。"></a>删除所有为本地计算机计划的任务。</h5><p>下面的命令从本地计算机的计划中删除所有的任务，包括由其他用户计划的任务。它使用 <strong>/tn *</strong> 参数代表计算机上所有的任务，使用**/f** 参数取消确认消息。 <strong>schtasks /delete /tn * /f</strong> 作为响应，SchTasks.exe 显示以下成功消息以表明只删除了计划任务 SecureScript。 <code>SUCCESS: The scheduled task &quot;SecureScript&quot; was successfully deleted.</code></p>
+<h3 id="schtasks-query"><a href="#schtasks-query" class="headerlink" title="schtasks query"></a>schtasks query</h3><p>显示计划在计算机上运行的任务。</p>
+<h5 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h5><p><strong>Schtasks</strong> [<strong>/query</strong>] [<strong>/fo</strong> {<strong>TABLE</strong> <strong>LIST</strong>  <strong>CSV</strong>}] [<strong>/nh</strong>] [<strong>/v</strong>] [<strong>/s</strong><em>Computer</em> [<strong>/u</strong> [<em>Domain</em><em>*\<strong>]<em>User</em> [</strong>/p</em>*_Password_]]]</p>
+<h5 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h5><p><strong>[/query]</strong></p>
+<p>操作名称可选。键入不带任何参数的 <strong>schtasks</strong> 执行查询。</p>
+<p><strong>/fo {TABLE LISTCSV}</strong></p>
+<p>指定输出格式。<strong>TABLE</strong> 为默认值。</p>
+<p><strong>/nh</strong></p>
+<p>忽略表格显示中的列标题。此参数对 <strong>TABLE</strong> 和 <strong>CSV</strong> 输出格式有效。</p>
+<p><strong>/v</strong></p>
+<p>将任务的高级属性添加到显示中。 使用 <strong>/v</strong> 的查询格式应该设置为 <strong>LIST</strong> 或 <strong>CSV</strong>。</p>
+<p><strong>/s <em>Computer</em></strong></p>
+<p>指定远程计算机的名称或 IP 地址（带有或不带有反斜杠）。默认设置为本地计算机。</p>
+<p><strong>/u [_Domain_\] <em>User</em></strong></p>
+<p>使用指定用户帐户的权限运行该命令。默认情况下，使用本地计算机当前用户的权限运行该命令。 指定的用户帐户必须是远程计算机上 Administrators 组的成员。只有使用**/s** 时，**/u** 和 <strong>/p</strong> 参数才有效。</p>
+<p><strong>/p <em>Password</em></strong></p>
+<p>指定在 <strong>/u</strong> 参数中指定的用户帐户的密码。如果使用 <strong>/u</strong>，但忽略 <strong>/p</strong> 或密码参数，Schtasks 将提示您输入密码。 只有使用**/s<strong>时，</strong>/u** 和 <strong>/p</strong> 参数才有效。</p>
+<p><strong>/?</strong></p>
+<p>在命令提示符下显示帮助。</p>
+<h5 id="备注-18"><a href="#备注-18" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  <strong>query</strong> 操作将列出用户有权查看的所有任务。管理员可以查看计算机上的所有任务。用户只能查看他们计划的任务。</li>
+</ul>
+<h5 id="示例-21"><a href="#示例-21" class="headerlink" title="示例"></a>示例</h5><h5 id="显示本地计算机上的计划任务"><a href="#显示本地计算机上的计划任务" class="headerlink" title="显示本地计算机上的计划任务"></a>显示本地计算机上的计划任务</h5><p>下面的命令显示本地计算机计划的所有任务。这些命令得到的结果相同，并可以交换使用。 <strong>schtasks</strong> <strong>schtasks /query</strong> 作为响应，SchTasks.exe 以默认的简单表格格式显示任务，如下表所示：</p>
+<p>TaskName                  Next Run Time            Status<br>========================= ======================== ==============<br>Microsoft Outlook         At logon time<br>SecureScript              14:42:00 PM , 2/4/2001   </p>
+<h5 id="显示已计划任务的高级属性"><a href="#显示已计划任务的高级属性" class="headerlink" title="显示已计划任务的高级属性"></a>显示已计划任务的高级属性</h5><p>下面的命令要求详细的显示本地计算机上的任务。它使用 <strong>/v</strong> 参数来请求详细显示，使用 <strong>/fo LIST</strong> 参数将显示格式化为易于阅读的列表。这个命令可以用来验证创建的任务有预期的循环模式。 <strong>schtasks /query /fo LIST /v</strong> 作为响应，SchTasks.exe 显示所有任务的详细属性列表。以下显示给出了一个计划在每月最后一个周五的上午 4:00 运行的任务列表：</p>
+<p>HostName:                                  RESKIT01<br>TaskName:                                  SecureScript<br>Next Run Time:                             4:00:00 AM , 3/30/2001<br>Status:                                    Not yet run<br>Logon mode:                                Interactive/Background<br>Last Run Time:                             Never<br>Last Result:                               0<br>Creator:                                   user01<br>Schedule:                                  At 4:00 AM on the last Fri of every month, starting 3/24/2001<br>Task To Run:                               C:\WINDOWS\system32\notepad.exe<br>Start In:                                  notepad.exe<br>Comment:                                   N/A<br>Scheduled Task State:                      Enabled<br>Scheduled Type:                            Monthly<br>Modifier:                                  Last FRIDAY<br>Start Time:                                4:00:00 AM<br>Start Date:                                3/24/2001<br>End Date:                                  N/A<br>Days:                                      FRIDAY<br>Months:                                    JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC<br>Run As User:                               RESKIT\user01<br>Delete Task If Not Rescheduled:            Enabled<br>Stop Task If Runs X Hours and X Mins:      72:0<br>Repeat: Until Time:                        Disabled<br>Repeat: Duration:                          Disabled<br>Repeat: Stop If Still Running:             Disabled<br>Idle: Start Time(For IDLE Scheduled Type): Disabled<br>Idle: Only Start If Idle for X Minutes:    Disabled<br>Idle: If Not Idle Retry For X Minutes:     Disabled<br>Idle: Stop Task If Idle State End:         Disabled<br>Power Mgmt: No Start On Batteries:         Disabled<br>Power Mgmt: Stop On Battery Mode:          Disabled</p>
+<h5 id="将为远程计算机计划的任务记入日志"><a href="#将为远程计算机计划的任务记入日志" class="headerlink" title="将为远程计算机计划的任务记入日志"></a>将为远程计算机计划的任务记入日志</h5><p>下面的命令请求为远程计算机计划的任务列表，并将任务添加到本地计算机中以逗号分隔的日志文件中。此命令的格式可以用来收集和跟踪为多个计算机计划的任务。 该命令使用 <strong>/s</strong> 参数标识远程计算机 Reskit16，使用 <strong>/fo</strong> 参数指定格式，使用**/nh** 参数取消列标题。**&gt;&gt;**附加符号将输出重定向到本地计算机 Svr01 上的任务日志 p0102.csv。因为命令在远程计算机上运行，所以本地计算机路径必须是完全合格的。 <strong>schtasks /query /s Reskit16 /fo csv /nh &gt;&gt; \\svr01\data\tasklogs\p0102.csv</strong> 作为响应，SchTasks.exe 会把为计算机 Reskit16 计划的任务添加到本地计算机 Svr01 上的 p0102.csv 文件中。</p>
+<h5 id="备注-19"><a href="#备注-19" class="headerlink" title="备注"></a>备注</h5><ul>
+<li>  此帮助文件描述 Windows Server™ 2003 家族中包含的 Schtasks.exe 的版本。有关 Windows XP Professional 中的 Schtasks.exe 的版本信息，请参阅 Windows XP Professional“帮助”中的 Schtasks 主题。</li>
+<li>  SchTasks.exe 执行与“控制面板”中的“计划任务”相同的操作。您可以一起使用这些工具，也可以互换使用。</li>
+<li>  SchTasks 取代了包含在 Windows 早期版本中的工具 At.exe。尽管 Windows Server™ 2003 家族中仍然包含 At.exe，但是建议使用 Schtasks 这个命令行任务计划工具。</li>
+<li>  Schtasks 命令中的参数可以按任何顺序显示。键入不带任何参数的 <strong>schtasks</strong> 执行查询。</li>
+<li>Schtasks 的权限<ul>
+<li>  必须具有运行该命令的权限。任何用户都可以在本地计算机上计划任务，而且他们可以查看和更改他们所计划的任务。Administrators 组的成员可以计划、查看和更改本地计算机上的所有任务。</li>
+<li>  要在远程计算机上计划、查看或更改任务，您必须是远程计算机上 Administrators 组的成员，或者必须使用 <strong>/u</strong> 参数提供远程计算机管理员的凭据。</li>
+<li>  只有在本地和远程计算机处于同一个域或本地计算机处于远程计算机域信任的域中，您才可以在 <strong>/create</strong> 或**/change** 操作中使用**/u** 参数。否则，远程计算机无法对指定的用户帐户进行身份验证，也无法验证该帐户是否为 Administrators 组的成员。</li>
+<li>  必须具有运行该任务的权限。不同的任务要求不同的权限。默认情况下，使用本地计算机的当前用户权限或使用 <strong>/u</strong> 参数指定的用户权限（如果包含的话）运行任务。要使用不同用户帐户的权限或使用系统权限运行任务，请使用**/ru** 参数。</li>
+</ul>
+</li>
+<li>  要验证计划运行或要找出计划不运行的原因，请查看“任务计划”服务事务日志 _Systemroot_\SchedLgU.txt。该日志记录了由所有使用该服务的工具（包括“计划任务”和 SchTasks.exe 在内）启动的尝试运行。</li>
+<li>损坏任务文件的情况极少发生。已损坏文件不会运行。在已损坏任务上试图执行某项操作时，SchTasks.exe 显示以下错误消息：  ERROR: The data is invalid.  已损坏任务无法恢复。要恢复系统的计划任务特征，请使用 SchTasks.exe 或“计划任务”从系统中删除任务并重新计划。</li>
+</ul>
+<h2 id="格式图例"><a href="#格式图例" class="headerlink" title="格式图例"></a>格式图例</h2><p>格式</p>
+<p>意义</p>
+<p><em>斜体</em></p>
+<p>用户必须提供的信息</p>
+<p><strong>粗体</strong></p>
+<p>用户必须按照显示准确键入的元素</p>
+<p>省略号 (…)</p>
+<p>可在命令行中重复多次的参数</p>
+<p>在括号 ([]) 之间</p>
+<p>可选项目</p>
+<p>在大括号 ({}) 之间；将选项用管线 () 隔开。例如：{evenodd}</p>
+<p>用户必须从中只选择一个选项的选项组</p>
+<p><code>Courier font</code></p>
+<p>代码或程序输出</p>
+<h2 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc778084.aspx">命令行参考 A-Z</a> <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc737438.aspx">命令行解释器概述</a> <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc755991.aspx">Taskkill</a> <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc779419.aspx">任务计划概述</a> <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc778200.aspx">任务计划程序最佳操作</a> refer for personal and forward from <a target="_blank" rel="noopener" href="http://technet.microsoft.com/zh-cn/library/cc772785.aspx">http://technet.microsoft.com/zh-cn/library/cc772785.aspx</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">老王</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://docs.aomtop.com/2018/12/13/windows-ding-shi-ren-wu-schtasks/">http://docs.aomtop.com/2018/12/13/windows-ding-shi-ren-wu-schtasks/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">老王</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tzsSX4lmTLqLrn4nsweKKKEC-gzGzoHsz',
+        appKey: 'A5hMGuo1sViKcfjbSDndchrN',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/12/13/centos7-4-xiu-gai-mariadb-shu-ju-ku-zui-da-lian-jie-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/gujian/6.jpg" class="responsive-img" alt="CentOS7.4 修改mariadb数据库最大连接数">
+                        
+                        <span class="card-title">CentOS7.4 修改mariadb数据库最大连接数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-12-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%9B%91%E6%8E%A7/" class="post-category">
+                                    监控
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mariadb/">
+                        <span class="chip bg-color">mariadb</span>
+                    </a>
+                    
+                    <a href="/tags/zabbix/">
+                        <span class="chip bg-color">zabbix</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BF%9E%E6%8E%A5%E6%95%B0/">
+                        <span class="chip bg-color">连接数</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/12/13/win10-an-zhuang-hou-bi-zuo-de-you-hua-jie-jue-ci-pan-100-zhan-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/gujian/6.jpg" class="responsive-img" alt="Win10安装后必做的优化，解决磁盘100%占用">
+                        
+                        <span class="card-title">Win10安装后必做的优化，解决磁盘100%占用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/windows/" class="post-category">
+                                    windows
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="4965675848"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <a href="/about" target="_blank">老王</a>
+            |&nbsp;&nbsp;<a href="https://www.yuque.com/xnops" target="_blank">小诺文档</a>
+            |&nbsp;&nbsp;<a href="http://go.aomtop.com" target="_blank">小诺导航</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2018";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备19026609号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xlqywk" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:48211701@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=48211701" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 48211701" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<!-- 天气接口 -->
+    
+        <!-- 天气接口-->
+<script type="text/javascript">
+    WIDGET = {FID: '1tFpFZ5Mtj'}
+  </script>
+<script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+        }
+  </script>
+
+      
+
+        
+
+
+</body>
+
+</html>

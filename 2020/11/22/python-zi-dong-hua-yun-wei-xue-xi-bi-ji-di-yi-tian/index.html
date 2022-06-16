@@ -1,0 +1,2357 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="python自动化运维-学习笔记第一天, 运维博客,网络安全,devops,技术博客,Linux运维,k8s,docker,虚拟化,云计算,运维社区,技术支持,自动化运维,微服务架构,数据库DBA,seo">
+    <meta name="description" content="本节内容
+ Python介绍
+ 发展史
+ Python 2 or 3?
+ 安装
+ Hello World程序
+ 变量
+ 用户输入
+ 模块初识
+ .pyc是个什么鬼？
+ 数据类型初识
+ 数据运算
+ 表达式if …else语句
+ 表达式for ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>python自动化运维-学习笔记第一天 | 小诺运维</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">小诺运维</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>QQ群</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/linux">
+          
+          <span>linux</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/windows">
+          
+          <span>windows</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/python">
+          
+          <span>python</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">
+          
+          <span>数据库</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%9B%91%E6%8E%A7">
+          
+          <span>监控</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4">
+          
+          <span>自动化运维</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C">
+          
+          <span>网络</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/%E5%8A%B1%E5%BF%97">
+          
+          <span>励志</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list-ul" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/sample-page/about">
+          
+          <span>关于本站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index">
+          
+          <span>小诺导航</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud">
+          
+          <span>个人网站</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/ji-shu-zhi-chi">
+          
+          <span>技术支持</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/juan-zeng-bo-zhu">
+          
+          <span>捐赠博主</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/sample-page/wzdh">
+          
+          <span>链接收藏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">小诺运维</div>
+        <div class="logo-desc">
+            
+            主要是关注互联网以及分享IT运维工作经验的个人博客,主要涵盖了系统运维、开源工具实战，架构优化，提升业务，致力于实现自动化运维，Devops实践者，总结真实工作经验，帮助各位脱坑的实战经验。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=jZZran9okweVK_HK9h_C9Q4isflr3-18&jump_from=webapi" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			QQ群
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			分类
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories/linux " style="margin-left:75px">
+				  
+		          <span>linux</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/windows " style="margin-left:75px">
+				  
+		          <span>windows</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/python " style="margin-left:75px">
+				  
+		          <span>python</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 " style="margin-left:75px">
+				  
+		          <span>数据库</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%9B%91%E6%8E%A7 " style="margin-left:75px">
+				  
+		          <span>监控</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4 " style="margin-left:75px">
+				  
+		          <span>自动化运维</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E7%BD%91%E7%BB%9C " style="margin-left:75px">
+				  
+		          <span>网络</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/%E5%8A%B1%E5%BF%97 " style="margin-left:75px">
+				  
+		          <span>励志</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list-ul"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/sample-page/about " style="margin-left:75px">
+				  
+		          <span>关于本站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index " style="margin-left:75px">
+				  
+		          <span>小诺导航</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud " style="margin-left:75px">
+				  
+		          <span>个人网站</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/ji-shu-zhi-chi " style="margin-left:75px">
+				  
+		          <span>技术支持</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/juan-zeng-bo-zhu " style="margin-left:75px">
+				  
+		          <span>捐赠博主</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/sample-page/wzdh " style="margin-left:75px">
+				  
+		          <span>链接收藏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/gujian/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">python自动化运维-学习笔记第一天</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%90%89%E5%A4%9A/">
+                                <span class="chip bg-color">吉多</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                <span class="chip bg-color">表达式</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-22
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    24.6k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="本节内容"><a href="#本节内容" class="headerlink" title="本节内容"></a><strong>本节内容</strong></h2><ol>
+<li> Python介绍</li>
+<li> 发展史</li>
+<li> Python 2 or 3?</li>
+<li> 安装</li>
+<li> Hello World程序</li>
+<li> 变量</li>
+<li> 用户输入</li>
+<li> 模块初识</li>
+<li> .pyc是个什么鬼？</li>
+<li> 数据类型初识</li>
+<li> 数据运算</li>
+<li> 表达式if …else语句</li>
+<li> 表达式for 循环</li>
+<li> break and continue</li>
+<li> 表达式while 循环</li>
+<li> 作业需求</li>
+</ol>
+<p> </p>
+<h3 id="一、-Python介绍"><a href="#一、-Python介绍" class="headerlink" title="一、 Python介绍"></a><strong>一、 Python介绍</strong></h3><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。 最新的TIOBE排行榜，Python赶超PHP占据第五， Python崇尚优美、清晰、简单，是一个优秀并广泛使用的语言。 <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030165.jpeg" alt="IMG_256"></p>
+<h1 id="Python之路-Day1-Python基础1"><a href="#Python之路-Day1-Python基础1" class="headerlink" title="Python之路,Day1 - Python基础1"></a><strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">Python之路,Day1 - Python基础1</a></strong></h1><h2 id="本节内容-1"><a href="#本节内容-1" class="headerlink" title="本节内容"></a><strong>本节内容</strong></h2><ol>
+<li> Python介绍</li>
+<li> 发展史</li>
+<li> Python 2 or 3?</li>
+<li> 安装</li>
+<li> Hello World程序</li>
+<li> 变量</li>
+<li> 用户输入</li>
+<li> 模块初识</li>
+<li> .pyc是个什么鬼？</li>
+<li> 数据类型初识</li>
+<li> 数据运算</li>
+<li> 表达式if …else语句</li>
+<li> 表达式for 循环</li>
+<li> break and continue</li>
+<li> 表达式while 循环</li>
+<li> 作业需求</li>
+</ol>
+<p> </p>
+<h3 id="一、-Python介绍-1"><a href="#一、-Python介绍-1" class="headerlink" title="一、 Python介绍"></a><strong>一、 Python介绍</strong></h3><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。 最新的TIOBE排行榜，Python赶超PHP占据第五， Python崇尚优美、清晰、简单，是一个优秀并广泛使用的语言。 <img src="https://opstand.gitee.io/media/uploads/2020/11/202011220203154.jpeg" alt="IMG_256"> 由上图可见，Python整体呈上升趋势，反映出Python应用越来越广泛并且也逐渐得到业内的认可！！！ Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领域。目前业内几乎所有大中型互联网企业都在使用Python，如：Youtube、Dropbox、BT、Quora（中国知乎）、豆瓣、知乎、Google、Yahoo!、Facebook、NASA、百度、腾讯、汽车之家、美团等。 <strong>目前Python主要应用领域：</strong></p>
+<ul>
+<li>  <strong>云计算</strong>: 云计算最火的语言， 典型应用OpenStack</li>
+<li>  <strong>WEB开发</strong>: 众多优秀的WEB框架，众多大型网站均为Python开发，Youtube, Dropbox, 豆瓣。。。， 典型WEB框架有Django</li>
+<li>  <strong>科学运算、人工智能</strong>: 典型库NumPy, SciPy, Matplotlib, Enthought librarys,pandas</li>
+<li>  <strong>系统运维</strong>: 运维人员必备语言</li>
+<li>  <strong>金融</strong>：量化交易，金融分析，在金融工程领域，Python不但在用，且用的最多，而且重要性逐年提高。原因：作为动态语言的Python，语言结构清晰简单，库丰富，成熟稳定，科学计算和统计分析都很牛逼，生产效率远远高于c,c++,java,尤其擅长策略回测</li>
+<li>  <strong>图形GUI</strong>: PyQT, WxPython,TkInter</li>
+</ul>
+<p><strong>Python在一些公司的应用：</strong> </p>
+<ul>
+<li>  谷歌：Google App Engine 、code.google.com 、Google earth 、谷歌爬虫、Google广告等项目都在大量使用Python开发</li>
+<li>  CIA: 美国中情局网站就是用Python开发的</li>
+<li>  NASA: 美国航天局(NASA)大量使用Python进行数据分析和运算</li>
+<li>  YouTube:世界上最大的视频网站YouTube就是用Python开发的</li>
+<li>  Dropbox:美国最大的在线云存储网站，全部用Python实现，每天网站处理10亿个文件的上传和下载</li>
+<li>  Instagram:美国最大的图片分享社交网站，每天超过3千万张照片被分享，全部用python开发</li>
+<li>  Facebook:大量的基础库均通过Python实现的</li>
+<li>  Redhat: 世界上最流行的Linux发行版本中的yum包管理工具就是用python开发的</li>
+<li>  豆瓣: 公司几乎所有的业务均是通过Python开发的</li>
+<li>  知乎: 国内最大的问答社区，通过Python开发(国外Quora)</li>
+<li>  春雨医生：国内知名的在线医疗网站是用Python开发的</li>
+<li>  除上面之外，还有搜狐、金山、腾讯、盛大、网易、百度、阿里、淘宝 、土豆、新浪、果壳等公司都在使用Python完成各种各样的任务。</li>
+</ul>
+<h3 id="Python-是一门什么样的语言？"><a href="#Python-是一门什么样的语言？" class="headerlink" title="Python 是一门什么样的语言？"></a><strong><strong>Python 是一门什么样的语言？</strong></strong></h3><p>编程语言主要从以下几个角度为进行分类，编译型和解释型、静态语言和动态语言、强类型定义语言和弱类型定义语言，每个分类代表什么意思呢，我们一起来看一下。</p>
+<h4 id="编译和解释的区别是什么？"><a href="#编译和解释的区别是什么？" class="headerlink" title="编译和解释的区别是什么？"></a><strong>编译和解释的区别是什么？</strong></h4><p><strong>编译器</strong>是把源程序的每一条语句都编译成机器语言,并保存成二进制文件,这样运行时计算机可以直接以机器语言来运行此程序,速度很快; 而<strong>解释器</strong>则是只在执行程序时,才一条一条的解释成机器语言给计算机来执行,所以运行速度是不如编译后的程序运行的快的. 这是因为计算机不能直接认识并执行我们写的语句,它只能认识机器语言(是二进制的形式) <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031620.png" alt="IMG_257">       <img src="https://opstand.gitee.io/media/uploads/2020/11/202011220203256.png" alt="IMG_258">  </p>
+<h4 id="编译型vs解释型"><a href="#编译型vs解释型" class="headerlink" title="编译型vs解释型"></a><strong>编译型vs解释型</strong></h4><p><strong>编译型</strong> 优点：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高。可以脱离语言环境独立运行。 缺点：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。 <strong>解释型</strong> 优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。 缺点：每次运行的时候都要解释一遍，性能上不如编译型语言。     <strong>一、低级语言与高级语言</strong> 最初的计算机程序都是用0和1的序列表示的，程序员直接使用的是机器指令，无需翻译，从纸带打孔输入即可执行得到结果。后来为了方便记忆，就将用0、1序列表示的机器指令都用符号助记，这些与机器指令一一对应的助记符就成了汇编指令，从而诞生了汇编语言。无论是机器指令还是汇编指令都是面向机器的，统称为低级语言。因为是针对特定机器的机器指令的助记符，所以汇编语言是无法独立于机器(特定的CPU体系结构)的。但汇编语言也是要经过翻译成机器指令才能执行的，所以也有将运行在一种机器上的汇编语言翻译成运行在另一种机器上的机器指令的方法，那就是交叉汇编技术。 高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。那具体的说，要将高级语言编译到什么程度呢，这又跟编译的技术有关了，既可以编译成直接可执行的目标代码，也可以编译成一种中间表示，然后拿到不同的机器和系统上去执行，这种情况通常又需要支撑环境，比如解释器或虚拟机的支持，Java程序编译成bytecode，再由不同平台上的虚拟机执行就是很好的例子。所以，说高级语言不依赖于机器，是指在不同的机器或平台上高级语言的程序本身不变，而通过编译器编译得到的目标代码去适应不同的机器。从这个意义上来说，通过交叉汇编，一些汇编程序也可以获得不同机器之间的可移植性，但这种途径获得的移植性远远不如高级语言来的方便和实用性大。 <strong>二、编译与解释</strong> 编译是将源程序翻译成可执行的目标代码，翻译与执行是分开的；而解释是对源程序的翻译与执行一次性完成，不生成可存储的目标代码。这只是表象，二者背后的最大区别是：对解释执行而言，程序运行时的控制权在解释器而不在用户程序；对编译执行而言，运行时的控制权在用户程序。 解释具有良好的动态特性和可移植性，比如在解释执行时可以动态改变变量的类型、对程序进行修改以及在程序中插入良好的调试诊断信息等，而将解释器移植到不同的系统上，则程序不用改动就可以在移植了解释器的系统上运行。同时解释器也有很大的缺点，比如执行效率低，占用空间大，因为不仅要给用户程序分配空间，解释器本身也占用了宝贵的系统资源。 编译器是把源程序的每一条语句都编译成机器语言,并保存成二进制文件,这样运行时计算机可以直接以机器语言来运行此程序,速度很快; 而解释器则是只在执行程序时,才一条一条的解释成机器语言给计算机来执行,所以运行速度是不如编译后的程序运行的快的.   <strong>编译型和解释型</strong> 我们先看看编译型，其实它和汇编语言是一样的：也是有一个负责翻译的程序来对我们的源代码进行转换，生成相对应的可执行代码。这个过程说得专业一点，就称为编译（Compile），而负责编译的程序自然就称为编译器（Compiler）。如果我们写的程序代码都包含在一个源文件中，那么通常编译之后就会直接生成一个可执行文件，我们就可以直接运行了。但对于一个比较复杂的项目，为了方便管理，我们通常把代码分散在各个源文件中，作为不同的模块来组织。这时编译各个文件时就会生成目标文件（Object   file）而不是前面说的可执行文件。一般一个源文件的编译都会对应一个目标文件。这些目标文件里的内容基本上已经是可执行代码了，但由于只是整个项目的一部分，所以我们还不能直接运行。待所有的源文件的编译都大功告成，我们就可以最后把这些半成品的目标文件“打包”成一个可执行文件了，这个工作由另一个程序负责完成，由于此过程好像是把包含可执行代码的目标文件连接装配起来，所以又称为链接（Link），而负责链接的程序就叫……就叫链接程序（Linker）。链接程序除了链接目标文件外，可能还有各种资源，像图标文件啊、声音文件啊什么的，还要负责去除目标文件之间的冗余重复代码，等等，所以……也是挺累的。链接完成之后，一般就可以得到我们想要的可执行文件了。 上面我们大概地介绍了编译型语言的特点，现在再看看解释型。噢，从字面上看，“编译”和“解释”的确都有“翻译”的意思，它们的区别则在于翻译的时机安排不大一样。打个比方：假如你打算阅读一本外文书，而你不知道这门外语，那么你可以找一名翻译，给他足够的时间让他从头到尾把整本书翻译好，然后把书的母语版交给你阅读；或者，你也立刻让这名翻译辅助你阅读，让他一句一句给你翻译，如果你想往回看某个章节，他也得重新给你翻译。 两种方式，前者就相当于我们刚才所说的编译型：一次把所有的代码转换成机器语言，然后写成可执行文件；而后者就相当于我们要说的解释型：在程序运行的前一刻，还只有源程序而没有可执行程序；而程序每执行到源程序的某一条指令，则会有一个称之为解释程序的外壳程序将源代码转换成二进制代码以供执行，总言之，就是不断地解释、执行、解释、执行……所以，解释型程序是离不开解释程序的。像早期的BASIC就是一门经典的解释型语言，要执行BASIC程序，就得进入BASIC环境，然后才能加载程序源文件、运行。解释型程序中，由于程序总是以源代码的形式出现，因此只要有相应的解释器，移植几乎不成问题。编译型程序虽然源代码也可以移植，但前提是必须针对不同的系统分别进行编译，对于复杂的工程来说，的确是一件不小的时间消耗，况且很可能一些细节的地方还是要修改源代码。而且，解释型程序省却了编译的步骤，修改调试也非常方便，编辑完毕之后即可立即运行，不必像编译型程序一样每次进行小小改动都要耐心等待漫长的Compiling…Linking…这样的编译链接过程。不过凡事有利有弊，由于解释型程序是将编译的过程放到执行过程中，这就决定了解释型程序注定要比编译型慢上一大截，像几百倍的速度差距也是不足为奇的。 编译型与解释型，两者各有利弊。前者由于程序执行速度快，同等条件下对系统要求较低，因此像开发操作系统、大型应用程序、数据库系统等时都采用它，像C/C++、Pascal/Object   Pascal（Delphi）、VB等基本都可视为编译语言，而一些网页脚本、服务器脚本及辅助开发接口这样的对速度要求不高、对不同系统平台间的兼容性有一定要求的程序则通常使用解释性语言，如Java、JavaScript、VBScript、Perl、Python等等。 但既然编译型与解释型各有优缺点又相互对立，所以一批新兴的语言都有把两者折衷起来的趋势，例如Java语言虽然比较接近解释型语言的特征，但在执行之前已经预先进行一次预编译，生成的代码是介于机器码和Java源代码之间的中介代码，运行的时候则由JVM（Java的虚拟机平台，可视为解释器）解释执行。它既保留了源代码的高抽象、可移植的特点，又已经完成了对源代码的大部分预编译工作，所以执行起来比“纯解释型”程序要快许多。而像VB6（或者以前版本）、C#这样的语言，虽然表面上看生成的是.exe可执行程序文件，但VB6编译之后实际生成的也是一种中介码，只不过编译器在前面安插了一段自动调用某个外部解释器的代码（该解释程序独立于用户编写的程序，存放于系统的某个DLL文件中，所有以VB6编译生成的可执行程序都要用到它），以解释执行实际的程序体。C#（以及其它.net的语言编译器）则是生成.net目标代码，实际执行时则由.net解释系统（就像JVM一样，也是一个虚拟机平台）进行执行。当然.net目标代码已经相当“低级”，比较接近机器语言了，所以仍将其视为编译语言，而且其可移植程度也没有Java号称的这么强大，Java号称是“一次编译，到处执行”，而.net则是“一次编码，到处编译”。呵呵，当然这些都是题外话了。总之，随着设计技术与硬件的不断发展，编译型与解释型两种方式的界限正在不断变得模糊。 <strong>动态语言和静态语言</strong> 通常我们所说的动态语言、静态语言是指动态类型语言和静态类型语言。 （1）动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型，该语言会在你第一次赋值给变量时，在内部将数据类型记录下来。Python和Ruby就是一种典型的动态类型语言，其他的各种脚本语言如VBScript也多少属于动态类型语言。 （2）静态类型语言：静态类型语言与动态类型语言刚好相反，它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型，C/C++是静态类型语言的典型代表，其他的静态类型语言还有C#、JAVA等。   <strong>强类型定义语言和弱类型定义语言</strong> （1）强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了。举个例子：如果你定义了一个整型变量a,那么程序根本不可能将a当作字符串类型处理。强类型定义语言是类型安全的语言。 （2）弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。 强类型定义语言在速度上可能略逊色于弱类型定义语言，但是强类型定义语言带来的严谨性能够有效的避免许多错误。另外，“这门语言是不是动态语言”与“这门语言是否类型安全”之间是完全没有联系的！ 例如：Python是动态语言，是强类型定义语言（类型安全的语言）; VBScript是动态语言，是弱类型定义语言（类型不安全的语言）; JAVA是静态语言，是强类型定义语言（类型安全的语言）。   通过上面这些介绍，我们可以得出，<strong>python是一门动态解释性的强类型定义语言。</strong>那这些基因使成就了Python的哪些优缺点呢？我们继续往下看。</p>
+<h3 id="Python的优缺点"><a href="#Python的优缺点" class="headerlink" title="Python的优缺点"></a><strong><strong>Python的优缺点</strong></strong></h3><p>先看优点</p>
+<ol>
+<li> Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。</li>
+<li> 开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。</li>
+<li> 高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节</li>
+<li> 可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行</li>
+<li> 可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们。</li>
+<li> 可嵌入性————你可以把Python嵌入你的C/C++程序，从而向你的程序用户提供脚本功能。</li>
+</ol>
+<p>再看缺点：</p>
+<ol>
+<li> 速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，比如你用C运一个程序花了0.01s,用Python是0.1s,这样C语言直接比Python快了10倍,算是非常夸张了，但是你是无法直接通过肉眼感知的，因为一个正常人所能感知的时间最小单位是0.15-0.4s左右，哈哈。其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。</li>
+<li> 代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。</li>
+<li> 线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是[计算机程序设计语言](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80&quot;">http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80&quot;</a> \o “计算机程序设计语言)[解释器](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8&quot;">http://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8&quot;</a> \o “解释器)用于[同步](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5&quot;">http://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5&quot;</a> \o “同步)[线程](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B&quot;">http://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B&quot;</a> \o “线程)的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。</li>
+</ol>
+<p>  当然，Python还有一些其它的小缺点，在这就不一一列举了，我想说的是，任何一门语言都不是完美的，都有擅长和不擅长做的事情，建议各位不要拿一个语言的劣势去跟另一个语言的优势来去比较，语言只是一个工具，是实现程序设计师思想的工具，就像我们之前中学学几何时，有的时候需要要圆规，有的时候需要用三角尺一样，拿相应的工具去做它最擅长的事才是正确的选择。之前很多人问我Shell和Python到底哪个好？我回答说Shell是个脚本语言，但Python不只是个脚本语言，能做的事情更多，然后又有钻牛角尖的人说完全没必要学Python, Python能做的事情Shell都可以做，只要你足够牛B,然后又举了用Shell可以写俄罗斯方块这样的游戏，对此我能说表达只能是，不要跟SB理论，SB会把你拉到跟他一样的高度，然后用充分的经验把你打倒。    </p>
+<h3 id="Python解释器"><a href="#Python解释器" class="headerlink" title="Python解释器"></a><strong><strong>Python解释器</strong></strong></h3><p>当我们编写Python代码时，我们得到的是一个包含Python代码的以.py为扩展名的文本文件。要运行代码，就需要Python解释器去执行.py文件。 由于整个Python语言从规范到解释器都是开源的，所以理论上，只要水平够高，任何人都可以编写Python解释器来执行Python代码（当然难度很大）。事实上，确实存在多种Python解释器。</p>
+<h4 id="CPython"><a href="#CPython" class="headerlink" title="CPython"></a><strong>CPython</strong></h4><p>当我们从<a target="_blank" rel="noopener" href="https://www.python.org/">Python官方网站</a>下载并安装好Python 2.7后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。 CPython是使用最广的Python解释器。教程的所有代码也都在CPython下执行。</p>
+<h4 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a><strong>IPython</strong></h4><p>IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了IE。 CPython用&gt;&gt;&gt;作为提示符，而IPython用In [序号]:作为提示符。</p>
+<h4 id="PyPy"><a href="#PyPy" class="headerlink" title="PyPy"></a><strong>PyPy</strong></h4><p>PyPy是另一个Python解释器，它的目标是执行速度。PyPy采用<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Just-in-time_compilation">JIT技术</a>，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。 绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到PyPy下执行，就需要了解<a target="_blank" rel="noopener" href="http://pypy.readthedocs.org/en/latest/cpython_differences.html">PyPy和CPython的不同点</a>。</p>
+<h4 id="Jython"><a href="#Jython" class="headerlink" title="Jython"></a><strong>Jython</strong></h4><p>Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。</p>
+<h4 id="IronPython"><a href="#IronPython" class="headerlink" title="IronPython"></a><strong>IronPython</strong></h4><p>IronPython和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>Python的解释器很多，但使用最广泛的还是CPython。如果要和Java或.Net平台交互，最好的办法不是用Jython或IronPython，而是通过网络调用来交互，确保各程序之间的独立性。 </p>
+<h3 id="二、Python发展史"><a href="#二、Python发展史" class="headerlink" title="二、Python发展史"></a><strong>二、Python发展史</strong></h3><ul>
+<li>  1989年，为了打发圣诞节假期，Guido开始写Python语言的编译器。Python这个名字，来自Guido所挚爱的电视剧Monty Python’s Flying Circus。他希望这个新的叫做Python的语言，能符合他的理想：创造一种C和shell之间，功能全面，易学易用，可拓展的语言。</li>
+<li>  1991年，第一个Python编译器诞生。它是用C语言实现的，并能够调用C语言的库文件。从一出生，Python已经具有了：类，函数，异常处理，包含表和词典在内的核心数据类型，以及模块为基础的拓展系统。</li>
+<li>  Granddaddy of Python web frameworks, Zope 1 was released in 1999</li>
+<li>  Python 1.0 - January 1994 增加了 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">map</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Filter_(higher-order_function)">filter</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">reduce</a>.</li>
+<li>  Python 2.0 - October 16, 2000，加入了内存回收机制，构成了现在Python语言框架的基础</li>
+<li>  Python 2.4 - November 30, 2004, 同年目前最流行的WEB框架Django 诞生</li>
+<li>  Python 2.5 - September 19, 2006</li>
+<li>  Python 2.6 - October 1, 2008</li>
+<li>  Python 2.7 - July 3, 2010</li>
+<li>  In November 2014, it was announced that Python 2.7 would be supported until 2020, and reaffirmed that there would be no 2.8 release as users were expected to move to Python 3.4+ as soon as possible</li>
+<li>  Python 3.0 - December 3, 2008</li>
+<li>  Python 3.1 - June 27, 2009</li>
+<li>  Python 3.2 - February 20, 2011</li>
+<li>  Python 3.3 - September 29, 2012</li>
+<li>  Python 3.4 - March 16, 2014</li>
+<li>  Python 3.5 - September 13, 2015</li>
+</ul>
+<h3 id="三、Python-2-or-3"><a href="#三、Python-2-or-3" class="headerlink" title="三、Python 2 or 3?"></a><strong>三、Python 2 or 3?</strong></h3><p><strong>In summary : Python 2.x is legacy, Python 3.x is the present and future of the language</strong> Python 3.0 was released in 2008. The final 2.x version 2.7 release came out in mid-2010, with a statement of extended support for this end-of-life release. The 2.x branch will see no new major releases after that. 3.x is under active development and has already seen over five years of stable releases, including version 3.3 in 2012, 3.4 in 2014, and 3.5 in 2015. This means that all recent standard library improvements, for example, are only available by default in Python 3.x. Guido van Rossum (the original creator of the Python language) decided to clean up Python 2.x properly, with less regard for backwards compatibility than is the case for new releases in the 2.x range. The most drastic improvement is the better Unicode support (with all text strings being Unicode by default) as well as saner bytes/Unicode separation. Besides, several aspects of the core language (such as print and exec being statements, integers using floor division) have been adjusted to be easier for newcomers to learn and to be more consistent with the rest of the language, and old cruft has been removed (for example, all classes are now new-style, “range()” returns a memory efficient iterable, not a list as in 2.x).</p>
+<h4 id="py2与3的详细区别"><a href="#py2与3的详细区别" class="headerlink" title="py2与3的详细区别"></a><strong>py2与3的详细区别</strong></h4><p><strong>PRINT IS A FUNCTION</strong> The statement has been replaced with a print() function, with keyword arguments to replace most of the special syntax of the old statement (PEP 3105). Examples: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a> You can also customize the separator between items, e.g.:</p>
+<p>print(“There are &lt;”, 2**32, “&gt; possibilities!”, sep=””)</p>
+<p><strong>ALL IS UNICODE NOW</strong> <strong>从此不再为讨厌的字符编码而烦恼</strong>   <strong>还可以这样玩： (A,*REST,B)=RANGE(5)</strong></p>
+<p><strong>&gt;&gt;&gt; a,*rest,b = range(5) &gt;&gt;&gt; a,rest,b (0, [1, 2, 3], 4) </strong></p>
+<p>  <strong>某些库改名了</strong>  </p>
+<p>Old Name</p>
+<p>New Name</p>
+<p>_winreg</p>
+<p>winreg</p>
+<p>ConfigParser</p>
+<p>configparser</p>
+<p>copy_reg</p>
+<p>copyreg</p>
+<p>Queue</p>
+<p>queue</p>
+<p>SocketServer</p>
+<p>socketserver</p>
+<p>markupbase</p>
+<p>_markupbase</p>
+<p>repr</p>
+<p>reprlib</p>
+<p>test.test_support</p>
+<p>test.support</p>
+<p>  <strong>还有谁不支持PYTHON3?</strong> One popular module that don’t yet support Python 3 is Twisted (for networking and other applications). Most actively maintained libraries have people working on 3.x support. For some libraries, it’s more of a priority than others: Twisted, for example, is mostly focused on production servers, where supporting older versions of Python is important, let alone supporting a new version that includes major changes to the language. (Twisted is a prime example of a major package where porting to 3.x is far from trivial  </p>
+<h3 id="四、Python安装"><a href="#四、Python安装" class="headerlink" title="四、Python安装"></a><strong>四、Python安装</strong></h3><h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a><strong><strong>windows</strong></strong></h4><p>1 2 3 4 5 6 7</p>
+<p>1、下载安装包 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> 2、安装 默认安装路径：C:\python27 3、配置环境变量 【右键计算机】–》【属性】–》【高级系统设置】–》【高级】–》【环境变量】–》【在第二个内容框中找到 变量名为Path 的一行，双击】 –&gt; 【Python安装目录追加到变值值中，用 ； 分割】 如：原来的值;C:\python27，切记前面有分号</p>
+<p><strong>linux、Mac</strong></p>
+<p>1 2 3</p>
+<p>无需安装，原装Python环境   ps：如果自带2.6，请更新至2.7</p>
+<p> </p>
+<h3 id="五、Hello-World程序"><a href="#五、Hello-World程序" class="headerlink" title="五、Hello World程序"></a><strong>五、Hello World程序</strong></h3><p>在linux 下创建一个文件叫hello.py,并输入</p>
+<p>1</p>
+<p>print(“Hello World!”)</p>
+<p>然后执行命令:python hello.py ,输出</p>
+<p>1 2 3</p>
+<p>localhost:~ jieli$ vim hello.py localhost:~ jieli$ python hello.py Hello World!</p>
+<p><strong>指定解释器</strong> 上一步中执行 python hello.py 时，明确的指出 hello.py 脚本由 python 解释器来执行。 如果想要类似于执行shell脚本一样执行python脚本，例： ./hello.py ，那么就需要在 hello.py 文件的头部指定解释器，如下：</p>
+<p>1 2 3</p>
+<p>#!/usr/bin/env python   print “hello,world”</p>
+<p>如此一来，执行： ./hello.py 即可。 ps：执行前需给予 hello.py 执行权限，chmod 755 hello.py **在交互器中执行　** 除了把程序写在文件里，还可以直接调用python自带的交互器运行代码，</p>
+<p>1 2 3 4 5 6</p>
+<p>localhost:~ jieli$ python Python 2.7.10 (default, Oct 23 2015, 18:05:06) [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin Type “help”, “copyright”, “credits” or “license” for more information. &gt;&gt;&gt; print(“Hello World!”) Hello World!</p>
+<p>对比下其它语言的hello world <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032560.gif" alt="IMG_259">  C++ <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032617.gif" alt="IMG_260">  C <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032649.gif" alt="IMG_261">  JAVA <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032684.gif" alt="IMG_262">  PHP <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032632.gif" alt="IMG_263">  RUBY <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032762.gif" alt="IMG_264">  Go  </p>
+<h3 id="六、变量-字符编码"><a href="#六、变量-字符编码" class="headerlink" title="六、变量\字符编码"></a><strong>六、变量\字符编码</strong></h3><p><strong>Variables</strong> are used to store information to be referenced and manipulated in a computer program. They also provide a way of labeling data with a descriptive name, so our programs can be understood more clearly by the reader and ourselves. It is helpful to think of variables as containers that hold information. Their sole purpose is to label and store data in memory. This data can then be used throughout your program. <strong>声明变量</strong></p>
+<p>1 2 3</p>
+<p>#_*_coding:utf-8_*_   name = “Alex Li”</p>
+<p>上述代码声明了一个变量，变量名为： name，变量name的值为：”Alex Li” <strong>变量定义的规则：</strong></p>
+<ul>
+<li><ul>
+<li>  变量名只能是 字母、数字或下划线的任意组合</li>
+<li>  变量名的第一个字符不能是数字</li>
+<li>  以下关键字不能声明为变量名 [‘and’, ‘as’, ‘assert’, ‘break’, ‘class’, ‘continue’, ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘exec’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, ‘is’, ‘lambda’, ‘not’, ‘or’, ‘pass’, ‘print’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’]</li>
+</ul>
+</li>
+</ul>
+<p><strong>变量的赋值</strong></p>
+<p>1 2 3 4 5 6 7 8</p>
+<p>name = “Alex Li”   name2 = name print(name,name2)   name = “Jack”   print(“What is the value of name2 now?”)</p>
+<p> </p>
+<h3 id="七、字符编码"><a href="#七、字符编码" class="headerlink" title="七、字符编码"></a><strong><strong>七、字符编码</strong></strong></h3><p>python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill） ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言，其最多只能用 8 位来表示（一个字节），即：2**8 = 256-1，所以，ASCII码最多只能表示 255 个符号。   <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032740.gif" alt="IMG_265"> <strong>关于中文</strong> 为了处理汉字，程序员设计了用于简体中文的GB2312和用于繁体中文的big5。 GB2312(1980年)一共收录了7445个字符，包括6763个汉字和682个其它符号。汉字区的内码范围高字节从B0-F7，低字节从A1-FE，占用的码位是72*94=6768。其中有5个空位是D7FA-D7FE。 GB2312 支持的汉字太少。1995年的汉字扩展规范GBK1.0收录了21886个符号，它分为汉字区和图形符号区。汉字区包括21003个字符。2000年的 GB18030是取代GBK1.0的正式国家标准。该标准收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。现在的PC平台必须支持GB18030，对嵌入式产品暂不作要求。所以手机、MP3一般只支持GB2312。 从ASCII、GB2312、GBK 到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。在这些编码中，英文和中文可以统一地处理。区分中文编码的方法是高字节的最高位不为0。按照程序员的称呼，GB2312、GBK到GB18030都属于双字节字符集 (DBCS)。 有的中文Windows的缺省内码还是GBK，可以通过GB18030升级包升级到GB18030。不过GB18030相对GBK增加的字符，普通人是很难用到的，通常我们还是用GBK指代中文Windows内码。     <strong>显然ASCII码无法将世界上的各种文字和符号全部表示，所以，就需要新出一种可以代表所有字符和符号的编码，即：Unicode</strong> Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定虽有的字符和符号最少由 16 位来表示（2个字节），即：2 **16 = 65536， 注：此处说的的是最少2个字节，可能更多 UTF-8，是对Unicode编码的压缩和优化，他不再使用最少使用2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存、欧洲的字符用2个字节保存，东亚的字符用3个字节保存… 所以，python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill），如果是如下代码的话： 报错：ascii码无法表示中文</p>
+<p>1 2 3</p>
+<p>#!/usr/bin/env python   print “你好，世界”</p>
+<p>改正：应该显示的告诉python解释器，用什么编码来执行源代码，即：</p>
+<p>1 2 3 4</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   print “你好，世界”</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a><strong><strong>注释</strong></strong></h3><p>当行注视：# 被注释内容 多行注释：””” 被注释内容 “””      </p>
+<h3 id="八、用户输入"><a href="#八、用户输入" class="headerlink" title="八、用户输入"></a><strong>八、用户输入</strong></h3><p>1 2 3 4 5 6 7</p>
+<p>#!/usr/bin/env python #_*_coding:utf-8_*_     #name = raw_input(“What is your name?”) #only on python 2.x name = input(“What is your name?”) print(“Hello “ + name )</p>
+<p>输入密码时，如果想要不可见，需要利用getpass 模块中的 getpass方法，即：</p>
+<p>1 2 3 4 5 6 7 8 9 10</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import getpass   # 将用户输入的内容赋值给 name 变量 pwd = getpass.getpass(“请输入密码：”)   # 打印输入的内容 print(pwd)</p>
+<p> </p>
+<h3 id="九、模块初识"><a href="#九、模块初识" class="headerlink" title="九、模块初识"></a><strong>九、模块初识</strong></h3><p>Python的强大之处在于他有非常丰富和强大的标准库和第三方库，几乎你想实现的任何功能都有相应的Python库支持，以后的课程中会深入讲解常用到的各种库，现在，我们先来象征性的学2个简单的。 <strong>sys</strong></p>
+<p>1 2 3 4 5 6 7 8 9 10 11</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import sys   print(sys.argv)     #输出 $ python test.py helo world [‘test.py’, ‘helo’, ‘world’]  #把执行脚本时传递的参数获取到了</p>
+<p>  <strong>os</strong></p>
+<p>1 2 3 4 5 6</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import os   os.system(“df -h”) #调用系统命令</p>
+<p><strong>完全结合一下</strong> </p>
+<p>1 2 3</p>
+<p>import os,sys   os.system(‘’.join(sys.argv[1:])) #把用户的输入的参数当作一条命令交给os.system来执行</p>
+<p><strong>自己写个模块</strong> python tab补全模块 <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032822.gif" alt="IMG_266">  for mac <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032826.gif" alt="IMG_267">  for Linux 写完保存后就可以使用了</p>
+<p>1 2 3 4 5</p>
+<p>localhost:~ jieli$ python Python 2.7.10 (default, Oct 23 2015, 18:05:06) [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin Type “help”, “copyright”, “credits” or “license” for more information. &gt;&gt;&gt; import tab</p>
+<p>你会发现，上面自己写的tab.py模块只能在当前目录下导入，如果想在系统的何何一个地方都使用怎么办呢？ 此时你就要把这个tab.py放到python全局环境变量目录里啦，基本一般都放在一个叫 Python/2.7/site-packages 目录下，这个目录在不同的OS里放的位置不一样，用 print(sys.path) 可以查看python环境变量列表。  </p>
+<h3 id="十、-pyc是个什么鬼？"><a href="#十、-pyc是个什么鬼？" class="headerlink" title="十、.pyc是个什么鬼？"></a><strong>十、.pyc是个什么鬼？</strong></h3><p><strong>1. Python是一门解释型语言？</strong> 我初学Python时，听到的关于Python的第一句话就是，Python是一门解释性语言，我就这样一直相信下去，直到发现了*.pyc文件的存在。如果是解释型语言，那么生成的*.pyc文件是什么呢？c应该是compiled的缩写才对啊！ 为了防止其他学习Python的人也被这句话误解，那么我们就在文中来澄清下这个问题，并且把一些基础概念给理清。  <strong>2. 解释型语言和编译型语言</strong> 计算机是不能够识别高级语言的，所以当我们运行一个高级语言程序的时候，就需要一个“翻译机”来从事把高级语言转变成计算机能读懂的机器语言的过程。这个过程分成两类，第一种是编译，第二种是解释。 编译型语言在程序执行之前，先会通过编译器对程序执行一个编译的过程，把程序转变成机器语言。运行时就不需要翻译，而直接执行就可以了。最典型的例子就是C语言。 解释型语言就没有这个编译的过程，而是在程序运行的时候，通过解释器对程序逐行作出解释，然后直接运行，最典型的例子是Ruby。 通过以上的例子，我们可以来总结一下解释型语言和编译型语言的优缺点，因为编译型语言在程序运行之前就已经对程序做出了“翻译”，所以在运行时就少掉了“翻译”的过程，所以效率比较高。但是我们也不能一概而论，一些解释型语言也可以通过解释器的优化来在对程序做出翻译时对整个程序做出优化，从而在效率上超过编译型语言。 此外，随着Java等基于虚拟机的语言的兴起，我们又不能把语言纯粹地分成解释型和编译型这两种。 用Java来举例，Java首先是通过编译器编译成字节码文件，然后在运行时通过解释器给解释成机器文件。所以我们说Java是一种先编译后解释的语言。   <strong>3. Python到底是什么</strong> 其实Python和Java/C#一样，也是一门基于虚拟机的语言，我们先来从表面上简单地了解一下Python程序的运行过程吧。 当我们在命令行中输入python hello.py时，其实是激活了Python的“解释器”，告诉“解释器”：你要开始工作了。可是在“解释”之前，其实执行的第一项工作和Java一样，是编译。 熟悉Java的同学可以想一下我们在命令行中如何执行一个Java的程序： javac hello.java java hello   只是我们在用Eclipse之类的IDE时，将这两部给融合成了一部而已。其实Python也一样，当我们执行python hello.py时，他也一样执行了这么一个过程，所以我们应该这样来描述Python，Python是一门先编译后解释的语言。 <strong>4. 简述Python的运行过程</strong> 在说这个问题之前，我们先来说两个概念，PyCodeObject和pyc文件。 我们在硬盘上看到的pyc自然不必多说，而其实PyCodeObject则是Python编译器真正编译成的结果。我们先简单知道就可以了，继续向下看。 当python程序运行时，编译的结果则是保存在位于内存中的PyCodeObject中，当Python程序运行结束时，Python解释器则将PyCodeObject写回到pyc文件中。 当python程序第二次运行时，首先程序会在硬盘中寻找pyc文件，如果找到，则直接载入，否则就重复上面的过程。 所以我们应该这样来定位PyCodeObject和pyc文件，我们说pyc文件其实是PyCodeObject的一种持久化保存方式。  </p>
+<h3 id="十一、数据类型初识"><a href="#十一、数据类型初识" class="headerlink" title="十一、数据类型初识"></a><strong>十一、数据类型初识</strong></h3><p>1、数字 2 是一个整数的例子。 长整数 不过是大一些的整数。 3.23和52.3E-4是浮点数的例子。E标记表示10的幂。在这里，52.3E-4表示52.3 * 10-4。 (-5+4j)和(2.3-4.6j)是复数的例子，其中-5,4为实数，j为虚数，数学中表示复数是什么？。 int（整型） 在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647 在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 long（长整型） 　　跟C语言不同，Python的长整数没有指定位宽，即：Python没有限制长整数数值的大小，但实际上由于机器内存有限，我们使用的长整数数值不可能无限大。 注意，自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果了。 float（浮点型） 先扫盲 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/alex3714/articles/5895848.html">http://www.cnblogs.com/alex3714/articles/5895848.html</a>  　　浮点数用来处理实数，即带有小数的数字。类似于C语言中的double类型，占8个字节（64位），其中52位表示底，11位表示指数，剩下的一位表示符号。 complex（复数） 复数由实数部分和虚数部分组成，一般形式为x＋yj，其中的x是复数的实数部分，y是复数的虚数部分，这里的x和y都是实数。 注：Python中存在小数字池：-5 ～ 257   2、布尔值 真或假 1 或 0 3、字符串 “hello world” 万恶的字符串拼接： python中的字符串在C语言中体现为是一个字符数组，每次创建字符串时候需要在内存中开辟一块连续的空，并且一旦需要修改字符串的话，就需要再次开辟空间，万恶的+号每出现一次就会在内从中重新开辟一块空间。 <strong>字符串格式化输出</strong></p>
+<p>1 2 3 4</p>
+<p>name = “alex” print “i am %s “ % name   #输出: i am alex</p>
+<p>PS: 字符串是 %s;整数 %d;浮点数%f 字符串常用功能：</p>
+<ul>
+<li>  移除空白</li>
+<li>  分割</li>
+<li>  长度</li>
+<li>  索引</li>
+<li>  切片</li>
+</ul>
+<p>4、列表 创建列表：</p>
+<p>1 2 3</p>
+<p>name_list = [‘alex’, ‘seven’, ‘eric’] 或 name_list ＝ list([‘alex’, ‘seven’, ‘eric’])</p>
+<p>基本操作：</p>
+<ul>
+<li>  索引</li>
+<li>  切片</li>
+<li>  追加</li>
+<li>  删除</li>
+<li>  长度</li>
+<li>  切片</li>
+<li>  循环</li>
+<li>  包含</li>
+</ul>
+<p>5、元组(不可变列表) 创建元组：</p>
+<p>1 2 3</p>
+<p>ages = (11, 22, 33, 44, 55) 或 ages = tuple((11, 22, 33, 44, 55))</p>
+<p>  6、字典（无序） 创建字典：</p>
+<p>1 2 3</p>
+<p>person = {“name”: “mr.wu”, ‘age’: 18} 或 person = dict({“name”: “mr.wu”, ‘age’: 18})</p>
+<p>常用操作：</p>
+<ul>
+<li>  索引</li>
+<li>  新增</li>
+<li>  删除</li>
+<li>  键、值、键值对</li>
+<li>  循环</li>
+<li>  长度</li>
+</ul>
+<h3 id="十二、数据运算"><a href="#十二、数据运算" class="headerlink" title="十二、数据运算"></a><strong><strong>十二、数据运算</strong></strong></h3><p>算数运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032963.png" alt="IMG_268"> 比较运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202032913.png" alt="IMG_269"> 赋值运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033080.png" alt="IMG_270"> 逻辑运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033123.png" alt="IMG_271"> 成员运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033184.png" alt="IMG_272"> 身份运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033226.png" alt="IMG_273"> 位运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033249.png" alt="IMG_274"> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a> *按位取反运算规则(按位取反再加1)   详解<a target="_blank" rel="noopener" href="http://blog.csdn.net/wenxinwukui234/article/details/42119265">http://blog.csdn.net/wenxinwukui234/article/details/42119265</a>   运算符优先级： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033313.png" alt="IMG_275"> 更多内容：[猛击这里](<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-operators.html&quot;">http://www.runoob.com/python/python-operators.html&quot;</a> \t “<a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/_blank">https://www.cnblogs.com/alex3714/articles/_blank</a>)  </p>
+<h3 id="十三、表达式if-…-else"><a href="#十三、表达式if-…-else" class="headerlink" title="十三、表达式if … else"></a><strong>十三、表达式if … else</strong></h3><p>场景一、用户登陆验证</p>
+<p>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</p>
+<p># 提示输入用户名和密码   # 验证用户名和密码 #     如果错误，则输出用户名或密码错误 #     如果成功，则输出 欢迎，XXX!     #!/usr/bin/env python # -*- coding: encoding -*-   import getpass     name = raw_input(‘请输入用户名：’) pwd = getpass.getpass(‘请输入密码：’)   if name == “alex” and pwd == “cmd”: print(“欢迎，alex！”) else: print(“用户名和密码错误”)</p>
+<p>场景二、猜年龄游戏 在程序里设定好你的年龄，然后启动程序让用户猜测，用户输入后，根据他的输入提示用户输入的是否正确，如果错误，提示是猜大了还是小了 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>   外层变量，可以被内层代码使用 内层变量，不应被外层代码使用  </p>
+<h3 id="十四、表达式for-loop"><a href="#十四、表达式for-loop" class="headerlink" title="十四、表达式for loop"></a><strong>十四、表达式for loop</strong></h3><p><strong>最简单的循环10次</strong></p>
+<p>1 2 3 4 5 6</p>
+<p>#_*_coding:utf-8_*_ __author__ = ‘Alex Li’     for i in range(10): print(“loop:”, i )</p>
+<p>输出：</p>
+<p>1 2 3 4 5 6 7 8 9 10</p>
+<p>loop: 0 loop: 1 loop: 2 loop: 3 loop: 4 loop: 5 loop: 6 loop: 7 loop: 8 loop: 9</p>
+<p><strong>需求一：还是上面的程序，但是遇到小于5的循环次数就不走了，直接跳入下一次循环</strong></p>
+<p>1 2 3 4</p>
+<p>for i in range(10): if i&lt;5: continue #不往下走了,直接进入下一次loop print(“loop:”, i )</p>
+<p><strong>需求二：还是上面的程序，但是遇到大于5的循环次数就不走了，直接退出</strong></p>
+<p>1 2 3 4</p>
+<p>for i in range(10): if i&gt;5: break #不往下走了,直接跳出整个loop print(“loop:”, i )</p>
+<p> </p>
+<h3 id="十五、while-loop"><a href="#十五、while-loop" class="headerlink" title="十五、while loop"></a><strong>十五、while loop</strong></h3><p> <strong>有一种循环叫死循环，一经触发，就运行个天荒地老、海枯石烂。</strong> 海枯石烂代码</p>
+<p>1 2 3 4 5</p>
+<p>count = 0 while True: print(“你是风儿我是沙,缠缠绵绵到天涯…”,count) count +=1  </p>
+<p>  其实除了时间，没有什么是永恒的，死loop还是少写为好 上面的代码循环100次就退出吧   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>     <strong>回到上面for 循环的例子，如何实现让用户不断的猜年龄，但只给最多3次机会，再猜不对就退出程序。</strong> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>    </p>
+<h3 id="十六、作业"><a href="#十六、作业" class="headerlink" title="十六、作业"></a><strong>十六、作业</strong></h3><p>作业一：博客 作业二：编写登陆接口</p>
+<ul>
+<li>  输入用户名密码</li>
+<li>  认证成功后显示欢迎信息</li>
+<li>  输错三次后锁定</li>
+</ul>
+<p>  作业三：多级菜单</p>
+<ul>
+<li>  三级菜单</li>
+<li>  可依次选择进入各子菜单</li>
+<li>  所需新知识点：列表、字典</li>
+</ul>
+<p>                 </p>
+<h3 id="入门知识拾遗"><a href="#入门知识拾遗" class="headerlink" title="入门知识拾遗"></a><strong>入门知识拾遗</strong></h3><p><strong>一、bytes类型</strong>   <strong>二、三元运算</strong></p>
+<p>1</p>
+<p>result = 值1 if 条件 else 值2</p>
+<p>如果条件为真：result = 值1 如果条件为假：result = 值2 <strong>三、进制</strong></p>
+<ul>
+<li>  二进制，01</li>
+<li>  八进制，01234567</li>
+<li>  十进制，0123456789</li>
+<li>  十六进制，0123456789ABCDEF  二进制到16进制转换<a target="_blank" rel="noopener" href="http://jingyan.baidu.com/album/47a29f24292608c0142399cb.html?picindex=1">http://jingyan.baidu.com/album/47a29f24292608c0142399cb.html?picindex=1</a></li>
+</ul>
+<h4 id="计算机内存地址和为什么用16进制？"><a href="#计算机内存地址和为什么用16进制？" class="headerlink" title="计算机内存地址和为什么用16进制？"></a><strong>计算机内存地址和为什么用16进制？</strong></h4><p><strong>为什么用16进制</strong> 1、计算机硬件是0101二进制的，16进制刚好是2的倍数，更容易表达一个命令或者数据。十六进制更简短，因为换算的时候一位16进制数可以顶4位2进制数，也就是一个字节（8位进制可以用两个16进制表示） 2、最早规定ASCII字符集采用的就是8bit(后期扩展了,但是基础单位还是8bit)，8bit用2个16进制直接就能表达出来，不管阅读还是存储都比其他进制要方便 3、计算机中CPU运算也是遵照ASCII字符集，以16、32、64的这样的方式在发展，因此数据交换的时候16进制也显得更好 4、为了统一规范，CPU、内存、硬盘我们看到都是采用的16进制计算 <strong>16进制用在哪里</strong> 1、网络编程，数据交换的时候需要对字节进行解析都是一个byte一个byte的处理，1个byte可以用0xFF两个16进制来表达。通过网络抓包，可以看到数据是通过16进制传输的。 2、数据存储，存储到硬件中是0101的方式，存储到系统中的表达方式都是byte方式 3、一些常用值的定义，比如：我们经常用到的html中color表达，就是用的16进制方式，4个16进制位可以表达好几百万的颜色信息。</p>
+<h3 id="四、-一切皆对象"><a href="#四、-一切皆对象" class="headerlink" title="四、 一切皆对象"></a><strong>四、 一切皆对象</strong></h3><p><strong>对于Python，一切事物都是对象，对象基于类创建</strong> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033378.jpeg" alt="IMG_276"> 所以，以下这些值都是对象： “wupeiqi”、38、[‘北京’, ‘上海’, ‘深圳’]，并且是根据不同的类生成的对象。 <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033463.png" alt="IMG_277"> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033573.png" alt="IMG_278"> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202033686.png" alt="IMG_279"> 由上图可见，Python整体呈上升趋势，反映出Python应用越来越广泛并且也逐渐得到业内的认可！！！ Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领域。目前业内几乎所有大中型互联网企业都在使用Python，如：Youtube、Dropbox、BT、Quora（中国知乎）、豆瓣、知乎、Google、Yahoo!、Facebook、NASA、百度、腾讯、汽车之家、美团等。 <strong>目前Python主要应用领域：</strong></p>
+<ul>
+<li>  <strong>云计算</strong>: 云计算最火的语言， 典型应用OpenStack</li>
+<li>  <strong>WEB开发</strong>: 众多优秀的WEB框架，众多大型网站均为Python开发，Youtube, Dropbox, 豆瓣。。。， 典型WEB框架有Django</li>
+<li>  <strong>科学运算、人工智能</strong>: 典型库NumPy, SciPy, Matplotlib, Enthought librarys,pandas</li>
+<li>  <strong>系统运维</strong>: 运维人员必备语言</li>
+<li>  <strong>金融</strong>：量化交易，金融分析，在金融工程领域，Python不但在用，且用的最多，而且重要性逐年提高。原因：作为动态语言的Python，语言结构清晰简单，库丰富，成熟稳定，科学计算和统计分析都很牛逼，生产效率远远高于c,c++,java,尤其擅长策略回测</li>
+<li>  <strong>图形GUI</strong>: PyQT, WxPython,TkInter</li>
+</ul>
+<p><strong>Python在一些公司的应用：</strong> </p>
+<ul>
+<li>  谷歌：Google App Engine 、code.google.com 、Google earth 、谷歌爬虫、Google广告等项目都在大量使用Python开发</li>
+<li>  CIA: 美国中情局网站就是用Python开发的</li>
+<li>  NASA: 美国航天局(NASA)大量使用Python进行数据分析和运算</li>
+<li>  YouTube:世界上最大的视频网站YouTube就是用Python开发的</li>
+<li>  Dropbox:美国最大的在线云存储网站，全部用Python实现，每天网站处理10亿个文件的上传和下载</li>
+<li>  Instagram:美国最大的图片分享社交网站，每天超过3千万张照片被分享，全部用python开发</li>
+<li>  Facebook:大量的基础库均通过Python实现的</li>
+<li>  Redhat: 世界上最流行的Linux发行版本中的yum包管理工具就是用python开发的</li>
+<li>  豆瓣: 公司几乎所有的业务均是通过Python开发的</li>
+<li>  知乎: 国内最大的问答社区，通过Python开发(国外Quora)</li>
+<li>  春雨医生：国内知名的在线医疗网站是用Python开发的</li>
+<li>  除上面之外，还有搜狐、金山、腾讯、盛大、网易、百度、阿里、淘宝 、土豆、新浪、果壳等公司都在使用Python完成各种各样的任务。</li>
+</ul>
+<h3 id="Python-是一门什么样的语言？-1"><a href="#Python-是一门什么样的语言？-1" class="headerlink" title="Python 是一门什么样的语言？"></a><strong><strong>Python 是一门什么样的语言？</strong></strong></h3><p>编程语言主要从以下几个角度为进行分类，编译型和解释型、静态语言和动态语言、强类型定义语言和弱类型定义语言，每个分类代表什么意思呢，我们一起来看一下。</p>
+<h4 id="编译和解释的区别是什么？-1"><a href="#编译和解释的区别是什么？-1" class="headerlink" title="编译和解释的区别是什么？"></a><strong>编译和解释的区别是什么？</strong></h4><p><strong>编译器</strong>是把源程序的每一条语句都编译成机器语言,并保存成二进制文件,这样运行时计算机可以直接以机器语言来运行此程序,速度很快; 而<strong>解释器</strong>则是只在执行程序时,才一条一条的解释成机器语言给计算机来执行,所以运行速度是不如编译后的程序运行的快的. 这是因为计算机不能直接认识并执行我们写的语句,它只能认识机器语言(是二进制的形式) <img src="https://opstand.gitee.io/media/uploads/2020/11/20201122020302100.png" alt="IMG_257">       <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030421.png" alt="IMG_258">  </p>
+<h4 id="编译型vs解释型-1"><a href="#编译型vs解释型-1" class="headerlink" title="编译型vs解释型"></a><strong>编译型vs解释型</strong></h4><p><strong>编译型</strong> 优点：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高。可以脱离语言环境独立运行。 缺点：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。 <strong>解释型</strong> 优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。 缺点：每次运行的时候都要解释一遍，性能上不如编译型语言。     <strong>一、低级语言与高级语言</strong> 最初的计算机程序都是用0和1的序列表示的，程序员直接使用的是机器指令，无需翻译，从纸带打孔输入即可执行得到结果。后来为了方便记忆，就将用0、1序列表示的机器指令都用符号助记，这些与机器指令一一对应的助记符就成了汇编指令，从而诞生了汇编语言。无论是机器指令还是汇编指令都是面向机器的，统称为低级语言。因为是针对特定机器的机器指令的助记符，所以汇编语言是无法独立于机器(特定的CPU体系结构)的。但汇编语言也是要经过翻译成机器指令才能执行的，所以也有将运行在一种机器上的汇编语言翻译成运行在另一种机器上的机器指令的方法，那就是交叉汇编技术。 高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。那具体的说，要将高级语言编译到什么程度呢，这又跟编译的技术有关了，既可以编译成直接可执行的目标代码，也可以编译成一种中间表示，然后拿到不同的机器和系统上去执行，这种情况通常又需要支撑环境，比如解释器或虚拟机的支持，Java程序编译成bytecode，再由不同平台上的虚拟机执行就是很好的例子。所以，说高级语言不依赖于机器，是指在不同的机器或平台上高级语言的程序本身不变，而通过编译器编译得到的目标代码去适应不同的机器。从这个意义上来说，通过交叉汇编，一些汇编程序也可以获得不同机器之间的可移植性，但这种途径获得的移植性远远不如高级语言来的方便和实用性大。 <strong>二、编译与解释</strong> 编译是将源程序翻译成可执行的目标代码，翻译与执行是分开的；而解释是对源程序的翻译与执行一次性完成，不生成可存储的目标代码。这只是表象，二者背后的最大区别是：对解释执行而言，程序运行时的控制权在解释器而不在用户程序；对编译执行而言，运行时的控制权在用户程序。 解释具有良好的动态特性和可移植性，比如在解释执行时可以动态改变变量的类型、对程序进行修改以及在程序中插入良好的调试诊断信息等，而将解释器移植到不同的系统上，则程序不用改动就可以在移植了解释器的系统上运行。同时解释器也有很大的缺点，比如执行效率低，占用空间大，因为不仅要给用户程序分配空间，解释器本身也占用了宝贵的系统资源。 编译器是把源程序的每一条语句都编译成机器语言,并保存成二进制文件,这样运行时计算机可以直接以机器语言来运行此程序,速度很快; 而解释器则是只在执行程序时,才一条一条的解释成机器语言给计算机来执行,所以运行速度是不如编译后的程序运行的快的.   <strong>编译型和解释型</strong> 我们先看看编译型，其实它和汇编语言是一样的：也是有一个负责翻译的程序来对我们的源代码进行转换，生成相对应的可执行代码。这个过程说得专业一点，就称为编译（Compile），而负责编译的程序自然就称为编译器（Compiler）。如果我们写的程序代码都包含在一个源文件中，那么通常编译之后就会直接生成一个可执行文件，我们就可以直接运行了。但对于一个比较复杂的项目，为了方便管理，我们通常把代码分散在各个源文件中，作为不同的模块来组织。这时编译各个文件时就会生成目标文件（Object   file）而不是前面说的可执行文件。一般一个源文件的编译都会对应一个目标文件。这些目标文件里的内容基本上已经是可执行代码了，但由于只是整个项目的一部分，所以我们还不能直接运行。待所有的源文件的编译都大功告成，我们就可以最后把这些半成品的目标文件“打包”成一个可执行文件了，这个工作由另一个程序负责完成，由于此过程好像是把包含可执行代码的目标文件连接装配起来，所以又称为链接（Link），而负责链接的程序就叫……就叫链接程序（Linker）。链接程序除了链接目标文件外，可能还有各种资源，像图标文件啊、声音文件啊什么的，还要负责去除目标文件之间的冗余重复代码，等等，所以……也是挺累的。链接完成之后，一般就可以得到我们想要的可执行文件了。 上面我们大概地介绍了编译型语言的特点，现在再看看解释型。噢，从字面上看，“编译”和“解释”的确都有“翻译”的意思，它们的区别则在于翻译的时机安排不大一样。打个比方：假如你打算阅读一本外文书，而你不知道这门外语，那么你可以找一名翻译，给他足够的时间让他从头到尾把整本书翻译好，然后把书的母语版交给你阅读；或者，你也立刻让这名翻译辅助你阅读，让他一句一句给你翻译，如果你想往回看某个章节，他也得重新给你翻译。 两种方式，前者就相当于我们刚才所说的编译型：一次把所有的代码转换成机器语言，然后写成可执行文件；而后者就相当于我们要说的解释型：在程序运行的前一刻，还只有源程序而没有可执行程序；而程序每执行到源程序的某一条指令，则会有一个称之为解释程序的外壳程序将源代码转换成二进制代码以供执行，总言之，就是不断地解释、执行、解释、执行……所以，解释型程序是离不开解释程序的。像早期的BASIC就是一门经典的解释型语言，要执行BASIC程序，就得进入BASIC环境，然后才能加载程序源文件、运行。解释型程序中，由于程序总是以源代码的形式出现，因此只要有相应的解释器，移植几乎不成问题。编译型程序虽然源代码也可以移植，但前提是必须针对不同的系统分别进行编译，对于复杂的工程来说，的确是一件不小的时间消耗，况且很可能一些细节的地方还是要修改源代码。而且，解释型程序省却了编译的步骤，修改调试也非常方便，编辑完毕之后即可立即运行，不必像编译型程序一样每次进行小小改动都要耐心等待漫长的Compiling…Linking…这样的编译链接过程。不过凡事有利有弊，由于解释型程序是将编译的过程放到执行过程中，这就决定了解释型程序注定要比编译型慢上一大截，像几百倍的速度差距也是不足为奇的。 编译型与解释型，两者各有利弊。前者由于程序执行速度快，同等条件下对系统要求较低，因此像开发操作系统、大型应用程序、数据库系统等时都采用它，像C/C++、Pascal/Object   Pascal（Delphi）、VB等基本都可视为编译语言，而一些网页脚本、服务器脚本及辅助开发接口这样的对速度要求不高、对不同系统平台间的兼容性有一定要求的程序则通常使用解释性语言，如Java、JavaScript、VBScript、Perl、Python等等。 但既然编译型与解释型各有优缺点又相互对立，所以一批新兴的语言都有把两者折衷起来的趋势，例如Java语言虽然比较接近解释型语言的特征，但在执行之前已经预先进行一次预编译，生成的代码是介于机器码和Java源代码之间的中介代码，运行的时候则由JVM（Java的虚拟机平台，可视为解释器）解释执行。它既保留了源代码的高抽象、可移植的特点，又已经完成了对源代码的大部分预编译工作，所以执行起来比“纯解释型”程序要快许多。而像VB6（或者以前版本）、C#这样的语言，虽然表面上看生成的是.exe可执行程序文件，但VB6编译之后实际生成的也是一种中介码，只不过编译器在前面安插了一段自动调用某个外部解释器的代码（该解释程序独立于用户编写的程序，存放于系统的某个DLL文件中，所有以VB6编译生成的可执行程序都要用到它），以解释执行实际的程序体。C#（以及其它.net的语言编译器）则是生成.net目标代码，实际执行时则由.net解释系统（就像JVM一样，也是一个虚拟机平台）进行执行。当然.net目标代码已经相当“低级”，比较接近机器语言了，所以仍将其视为编译语言，而且其可移植程度也没有Java号称的这么强大，Java号称是“一次编译，到处执行”，而.net则是“一次编码，到处编译”。呵呵，当然这些都是题外话了。总之，随着设计技术与硬件的不断发展，编译型与解释型两种方式的界限正在不断变得模糊。 <strong>动态语言和静态语言</strong> 通常我们所说的动态语言、静态语言是指动态类型语言和静态类型语言。 （1）动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型，该语言会在你第一次赋值给变量时，在内部将数据类型记录下来。Python和Ruby就是一种典型的动态类型语言，其他的各种脚本语言如VBScript也多少属于动态类型语言。 （2）静态类型语言：静态类型语言与动态类型语言刚好相反，它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型，C/C++是静态类型语言的典型代表，其他的静态类型语言还有C#、JAVA等。   <strong>强类型定义语言和弱类型定义语言</strong> （1）强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了。举个例子：如果你定义了一个整型变量a,那么程序根本不可能将a当作字符串类型处理。强类型定义语言是类型安全的语言。 （2）弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。 强类型定义语言在速度上可能略逊色于弱类型定义语言，但是强类型定义语言带来的严谨性能够有效的避免许多错误。另外，“这门语言是不是动态语言”与“这门语言是否类型安全”之间是完全没有联系的！ 例如：Python是动态语言，是强类型定义语言（类型安全的语言）; VBScript是动态语言，是弱类型定义语言（类型不安全的语言）; JAVA是静态语言，是强类型定义语言（类型安全的语言）。   通过上面这些介绍，我们可以得出，<strong>python是一门动态解释性的强类型定义语言。</strong>那这些基因使成就了Python的哪些优缺点呢？我们继续往下看。</p>
+<h3 id="Python的优缺点-1"><a href="#Python的优缺点-1" class="headerlink" title="Python的优缺点"></a><strong><strong>Python的优缺点</strong></strong></h3><p>先看优点</p>
+<ol>
+<li> Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。</li>
+<li> 开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。</li>
+<li> 高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节</li>
+<li> 可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行</li>
+<li> 可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们。</li>
+<li> 可嵌入性————你可以把Python嵌入你的C/C++程序，从而向你的程序用户提供脚本功能。</li>
+</ol>
+<p>再看缺点：</p>
+<ol>
+<li> 速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，比如你用C运一个程序花了0.01s,用Python是0.1s,这样C语言直接比Python快了10倍,算是非常夸张了，但是你是无法直接通过肉眼感知的，因为一个正常人所能感知的时间最小单位是0.15-0.4s左右，哈哈。其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。</li>
+<li> 代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。</li>
+<li> 线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是[计算机程序设计语言](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80&quot;">http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80&quot;</a> \o “计算机程序设计语言)[解释器](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8&quot;">http://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8&quot;</a> \o “解释器)用于[同步](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5&quot;">http://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5&quot;</a> \o “同步)[线程](<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B&quot;">http://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B&quot;</a> \o “线程)的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。</li>
+</ol>
+<p>  当然，Python还有一些其它的小缺点，在这就不一一列举了，我想说的是，任何一门语言都不是完美的，都有擅长和不擅长做的事情，建议各位不要拿一个语言的劣势去跟另一个语言的优势来去比较，语言只是一个工具，是实现程序设计师思想的工具，就像我们之前中学学几何时，有的时候需要要圆规，有的时候需要用三角尺一样，拿相应的工具去做它最擅长的事才是正确的选择。之前很多人问我Shell和Python到底哪个好？我回答说Shell是个脚本语言，但Python不只是个脚本语言，能做的事情更多，然后又有钻牛角尖的人说完全没必要学Python, Python能做的事情Shell都可以做，只要你足够牛B,然后又举了用Shell可以写俄罗斯方块这样的游戏，对此我能说表达只能是，不要跟SB理论，SB会把你拉到跟他一样的高度，然后用充分的经验把你打倒。    </p>
+<h3 id="Python解释器-1"><a href="#Python解释器-1" class="headerlink" title="Python解释器"></a><strong><strong>Python解释器</strong></strong></h3><p>当我们编写Python代码时，我们得到的是一个包含Python代码的以.py为扩展名的文本文件。要运行代码，就需要Python解释器去执行.py文件。 由于整个Python语言从规范到解释器都是开源的，所以理论上，只要水平够高，任何人都可以编写Python解释器来执行Python代码（当然难度很大）。事实上，确实存在多种Python解释器。</p>
+<h4 id="CPython-1"><a href="#CPython-1" class="headerlink" title="CPython"></a><strong>CPython</strong></h4><p>当我们从<a target="_blank" rel="noopener" href="https://www.python.org/">Python官方网站</a>下载并安装好Python 2.7后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。 CPython是使用最广的Python解释器。教程的所有代码也都在CPython下执行。</p>
+<h4 id="IPython-1"><a href="#IPython-1" class="headerlink" title="IPython"></a><strong>IPython</strong></h4><p>IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了IE。 CPython用&gt;&gt;&gt;作为提示符，而IPython用In [序号]:作为提示符。</p>
+<h4 id="PyPy-1"><a href="#PyPy-1" class="headerlink" title="PyPy"></a><strong>PyPy</strong></h4><p>PyPy是另一个Python解释器，它的目标是执行速度。PyPy采用<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Just-in-time_compilation">JIT技术</a>，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。 绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到PyPy下执行，就需要了解<a target="_blank" rel="noopener" href="http://pypy.readthedocs.org/en/latest/cpython_differences.html">PyPy和CPython的不同点</a>。</p>
+<h4 id="Jython-1"><a href="#Jython-1" class="headerlink" title="Jython"></a><strong>Jython</strong></h4><p>Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。</p>
+<h4 id="IronPython-1"><a href="#IronPython-1" class="headerlink" title="IronPython"></a><strong>IronPython</strong></h4><p>IronPython和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>Python的解释器很多，但使用最广泛的还是CPython。如果要和Java或.Net平台交互，最好的办法不是用Jython或IronPython，而是通过网络调用来交互，确保各程序之间的独立性。 </p>
+<h3 id="二、Python发展史-1"><a href="#二、Python发展史-1" class="headerlink" title="二、Python发展史"></a><strong>二、Python发展史</strong></h3><ul>
+<li>  1989年，为了打发圣诞节假期，Guido开始写Python语言的编译器。Python这个名字，来自Guido所挚爱的电视剧Monty Python’s Flying Circus。他希望这个新的叫做Python的语言，能符合他的理想：创造一种C和shell之间，功能全面，易学易用，可拓展的语言。</li>
+<li>  1991年，第一个Python编译器诞生。它是用C语言实现的，并能够调用C语言的库文件。从一出生，Python已经具有了：类，函数，异常处理，包含表和词典在内的核心数据类型，以及模块为基础的拓展系统。</li>
+<li>  Granddaddy of Python web frameworks, Zope 1 was released in 1999</li>
+<li>  Python 1.0 - January 1994 增加了 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">map</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Filter_(higher-order_function)">filter</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">reduce</a>.</li>
+<li>  Python 2.0 - October 16, 2000，加入了内存回收机制，构成了现在Python语言框架的基础</li>
+<li>  Python 2.4 - November 30, 2004, 同年目前最流行的WEB框架Django 诞生</li>
+<li>  Python 2.5 - September 19, 2006</li>
+<li>  Python 2.6 - October 1, 2008</li>
+<li>  Python 2.7 - July 3, 2010</li>
+<li>  In November 2014, it was announced that Python 2.7 would be supported until 2020, and reaffirmed that there would be no 2.8 release as users were expected to move to Python 3.4+ as soon as possible</li>
+<li>  Python 3.0 - December 3, 2008</li>
+<li>  Python 3.1 - June 27, 2009</li>
+<li>  Python 3.2 - February 20, 2011</li>
+<li>  Python 3.3 - September 29, 2012</li>
+<li>  Python 3.4 - March 16, 2014</li>
+<li>  Python 3.5 - September 13, 2015</li>
+</ul>
+<h3 id="三、Python-2-or-3-1"><a href="#三、Python-2-or-3-1" class="headerlink" title="三、Python 2 or 3?"></a><strong>三、Python 2 or 3?</strong></h3><p><strong>In summary : Python 2.x is legacy, Python 3.x is the present and future of the language</strong> Python 3.0 was released in 2008. The final 2.x version 2.7 release came out in mid-2010, with a statement of extended support for this end-of-life release. The 2.x branch will see no new major releases after that. 3.x is under active development and has already seen over five years of stable releases, including version 3.3 in 2012, 3.4 in 2014, and 3.5 in 2015. This means that all recent standard library improvements, for example, are only available by default in Python 3.x. Guido van Rossum (the original creator of the Python language) decided to clean up Python 2.x properly, with less regard for backwards compatibility than is the case for new releases in the 2.x range. The most drastic improvement is the better Unicode support (with all text strings being Unicode by default) as well as saner bytes/Unicode separation. Besides, several aspects of the core language (such as print and exec being statements, integers using floor division) have been adjusted to be easier for newcomers to learn and to be more consistent with the rest of the language, and old cruft has been removed (for example, all classes are now new-style, “range()” returns a memory efficient iterable, not a list as in 2.x).</p>
+<h4 id="py2与3的详细区别-1"><a href="#py2与3的详细区别-1" class="headerlink" title="py2与3的详细区别"></a><strong>py2与3的详细区别</strong></h4><p><strong>PRINT IS A FUNCTION</strong> The statement has been replaced with a print() function, with keyword arguments to replace most of the special syntax of the old statement (PEP 3105). Examples: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a> You can also customize the separator between items, e.g.:</p>
+<p>1</p>
+<p>print(“There are &lt;”, 2**32, “&gt; possibilities!”, sep=””)</p>
+<p><strong>ALL IS UNICODE NOW</strong> <strong>从此不再为讨厌的字符编码而烦恼</strong>   <strong>还可以这样玩： (A,*REST,B)=RANGE(5)</strong></p>
+<p>1 2 3 4</p>
+<p><strong>&gt;&gt;&gt; a,*rest,b = range(5) &gt;&gt;&gt; a,rest,b (0, [1, 2, 3], 4) </strong></p>
+<p>  <strong>某些库改名了</strong>  </p>
+<p>Old Name</p>
+<p>New Name</p>
+<p>_winreg</p>
+<p>winreg</p>
+<p>ConfigParser</p>
+<p>configparser</p>
+<p>copy_reg</p>
+<p>copyreg</p>
+<p>Queue</p>
+<p>queue</p>
+<p>SocketServer</p>
+<p>socketserver</p>
+<p>markupbase</p>
+<p>_markupbase</p>
+<p>repr</p>
+<p>reprlib</p>
+<p>test.test_support</p>
+<p>test.support</p>
+<p>  <strong>还有谁不支持PYTHON3?</strong> One popular module that don’t yet support Python 3 is Twisted (for networking and other applications). Most actively maintained libraries have people working on 3.x support. For some libraries, it’s more of a priority than others: Twisted, for example, is mostly focused on production servers, where supporting older versions of Python is important, let alone supporting a new version that includes major changes to the language. (Twisted is a prime example of a major package where porting to 3.x is far from trivial  </p>
+<h3 id="四、Python安装-1"><a href="#四、Python安装-1" class="headerlink" title="四、Python安装"></a><strong>四、Python安装</strong></h3><h4 id="windows-1"><a href="#windows-1" class="headerlink" title="windows"></a><strong><strong>windows</strong></strong></h4><p>1 2 3 4 5 6 7</p>
+<p>1、下载安装包 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> 2、安装 默认安装路径：C:\python27 3、配置环境变量 【右键计算机】–》【属性】–》【高级系统设置】–》【高级】–》【环境变量】–》【在第二个内容框中找到 变量名为Path 的一行，双击】 –&gt; 【Python安装目录追加到变值值中，用 ； 分割】 如：原来的值;C:\python27，切记前面有分号</p>
+<p><strong>linux、Mac</strong></p>
+<p>1 2 3</p>
+<p>无需安装，原装Python环境   ps：如果自带2.6，请更新至2.7</p>
+<p> </p>
+<h3 id="五、Hello-World程序-1"><a href="#五、Hello-World程序-1" class="headerlink" title="五、Hello World程序"></a><strong>五、Hello World程序</strong></h3><p>在linux 下创建一个文件叫hello.py,并输入</p>
+<p>1</p>
+<p>print(“Hello World!”)</p>
+<p>然后执行命令:python hello.py ,输出</p>
+<p>1 2 3</p>
+<p>localhost:~ jieli$ vim hello.py localhost:~ jieli$ python hello.py Hello World!</p>
+<p><strong>指定解释器</strong> 上一步中执行 python hello.py 时，明确的指出 hello.py 脚本由 python 解释器来执行。 如果想要类似于执行shell脚本一样执行python脚本，例： ./hello.py ，那么就需要在 hello.py 文件的头部指定解释器，如下：</p>
+<p>1 2 3</p>
+<p>#!/usr/bin/env python   print “hello,world”</p>
+<p>如此一来，执行： ./hello.py 即可。 ps：执行前需给予 hello.py 执行权限，chmod 755 hello.py **在交互器中执行　** 除了把程序写在文件里，还可以直接调用python自带的交互器运行代码，</p>
+<p>1 2 3 4 5 6</p>
+<p>localhost:~ jieli$ python Python 2.7.10 (default, Oct 23 2015, 18:05:06) [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin Type “help”, “copyright”, “credits” or “license” for more information. &gt;&gt;&gt; print(“Hello World!”) Hello World!</p>
+<p>对比下其它语言的hello world <img src="https://opstand.gitee.io/media/uploads/2020/11/202011220203057.gif" alt="IMG_259">  C++ <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030547.gif" alt="IMG_260">  C <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030560.gif" alt="IMG_261">  JAVA <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030671.gif" alt="IMG_262">  PHP <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030650.gif" alt="IMG_263">  RUBY <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030650-1.gif" alt="IMG_264">  Go  </p>
+<h3 id="六、变量-字符编码-1"><a href="#六、变量-字符编码-1" class="headerlink" title="六、变量\字符编码"></a><strong>六、变量\字符编码</strong></h3><p><strong>Variables</strong> are used to store information to be referenced and manipulated in a computer program. They also provide a way of labeling data with a descriptive name, so our programs can be understood more clearly by the reader and ourselves. It is helpful to think of variables as containers that hold information. Their sole purpose is to label and store data in memory. This data can then be used throughout your program. <strong>声明变量</strong></p>
+<p>1 2 3</p>
+<p>#_*_coding:utf-8_*_   name = “Alex Li”</p>
+<p>上述代码声明了一个变量，变量名为： name，变量name的值为：”Alex Li” <strong>变量定义的规则：</strong></p>
+<ul>
+<li><ul>
+<li>  变量名只能是 字母、数字或下划线的任意组合</li>
+<li>  变量名的第一个字符不能是数字</li>
+<li>  以下关键字不能声明为变量名 [‘and’, ‘as’, ‘assert’, ‘break’, ‘class’, ‘continue’, ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘exec’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, ‘is’, ‘lambda’, ‘not’, ‘or’, ‘pass’, ‘print’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’]</li>
+</ul>
+</li>
+</ul>
+<p><strong>变量的赋值</strong></p>
+<p>1 2 3 4 5 6 7 8</p>
+<p>name = “Alex Li”   name2 = name print(name,name2)   name = “Jack”   print(“What is the value of name2 now?”)</p>
+<p> </p>
+<h3 id="七、字符编码-1"><a href="#七、字符编码-1" class="headerlink" title="七、字符编码"></a><strong><strong>七、字符编码</strong></strong></h3><p>python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill） ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言，其最多只能用 8 位来表示（一个字节），即：2**8 = 256-1，所以，ASCII码最多只能表示 255 个符号。   <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030728.gif" alt="IMG_265"> <strong>关于中文</strong> 为了处理汉字，程序员设计了用于简体中文的GB2312和用于繁体中文的big5。 GB2312(1980年)一共收录了7445个字符，包括6763个汉字和682个其它符号。汉字区的内码范围高字节从B0-F7，低字节从A1-FE，占用的码位是72*94=6768。其中有5个空位是D7FA-D7FE。 GB2312 支持的汉字太少。1995年的汉字扩展规范GBK1.0收录了21886个符号，它分为汉字区和图形符号区。汉字区包括21003个字符。2000年的 GB18030是取代GBK1.0的正式国家标准。该标准收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。现在的PC平台必须支持GB18030，对嵌入式产品暂不作要求。所以手机、MP3一般只支持GB2312。 从ASCII、GB2312、GBK 到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。在这些编码中，英文和中文可以统一地处理。区分中文编码的方法是高字节的最高位不为0。按照程序员的称呼，GB2312、GBK到GB18030都属于双字节字符集 (DBCS)。 有的中文Windows的缺省内码还是GBK，可以通过GB18030升级包升级到GB18030。不过GB18030相对GBK增加的字符，普通人是很难用到的，通常我们还是用GBK指代中文Windows内码。     <strong>显然ASCII码无法将世界上的各种文字和符号全部表示，所以，就需要新出一种可以代表所有字符和符号的编码，即：Unicode</strong> Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定虽有的字符和符号最少由 16 位来表示（2个字节），即：2 **16 = 65536， 注：此处说的的是最少2个字节，可能更多 UTF-8，是对Unicode编码的压缩和优化，他不再使用最少使用2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存、欧洲的字符用2个字节保存，东亚的字符用3个字节保存… 所以，python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill），如果是如下代码的话： 报错：ascii码无法表示中文</p>
+<p>1 2 3</p>
+<p>#!/usr/bin/env python   print “你好，世界”</p>
+<p>改正：应该显示的告诉python解释器，用什么编码来执行源代码，即：</p>
+<p>1 2 3 4</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   print “你好，世界”</p>
+<h3 id="注释-1"><a href="#注释-1" class="headerlink" title="注释"></a><strong><strong>注释</strong></strong></h3><p>当行注视：# 被注释内容 多行注释：””” 被注释内容 “””      </p>
+<h3 id="八、用户输入-1"><a href="#八、用户输入-1" class="headerlink" title="八、用户输入"></a><strong>八、用户输入</strong></h3><p>1 2 3 4 5 6 7</p>
+<p>#!/usr/bin/env python #_*_coding:utf-8_*_     #name = raw_input(“What is your name?”) #only on python 2.x name = input(“What is your name?”) print(“Hello “ + name )</p>
+<p>输入密码时，如果想要不可见，需要利用getpass 模块中的 getpass方法，即：</p>
+<p>1 2 3 4 5 6 7 8 9 10</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import getpass   # 将用户输入的内容赋值给 name 变量 pwd = getpass.getpass(“请输入密码：”)   # 打印输入的内容 print(pwd)</p>
+<p> </p>
+<h3 id="九、模块初识-1"><a href="#九、模块初识-1" class="headerlink" title="九、模块初识"></a><strong>九、模块初识</strong></h3><p>Python的强大之处在于他有非常丰富和强大的标准库和第三方库，几乎你想实现的任何功能都有相应的Python库支持，以后的课程中会深入讲解常用到的各种库，现在，我们先来象征性的学2个简单的。 <strong>sys</strong></p>
+<p>1 2 3 4 5 6 7 8 9 10 11</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import sys   print(sys.argv)     #输出 $ python test.py helo world [‘test.py’, ‘helo’, ‘world’]  #把执行脚本时传递的参数获取到了</p>
+<p>  <strong>os</strong></p>
+<p>1 2 3 4 5 6</p>
+<p>#!/usr/bin/env python # -*- coding: utf-8 -*-   import os   os.system(“df -h”) #调用系统命令</p>
+<p><strong>完全结合一下</strong> </p>
+<p>1 2 3</p>
+<p>import os,sys   os.system(‘’.join(sys.argv[1:])) #把用户的输入的参数当作一条命令交给os.system来执行</p>
+<p><strong>自己写个模块</strong> python tab补全模块 <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030773.gif" alt="IMG_266">  for mac <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030848.gif" alt="IMG_267">  for Linux 写完保存后就可以使用了</p>
+<p>1 2 3 4 5</p>
+<p>localhost:~ jieli$ python Python 2.7.10 (default, Oct 23 2015, 18:05:06) [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin Type “help”, “copyright”, “credits” or “license” for more information. &gt;&gt;&gt; import tab</p>
+<p>你会发现，上面自己写的tab.py模块只能在当前目录下导入，如果想在系统的何何一个地方都使用怎么办呢？ 此时你就要把这个tab.py放到python全局环境变量目录里啦，基本一般都放在一个叫 Python/2.7/site-packages 目录下，这个目录在不同的OS里放的位置不一样，用 print(sys.path) 可以查看python环境变量列表。  </p>
+<h3 id="十、-pyc是个什么鬼？-1"><a href="#十、-pyc是个什么鬼？-1" class="headerlink" title="十、.pyc是个什么鬼？"></a><strong>十、.pyc是个什么鬼？</strong></h3><p><strong>1. Python是一门解释型语言？</strong> 我初学Python时，听到的关于Python的第一句话就是，Python是一门解释性语言，我就这样一直相信下去，直到发现了*.pyc文件的存在。如果是解释型语言，那么生成的*.pyc文件是什么呢？c应该是compiled的缩写才对啊！ 为了防止其他学习Python的人也被这句话误解，那么我们就在文中来澄清下这个问题，并且把一些基础概念给理清。  <strong>2. 解释型语言和编译型语言</strong> 计算机是不能够识别高级语言的，所以当我们运行一个高级语言程序的时候，就需要一个“翻译机”来从事把高级语言转变成计算机能读懂的机器语言的过程。这个过程分成两类，第一种是编译，第二种是解释。 编译型语言在程序执行之前，先会通过编译器对程序执行一个编译的过程，把程序转变成机器语言。运行时就不需要翻译，而直接执行就可以了。最典型的例子就是C语言。 解释型语言就没有这个编译的过程，而是在程序运行的时候，通过解释器对程序逐行作出解释，然后直接运行，最典型的例子是Ruby。 通过以上的例子，我们可以来总结一下解释型语言和编译型语言的优缺点，因为编译型语言在程序运行之前就已经对程序做出了“翻译”，所以在运行时就少掉了“翻译”的过程，所以效率比较高。但是我们也不能一概而论，一些解释型语言也可以通过解释器的优化来在对程序做出翻译时对整个程序做出优化，从而在效率上超过编译型语言。 此外，随着Java等基于虚拟机的语言的兴起，我们又不能把语言纯粹地分成解释型和编译型这两种。 用Java来举例，Java首先是通过编译器编译成字节码文件，然后在运行时通过解释器给解释成机器文件。所以我们说Java是一种先编译后解释的语言。   <strong>3. Python到底是什么</strong> 其实Python和Java/C#一样，也是一门基于虚拟机的语言，我们先来从表面上简单地了解一下Python程序的运行过程吧。 当我们在命令行中输入python hello.py时，其实是激活了Python的“解释器”，告诉“解释器”：你要开始工作了。可是在“解释”之前，其实执行的第一项工作和Java一样，是编译。 熟悉Java的同学可以想一下我们在命令行中如何执行一个Java的程序： javac hello.java java hello   只是我们在用Eclipse之类的IDE时，将这两部给融合成了一部而已。其实Python也一样，当我们执行python hello.py时，他也一样执行了这么一个过程，所以我们应该这样来描述Python，Python是一门先编译后解释的语言。 <strong>4. 简述Python的运行过程</strong> 在说这个问题之前，我们先来说两个概念，PyCodeObject和pyc文件。 我们在硬盘上看到的pyc自然不必多说，而其实PyCodeObject则是Python编译器真正编译成的结果。我们先简单知道就可以了，继续向下看。 当python程序运行时，编译的结果则是保存在位于内存中的PyCodeObject中，当Python程序运行结束时，Python解释器则将PyCodeObject写回到pyc文件中。 当python程序第二次运行时，首先程序会在硬盘中寻找pyc文件，如果找到，则直接载入，否则就重复上面的过程。 所以我们应该这样来定位PyCodeObject和pyc文件，我们说pyc文件其实是PyCodeObject的一种持久化保存方式。  </p>
+<h3 id="十一、数据类型初识-1"><a href="#十一、数据类型初识-1" class="headerlink" title="十一、数据类型初识"></a><strong>十一、数据类型初识</strong></h3><p>1、数字 2 是一个整数的例子。 长整数 不过是大一些的整数。 3.23和52.3E-4是浮点数的例子。E标记表示10的幂。在这里，52.3E-4表示52.3 * 10-4。 (-5+4j)和(2.3-4.6j)是复数的例子，其中-5,4为实数，j为虚数，数学中表示复数是什么？。 int（整型） 在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647 在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 long（长整型） 　　跟C语言不同，Python的长整数没有指定位宽，即：Python没有限制长整数数值的大小，但实际上由于机器内存有限，我们使用的长整数数值不可能无限大。 注意，自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果了。 float（浮点型） 先扫盲 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/alex3714/articles/5895848.html">http://www.cnblogs.com/alex3714/articles/5895848.html</a>  　　浮点数用来处理实数，即带有小数的数字。类似于C语言中的double类型，占8个字节（64位），其中52位表示底，11位表示指数，剩下的一位表示符号。 complex（复数） 复数由实数部分和虚数部分组成，一般形式为x＋yj，其中的x是复数的实数部分，y是复数的虚数部分，这里的x和y都是实数。 注：Python中存在小数字池：-5 ～ 257   2、布尔值 真或假 1 或 0 3、字符串 “hello world” 万恶的字符串拼接： python中的字符串在C语言中体现为是一个字符数组，每次创建字符串时候需要在内存中开辟一块连续的空，并且一旦需要修改字符串的话，就需要再次开辟空间，万恶的+号每出现一次就会在内从中重新开辟一块空间。 <strong>字符串格式化输出</strong></p>
+<p>1 2 3 4</p>
+<p>name = “alex” print “i am %s “ % name   #输出: i am alex</p>
+<p>PS: 字符串是 %s;整数 %d;浮点数%f 字符串常用功能：</p>
+<ul>
+<li>  移除空白</li>
+<li>  分割</li>
+<li>  长度</li>
+<li>  索引</li>
+<li>  切片</li>
+</ul>
+<p>4、列表 创建列表：</p>
+<p>1 2 3</p>
+<p>name_list = [‘alex’, ‘seven’, ‘eric’] 或 name_list ＝ list([‘alex’, ‘seven’, ‘eric’])</p>
+<p>基本操作：</p>
+<ul>
+<li>  索引</li>
+<li>  切片</li>
+<li>  追加</li>
+<li>  删除</li>
+<li>  长度</li>
+<li>  切片</li>
+<li>  循环</li>
+<li>  包含</li>
+</ul>
+<p>5、元组(不可变列表) 创建元组：</p>
+<p>1 2 3</p>
+<p>ages = (11, 22, 33, 44, 55) 或 ages = tuple((11, 22, 33, 44, 55))</p>
+<p>  6、字典（无序） 创建字典：</p>
+<p>1 2 3</p>
+<p>person = {“name”: “mr.wu”, ‘age’: 18} 或 person = dict({“name”: “mr.wu”, ‘age’: 18})</p>
+<p>常用操作：</p>
+<ul>
+<li>  索引</li>
+<li>  新增</li>
+<li>  删除</li>
+<li>  键、值、键值对</li>
+<li>  循环</li>
+<li>  长度</li>
+</ul>
+<h3 id="十二、数据运算-1"><a href="#十二、数据运算-1" class="headerlink" title="十二、数据运算"></a><strong><strong>十二、数据运算</strong></strong></h3><p>算数运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030858.png" alt="IMG_268"> 比较运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030943.png" alt="IMG_269"> 赋值运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202030970.png" alt="IMG_270"> 逻辑运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031095.png" alt="IMG_271"> 成员运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031011.png" alt="IMG_272"> 身份运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/202011220203117.png" alt="IMG_273"> 位运算： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031251.png" alt="IMG_274"> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a> *按位取反运算规则(按位取反再加1)   详解<a target="_blank" rel="noopener" href="http://blog.csdn.net/wenxinwukui234/article/details/42119265">http://blog.csdn.net/wenxinwukui234/article/details/42119265</a>   运算符优先级： <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031232.png" alt="IMG_275"> 更多内容：[猛击这里](<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-operators.html&quot;">http://www.runoob.com/python/python-operators.html&quot;</a> \t “<a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/_blank">https://www.cnblogs.com/alex3714/articles/_blank</a>)  </p>
+<h3 id="十三、表达式if-…-else-1"><a href="#十三、表达式if-…-else-1" class="headerlink" title="十三、表达式if … else"></a><strong>十三、表达式if … else</strong></h3><p>场景一、用户登陆验证</p>
+<p>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</p>
+<p># 提示输入用户名和密码   # 验证用户名和密码 #     如果错误，则输出用户名或密码错误 #     如果成功，则输出 欢迎，XXX!     #!/usr/bin/env python # -*- coding: encoding -*-   import getpass     name = raw_input(‘请输入用户名：’) pwd = getpass.getpass(‘请输入密码：’)   if name == “alex” and pwd == “cmd”: print(“欢迎，alex！”) else: print(“用户名和密码错误”)</p>
+<p>场景二、猜年龄游戏 在程序里设定好你的年龄，然后启动程序让用户猜测，用户输入后，根据他的输入提示用户输入的是否正确，如果错误，提示是猜大了还是小了 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>   外层变量，可以被内层代码使用 内层变量，不应被外层代码使用  </p>
+<h3 id="十四、表达式for-loop-1"><a href="#十四、表达式for-loop-1" class="headerlink" title="十四、表达式for loop"></a><strong>十四、表达式for loop</strong></h3><p><strong>最简单的循环10次</strong></p>
+<p>1 2 3 4 5 6</p>
+<p>#_*_coding:utf-8_*_ __author__ = ‘Alex Li’     for i in range(10): print(“loop:”, i )</p>
+<p>输出：</p>
+<p>1 2 3 4 5 6 7 8 9 10</p>
+<p>loop: 0 loop: 1 loop: 2 loop: 3 loop: 4 loop: 5 loop: 6 loop: 7 loop: 8 loop: 9</p>
+<p><strong>需求一：还是上面的程序，但是遇到小于5的循环次数就不走了，直接跳入下一次循环</strong></p>
+<p>1 2 3 4</p>
+<p>for i in range(10): if i&lt;5: continue #不往下走了,直接进入下一次loop print(“loop:”, i )</p>
+<p><strong>需求二：还是上面的程序，但是遇到大于5的循环次数就不走了，直接退出</strong></p>
+<p>1 2 3 4</p>
+<p>for i in range(10): if i&gt;5: break #不往下走了,直接跳出整个loop print(“loop:”, i )</p>
+<p> </p>
+<h3 id="十五、while-loop-1"><a href="#十五、while-loop-1" class="headerlink" title="十五、while loop"></a><strong>十五、while loop</strong></h3><p> <strong>有一种循环叫死循环，一经触发，就运行个天荒地老、海枯石烂。</strong> 海枯石烂代码</p>
+<p>1 2 3 4 5</p>
+<p>count = 0 while True: print(“你是风儿我是沙,缠缠绵绵到天涯…”,count) count +=1  </p>
+<p>  其实除了时间，没有什么是永恒的，死loop还是少写为好 上面的代码循环100次就退出吧   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>     <strong>回到上面for 循环的例子，如何实现让用户不断的猜年龄，但只给最多3次机会，再猜不对就退出程序。</strong> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alex3714/articles/5465198.html">+ View Code</a>    </p>
+<h3 id="十六、作业-1"><a href="#十六、作业-1" class="headerlink" title="十六、作业"></a><strong>十六、作业</strong></h3><p>作业一：博客 作业二：编写登陆接口</p>
+<ul>
+<li>  输入用户名密码</li>
+<li>  认证成功后显示欢迎信息</li>
+<li>  输错三次后锁定</li>
+</ul>
+<p>  作业三：多级菜单</p>
+<ul>
+<li>  三级菜单</li>
+<li>  可依次选择进入各子菜单</li>
+<li>  所需新知识点：列表、字典</li>
+</ul>
+<p>                 </p>
+<h3 id="入门知识拾遗-1"><a href="#入门知识拾遗-1" class="headerlink" title="入门知识拾遗"></a><strong>入门知识拾遗</strong></h3><p><strong>一、bytes类型</strong>   <strong>二、三元运算</strong></p>
+<p>1</p>
+<p>result = 值1 if 条件 else 值2</p>
+<p>如果条件为真：result = 值1 如果条件为假：result = 值2 <strong>三、进制</strong></p>
+<ul>
+<li>  二进制，01</li>
+<li>  八进制，01234567</li>
+<li>  十进制，0123456789</li>
+<li>  十六进制，0123456789ABCDEF  二进制到16进制转换<a target="_blank" rel="noopener" href="http://jingyan.baidu.com/album/47a29f24292608c0142399cb.html?picindex=1">http://jingyan.baidu.com/album/47a29f24292608c0142399cb.html?picindex=1</a></li>
+</ul>
+<h4 id="计算机内存地址和为什么用16进制？-1"><a href="#计算机内存地址和为什么用16进制？-1" class="headerlink" title="计算机内存地址和为什么用16进制？"></a><strong>计算机内存地址和为什么用16进制？</strong></h4><p><strong>为什么用16进制</strong> 1、计算机硬件是0101二进制的，16进制刚好是2的倍数，更容易表达一个命令或者数据。十六进制更简短，因为换算的时候一位16进制数可以顶4位2进制数，也就是一个字节（8位进制可以用两个16进制表示） 2、最早规定ASCII字符集采用的就是8bit(后期扩展了,但是基础单位还是8bit)，8bit用2个16进制直接就能表达出来，不管阅读还是存储都比其他进制要方便 3、计算机中CPU运算也是遵照ASCII字符集，以16、32、64的这样的方式在发展，因此数据交换的时候16进制也显得更好 4、为了统一规范，CPU、内存、硬盘我们看到都是采用的16进制计算 <strong>16进制用在哪里</strong> 1、网络编程，数据交换的时候需要对字节进行解析都是一个byte一个byte的处理，1个byte可以用0xFF两个16进制来表达。通过网络抓包，可以看到数据是通过16进制传输的。 2、数据存储，存储到硬件中是0101的方式，存储到系统中的表达方式都是byte方式 3、一些常用值的定义，比如：我们经常用到的html中color表达，就是用的16进制方式，4个16进制位可以表达好几百万的颜色信息。</p>
+<h3 id="四、-一切皆对象-1"><a href="#四、-一切皆对象-1" class="headerlink" title="四、 一切皆对象"></a><strong>四、 一切皆对象</strong></h3><p><strong>对于Python，一切事物都是对象，对象基于类创建</strong> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031353.jpeg" alt="IMG_276"> 所以，以下这些值都是对象： “wupeiqi”、38、[‘北京’, ‘上海’, ‘深圳’]，并且是根据不同的类生成的对象。 <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031463.png" alt="IMG_277"> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031597.png" alt="IMG_278"> <img src="https://opstand.gitee.io/media/uploads/2020/11/2020112202031686.png" alt="IMG_279"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">老王</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://docs.aomtop.com/2020/11/22/python-zi-dong-hua-yun-wei-xue-xi-bi-ji-di-yi-tian/">http://docs.aomtop.com/2020/11/22/python-zi-dong-hua-yun-wei-xue-xi-bi-ji-di-yi-tian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">老王</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%90%89%E5%A4%9A/">
+                                    <span class="chip bg-color">吉多</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                    <span class="chip bg-color">表达式</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tzsSX4lmTLqLrn4nsweKKKEC-gzGzoHsz',
+        appKey: 'A5hMGuo1sViKcfjbSDndchrN',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/11/22/oracle-de-san-zhong-gao-ke-yong-ji-qun-fang-an/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/gujian/5.jpg" class="responsive-img" alt="Oracle的三种高可用集群方案">
+                        
+                        <span class="card-title">Oracle的三种高可用集群方案</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/oracle/">
+                        <span class="chip bg-color">oracle</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%BA%E6%88%BF/">
+                        <span class="chip bg-color">机房</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9B%86%E7%BE%A4/">
+                        <span class="chip bg-color">集群</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/31/centos7-yu-centos6-qu-bie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/gujian/9.jpg" class="responsive-img" alt="centos7与centos6区别">
+                        
+                        <span class="card-title">centos7与centos6区别</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
+                    </a>
+                    
+                    <a href="/tags/gnome/">
+                        <span class="chip bg-color">gnome</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="4965675848"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <a href="/about" target="_blank">老王</a>
+            |&nbsp;&nbsp;<a href="https://www.yuque.com/xnops" target="_blank">小诺文档</a>
+            |&nbsp;&nbsp;<a href="http://go.aomtop.com" target="_blank">小诺导航</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2018";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备19026609号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xlqywk" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:48211701@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=48211701" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 48211701" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<!-- 天气接口 -->
+    
+        <!-- 天气接口-->
+<script type="text/javascript">
+    WIDGET = {FID: '1tFpFZ5Mtj'}
+  </script>
+<script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+        }
+  </script>
+
+      
+
+        
+
+
+</body>
+
+</html>
