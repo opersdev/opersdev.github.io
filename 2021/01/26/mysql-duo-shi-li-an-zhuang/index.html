@@ -211,20 +211,6 @@
       </li>
       
       <li>
-        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index">
-          
-          <span>小诺导航</span>
-        </a>
-      </li>
-      
-      <li>
-        <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud">
-          
-          <span>个人网站</span>
-        </a>
-      </li>
-      
-      <li>
         <a href="/sample-page/ji-shu-zhi-chi">
           
           <span>技术支持</span>
@@ -434,22 +420,6 @@
                   <a href="/sample-page/about " style="margin-left:75px">
 				  
 		          <span>关于本站</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/index " style="margin-left:75px">
-				  
-		          <span>小诺导航</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a target="_blank" rel="noopener" href="https://opstand.gitee.io/cloud " style="margin-left:75px">
-				  
-		          <span>个人网站</span>
                   </a>
                 </li>
               
@@ -701,21 +671,21 @@
 <p>2）创建mysql多实例数据文件目录      </p>
 <p>#此过程依赖于已经安装好mysql软件的单实例环境 </p>
 <p>采用/data目录作为mysql多实例总的数据文件根目录 pkill mysqld                                         </p>
-<p> #创建前需把创建好的mysql单实例杀掉 <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414070.png" alt="IMG_256"> rm -f /etc/init.d/mysqld                          #删除单实例时的启动命令 <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414039.png" alt="IMG_257"> mkdir -p /data/{3306,3307}/data tree /data <img src="https://opstand.gitee.io/media/uploads/2021/01/202101260341419.png" alt="IMG_258"> chown -R mysql.mysql /data                 </p>
+<p> #创建前需把创建好的mysql单实例杀掉 <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414070.png" alt="IMG_256"> rm -f /etc/init.d/mysqld                          #删除单实例时的启动命令 <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414039.png" alt="IMG_257"> mkdir -p /data/{3306,3307}/data tree /data <img src="https://blog.xnuo.top/media/uploads/2021/01/202101260341419.png" alt="IMG_258"> chown -R mysql.mysql /data                 </p>
 <p>#授权data目录 </p>
 <p>3）创建mysql配置文件并配置环境变量 </p>
 <p>分别在/data/3306和/data/3307下创建my.conf文件 不像单实例放在/etc/下       </p>
-<p> #my.cnf中主要修改port和server-id <img src="https://opstand.gitee.io/media/uploads/2021/01/202101260341412.png" alt="IMG_259"> echo ‘export PATH=/application/mysql/bin:$PATH’ &gt;&gt;/etc/profile                       </p>
+<p> #my.cnf中主要修改port和server-id <img src="https://blog.xnuo.top/media/uploads/2021/01/202101260341412.png" alt="IMG_259"> echo ‘export PATH=/application/mysql/bin:$PATH’ &gt;&gt;/etc/profile                       </p>
 <p>#环境变量设置单实例已设置 </p>
 <p>4）初始化数据文件 初始化命令同单实例，只是更改数据路径： </p>
 <p>在/application/mysql/scripts下执行./mysql_install_db –basedir=/application/mysql –defaults-file=/data/3306/my.cnf –datadir=/data/3306/data –user=mysql             </p>
-<p>#同理实现3307初始化 #初始化的目的就是为了生成存放文件的地方，结果就是在/data下生成了一些系统化的文件 <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414142.png" alt="IMG_260"> 5）配置开机自启动脚本&amp;启动多实例 </p>
-<p>cd /home/coco/tools/mysql-5.5.32 /bin/cp support-files/mysql.server /data/3306/mysql /bin/cp support-files/mysql.server /data/3307/mysql <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414185.png" alt="IMG_261"> find /data/ -type f -name “mysql” xargs chmod +x                             #给启动文件授权执行权限 find /data/ -type f -name “mysql” xargs ls -l <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414214.png" alt="IMG_262"> 启动数据库： </p>
+<p>#同理实现3307初始化 #初始化的目的就是为了生成存放文件的地方，结果就是在/data下生成了一些系统化的文件 <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414142.png" alt="IMG_260"> 5）配置开机自启动脚本&amp;启动多实例 </p>
+<p>cd /home/coco/tools/mysql-5.5.32 /bin/cp support-files/mysql.server /data/3306/mysql /bin/cp support-files/mysql.server /data/3307/mysql <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414185.png" alt="IMG_261"> find /data/ -type f -name “mysql” xargs chmod +x                             #给启动文件授权执行权限 find /data/ -type f -name “mysql” xargs ls -l <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414214.png" alt="IMG_262"> 启动数据库： </p>
 <p>/data/3306/mysql start /data/3307/mysql start netstat -lntupgrep 330[6-7] </p>
 <p>多实例启动文件的启动mysql服务实质                        </p>
 <p>#这里直接采用mysqld_safe启动多实例 </p>
 <p>mysqld_safe –defaults-file=/data/3306/my.cnf 2&gt;&amp;1 &gt; /dev/null &amp; mysqld_safe –defaults-file=/data/3307/my.cnf 2&gt;&amp;1 &gt; /dev/null &amp; </p>
-<p><img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414292.png" alt="IMG_263"> 6）登录多实例数据库 mysql -S /data/3306/mysql.sock             </p>
+<p><img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414292.png" alt="IMG_263"> 6）登录多实例数据库 mysql -S /data/3306/mysql.sock             </p>
 <p>#多实例的登录一定要指定特定的socket </p>
 <p>mysqladmin -u root -S /data/3306/mysql.sock password ‘oldboy123’       </p>
 <p>#多实例为root增加密码 </p>
@@ -728,13 +698,13 @@
 <p>停止多实例数据库 多实例启动文件的停止mysql服务： </p>
 <p>mysqladmin -u root -poldboy123 -S /data/3306/mysql.sock shutdown </p>
 <p>mysqladmin -u root -poldboy123 -S /data/3307/mysql.sock shutdown </p>
-<p><img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414234.png" alt="IMG_264"> 8）如果mysql服务没有起来，排查办法如下： </p>
+<p><img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414234.png" alt="IMG_264"> 8）如果mysql服务没有起来，排查办法如下： </p>
 <p>8.1）若发现没有mysql的端口，等几秒再看，可能是会比较慢 </p>
 <p>8.2）查看错误日志，该日志路径在my.cnf最下面可以看到</p>
 <p> grep log-error my.cnftail -l &gt;&gt;log-error=/data/3306/mysql_coco.err </p>
 <p>8.3）前面每行命令执行的返回结果是否有错误 </p>
 <p>8.4）查看系统的/var/log/messages </p>
-<p>#Linux中可以用vimdiff   file1  file2 来同时对比两个文件内容        %附件为3306和3307两个实例的my.cnf对比 <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414260.png" alt="IMG_265"> <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414332.png" alt="IMG_266"> <img src="https://opstand.gitee.io/media/uploads/2021/01/2021012603414432.png" alt="IMG_267"></p>
+<p>#Linux中可以用vimdiff   file1  file2 来同时对比两个文件内容        %附件为3306和3307两个实例的my.cnf对比 <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414260.png" alt="IMG_265"> <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414332.png" alt="IMG_266"> <img src="https://blog.xnuo.top/media/uploads/2021/01/2021012603414432.png" alt="IMG_267"></p>
 
                 
             </div>
@@ -1546,7 +1516,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2023</span>
+                <span id="year">2018-2024</span>
             
             <a href="/about" target="_blank">老王</a>
             |&nbsp;&nbsp;<a href="https://www.yuque.com/xnops" target="_blank">小诺文档</a>
